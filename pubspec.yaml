@@ -44,6 +44,16 @@ dependencies:
   google_sign_in: ^6.2.1
   awesome_dialog: ^3.2.0
   cached_network_image: ^3.3.1
+  molten_navigationbar_flutter: ^1.0.1
+  flutterme_credit_card: ^1.0.2
+  google_fonts: ^6.2.0
+  flutter_animate: ^4.5.0
+  liquid_swipe: ^3.1.0
+  smooth_page_indicator: ^1.1.0
+  animate_do: ^3.3.4
+  type_text: ^1.0.5
+  introduction_screen: ^3.1.14
+  flutter_facebook_auth: ^6.2.0
 
 dev_dependencies:
   flutter_test:

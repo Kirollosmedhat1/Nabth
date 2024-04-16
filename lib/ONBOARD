@@ -1,0 +1,96 @@
+import 'package:agri/controller/cont/onboardingCont.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:introduction_screen/introduction_screen.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+class OnBoarding extends StatelessWidget {
+  OnBoarding({Key? key}) : super(key: key);
+
+  final obcontroller = Get.put(OnBoardingCont());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Expanded(
+            child: IntroductionScreen(
+              pages: obcontroller.pages.map((page) {
+                return PageViewModel(
+                  title: page.model.title,
+                  body: page.model.subTitle,
+                  image: Image.asset(
+                    page.model.image,
+                    height: page.model.height,
+                  ),
+                  decoration: PageDecoration(
+                    pageColor: page.model.bgColor,
+                    bodyTextStyle: GoogleFonts.workSans(
+                      textStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        height: 1,
+                      ),
+                    ),
+                    titleTextStyle: GoogleFonts.workSans(
+                      textStyle: TextStyle(
+                        fontSize: 30.8,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+              onDone: () => obcontroller.skip(),
+              showSkipButton: true,
+              skip: Text(
+                'Skip',
+                style: GoogleFonts.workSans(
+                  textStyle: TextStyle(
+                    color: Color.fromRGBO(30, 155, 61, 1),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    height: 1,
+                    letterSpacing: -0.24,
+                  ),
+                ),
+              ),
+              next: Text(
+                'Next',
+                style: GoogleFonts.workSans(
+                  textStyle: TextStyle(
+                    color: Color.fromRGBO(26, 116, 49, 1),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    height: 1,
+                  ),
+                ),
+              ),
+              done: Text(
+                'Done',
+                style: GoogleFonts.workSans(
+                  textStyle: TextStyle(
+                    color: Color.fromRGBO(26, 116, 49, 1),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    height: 1,
+                  ),
+                ),
+              ),
+              dotsDecorator: DotsDecorator(
+                activeColor: Color.fromRGBO(26, 116, 49, 1),
+                activeSize: Size(10, 10),
+                size: Size(8, 8),
+                color: Colors.grey,
+                spacing: EdgeInsets.symmetric(horizontal: 5),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

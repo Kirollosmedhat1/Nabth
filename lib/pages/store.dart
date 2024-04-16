@@ -1,9 +1,10 @@
-import 'dart:io';
-
-import 'package:application5/logic/controller/product_controller.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:application5/controller/constant/imgs.dart';
+import 'package:application5/widgets/productsItem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:application5/controller/cont/product_controller.dart';
+import 'package:application5/pages/categorypage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Store extends StatelessWidget {
   Store({Key? key}) : super(key: key);
@@ -13,148 +14,122 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-        actions: [
-          Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            width: 46,
-            height: 49,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 2, 64, 4).withOpacity(.4),
-                  spreadRadius: 1,
-                  blurRadius: 10,
-                  offset: Offset(0, 3),
-                )
-              ],
-            ),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                size: 35,
+      body: Column(
+        children: [
+          Text(
+              "Categories",
+              style: GoogleFonts.workSans(
+                color: Color.fromRGBO(24, 79, 39, 1),
+                fontSize: 25,
+                letterSpacing: -0.24,
+                fontWeight: FontWeight.w500,
               ),
+            ),
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.only(left: 57),
+            alignment: Alignment.topLeft,
+      
+          ),
+          SizedBox(
+            height: 9,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildCategoryContainer(
+                image: seedling,
+                categoryName: "Seedlings",
+              ),
+              _buildCategoryContainer(
+                image: Tools,
+                categoryName: "Farming Tools",
+              ),
+              _buildCategoryContainer(
+                image: fertilizer,
+                categoryName: "Fertilizers",
+              ),
+            ],
+          ),
+          SizedBox(height: 30),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 18),
+                  child: Text(
+                    "All Products",
+                    style: GoogleFonts.workSans(
+                      color: Color.fromRGBO(24, 79, 39, 1),
+                      fontSize: 21,
+                      letterSpacing: -0.24,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 428,
+                  child: Obx(() {
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 48,
+                        crossAxisSpacing: 58,
+                      ),
+                      itemCount: controller.productlist.length,
+                      itemBuilder: (context, i) {
+                        return ProductItemsWidget(
+                          img: "${controller.productlist[i]["img"]}",
+                          name: "${controller.productlist[i]["name"]}",
+                          price: "${controller.productlist[i]["price"]}",
+                        );
+                      },
+                    );
+                  }),
+                ),
+              ],
             ),
           )
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("data"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      width: 95,
-                      height: 95,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    Text("data"),
-                  ],
+    );
+  }
+
+  Widget _buildCategoryContainer({required String image, required String categoryName}) {
+    return Column(
+      children: [
+        Container(
+          child: GestureDetector(
+            onTap: () {
+              Get.to(CategoryPage(category: categoryName));
+            },
+            child: Container(
+              width: 95,
+              height: 95,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.fill,
                 ),
-                Column(
-                  children: [
-                    Container(
-                      width: 95,
-                      height: 95,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    Text("data"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 95,
-                      height: 95,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                    Text("data"),
-                  ],
-                ),
-              ],
+                borderRadius: BorderRadius.circular(15),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Text("All product"),
-            SizedBox(
-              height: 400,
-              child: Obx(() => GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 60,
-                        crossAxisSpacing: 90),
-                    itemCount: controller.productlist.length,
-                    padding: EdgeInsets.all(12),
-                    itemBuilder: (context, i) {
-                      return Container(
-                        height: 150,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xffD9D9D9),width: 1,),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10)),
-                          color: Colors.black,
-                        ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            // crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: controller.productlist[i]
-                                    ["img"], // Firebase Storage URL
-                                placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                                height:
-                                  89, // Adjust the height and width as needed
-                                width: 135,
-                              ),
-                              Text(
-                                "${controller.productlist[i]["name"]}",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 10,
-                                ),
-                              ),
-                              Text(
-                                "${controller.productlist[i]["price"]}",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ],
-                          ),
-                        
-                      );
-                    },
-                  )),
-            ),
-          ],
+          ),
         ),
-      ),
+        SizedBox(
+          height: 10,
+        ),
+        Text(
+          categoryName,
+          style: GoogleFonts.workSans(
+            color: Color.fromRGBO(26, 116, 49, 1),
+            fontSize: 17,
+            letterSpacing: -0.24,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 }

@@ -1,33 +1,29 @@
-import 'package:application5/pages/login.dart';
-import 'package:application5/pages/store.dart';
-import 'package:application5/widgets/myButton.dart';
+
+// ignore_for_file: prefer_const_constructors
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+FirebaseAuth auth = FirebaseAuth.instance;
+var googleSignIn = GoogleSignIn();
+class _HomePageState extends State<HomePage> {
+  void signOutFromApp() async {
+    try {
+      await auth.signOut();
+      await googleSignIn.signOut();
+      Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
+    } catch (error) {}
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container(
-        child: 
-        Column(
-          children: [
-            MyButton(lable: "",onPressed: ()async {
-            
-              await FirebaseAuth.instance.signOut();
-              Get.off(LoginPage());
-              
-            },),
-            MyButton(lable: "lable",onPressed: () {
-              Get.to(Store());
-            },)
-          ],
-        )
-        
-      ) ,
     );
   }
 }

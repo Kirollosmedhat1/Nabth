@@ -1,6 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+import 'package:application5/pages/Payment_Page.dart';
+import 'package:application5/pages/Payment_Page2.dart';
+import 'package:application5/pages/Porfile_Page.dart';
+import 'package:application5/pages/Porfile_Page2.dart';
+import 'package:application5/pages/bottomBar.dart';
+import 'package:application5/pages/community.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
+import 'package:application5/pages/onboarding.dart';
+import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/signup.dart';
+import 'package:application5/pages/splashscreen.dart';
 import 'package:application5/pages/store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,25 +47,31 @@ class _MyAppState extends State<MyApp> {
       }
     });
     super.initState();
-    // Firebase.initializeApp();
-    // // Get a reference to the app with the name "[DEFAULT]"
-    // FirebaseApp app = Firebase.app('[DEFAULT]');
-    // // Delete the app
-    // app.delete();
   }
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      home: (FirebaseAuth.instance.currentUser != null &&
-              FirebaseAuth.instance.currentUser!.emailVerified)
-          ? HomePage()
-          : LoginPage(),
+      home: BottomBar(),
+      // FirebaseAuth.instance.currentUser != null &&
+      //         FirebaseAuth.instance.currentUser!.emailVerified
+      //     ? BottomBar(),
+      //     : SplashScreen(),
       routes:{
+        "porfile": (context) => Porfile_Page(),
+        "porfile2": (context) => Porfile_Page2(),
+        "bottombar":(context) => BottomBar(),
         "homepage":(context) => HomePage(),
         "login":(context) => LoginPage(),
         "SignUp": (context) => SignUp(),
         "store":(context) =>  Store(),
+         "Scanpage":(context) => ScanPage(),
+        "communitypage":(context) => CommunityPage(),
+        "paymentpage":(context) => PaymentPage(),
+        "paymentpage2":(context) => PaymentPage2(),
+         "splash":(context) => SplashScreen(),
+          "onBoarding":(context)=> OnBoarding(),
+   
       },
       debugShowCheckedModeBanner: false,
     );
