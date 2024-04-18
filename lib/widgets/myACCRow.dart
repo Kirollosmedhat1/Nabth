@@ -1,7 +1,5 @@
-import 'package:application5/pages/Payment_Page2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyACCrow extends StatelessWidget {
   const MyACCrow(
@@ -11,13 +9,11 @@ class MyACCrow extends StatelessWidget {
       this.onPressed});
   final String iconImage;
   final String title;
-  final Function()? onPressed;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        onPressed;
-      },
+      onTap: onPressed,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:application5/pages/success_page.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterme_credit_card/flutterme_credit_card.dart';
+import 'package:get/get.dart';
+import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class PaymentPage2 extends StatefulWidget {
   @override
@@ -10,7 +13,7 @@ class PaymentPage2 extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage2> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 4;
 
   final TextEditingController number = TextEditingController();
 
@@ -34,20 +37,94 @@ class _PaymentPageState extends State<PaymentPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: MoltenBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        domeHeight: 25,
+        onTabChange: (index) {
+          
+        },
+        borderColor: Color(0xff1E9B3D),
+        barColor: Colors.white,
+        domeCircleColor: Color(0xffCAEDCF),
+        tabs: [
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 0
+                  ? 'images/home-selected.png'
+                  : 'images/home.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'home',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 1
+                  ? 'images/store-selected.png'
+                  : 'images/store.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'AgriMarket',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 2
+                  ? 'images/scan-selected.png'
+                  : 'images/scan.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Scan',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 3
+                  ? 'images/community-selected.png'
+                  : 'images/community.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Community',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 4
+                  ? 'images/profile-selected.png'
+                  : 'images/profile.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Account',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+        ],
+      ),
       appBar: AppBar(
         backgroundColor: Color(0xffF1FCF3),
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back_ios),
-            ),
+        leading: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Image.asset(
+                  "images/back.png",
+                  height: 20,
+                )),
+        title: 
             Text(
               "Payment Methods",
               style: TextStyle(color: Color(0xff1A7431)),
             ),
-          ],
-        ),
+         
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -84,6 +161,7 @@ class _PaymentPageState extends State<PaymentPage2> {
                 ),
               ),
               FMCreditCard(
+                height: 0,
                 number: number.text,
                 numberMaskType: FMMaskType.first6last2,
                 cvv: cvv.text,
@@ -228,14 +306,15 @@ class _PaymentPageState extends State<PaymentPage2> {
                       ),
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
-                           AwesomeDialog(
-                              context: context,
-                              dialogType: DialogType.success,
-                              animType: AnimType.bottomSlide,
-                              title: "Hello ",
-                              desc:
-                                  " Your payment has been processed successfully. Thank you for your purchase!",
-                            ).show();
+                          Get.to(PaymentSuccessPage());
+                          //  AwesomeDialog(
+                          //     context: context,
+                          //     dialogType: DialogType.success,
+                          //     animType: AnimType.bottomSlide,
+                          //     title: "Hello ",
+                          //     desc:
+                          //         " Your payment has been processed successfully. Thank you for your purchase!",
+                          //   ).show();
                         }
                       },
                       child: const Text("continue",

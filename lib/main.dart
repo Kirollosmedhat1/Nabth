@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:application5/pages/Payment_Page.dart';
 import 'package:application5/pages/Payment_Page2.dart';
-import 'package:application5/pages/Porfile_Page.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
-import 'package:application5/pages/bottomBar.dart';
+import 'package:application5/pages/Shipping_Process.dart';
+import 'package:application5/pages/bottom_Bar.dart';
+import 'package:application5/pages/cart.dart';
+import 'package:application5/pages/cart_page.dart';
+import 'package:application5/pages/checkout.dart';
 import 'package:application5/pages/community.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
@@ -12,6 +15,7 @@ import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/signup.dart';
 import 'package:application5/pages/splashscreen.dart';
 import 'package:application5/pages/store.dart';
+import 'package:application5/pages/success_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -52,13 +56,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      home: BottomBar(),
+      home: Shipping_Process(),
       // FirebaseAuth.instance.currentUser != null &&
       //         FirebaseAuth.instance.currentUser!.emailVerified
       //     ? BottomBar(),
       //     : SplashScreen(),
       routes:{
-        "porfile": (context) => Porfile_Page(),
         "porfile2": (context) => Porfile_Page2(),
         "bottombar":(context) => BottomBar(),
         "homepage":(context) => HomePage(),
@@ -71,6 +74,11 @@ class _MyAppState extends State<MyApp> {
         "paymentpage2":(context) => PaymentPage2(),
          "splash":(context) => SplashScreen(),
           "onBoarding":(context)=> OnBoarding(),
+          "cartpage":(context)=> CartPage(),
+          "checkout":(context)=> checkout(),
+          "cartz":(context)=> Cart_Page(),
+          "successpage":(context)=> PaymentSuccessPage(),
+          "Shipping_Process":(context)=>Shipping_Process(),
    
       },
       debugShowCheckedModeBanner: false,

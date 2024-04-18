@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:application5/pages/Porfile_Page2.dart';
+import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/community.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class BottomBar extends StatefulWidget {
@@ -111,6 +113,17 @@ class _BottomBarState extends State<BottomBar> {
       ),
       appBar: AppBar(
         backgroundColor: Color(0xffF1FCF3),
+        actions: [
+             IconButton(
+            onPressed: () {
+            }, 
+            icon: Image.asset("images/search.png")),
+            IconButton(
+            onPressed: () {
+              Get.to(CartPage());
+            }, 
+            icon: Image.asset("images/cart.png")),
+        ],
       ),
       drawer: Drawer(
         child: Column(
@@ -241,6 +254,7 @@ class _BottomBarState extends State<BottomBar> {
           ],
         ),
       ),
+      
       body: Container(child: _pages[_selectedIndex]),
     );
   }

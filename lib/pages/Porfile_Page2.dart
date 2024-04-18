@@ -1,5 +1,7 @@
+import 'package:application5/pages/Payment_Page2.dart';
 import 'package:application5/widgets/myACCRow.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Porfile_Page2 extends StatefulWidget {
   Porfile_Page2({super.key});
@@ -113,97 +115,22 @@ class _Porfile_PageState extends State<Porfile_Page2> {
                         ),
                         SizedBox(height: 9),
 
-                        MyACCrow(iconImage: "images/payment.png", title: "Payment Method"),
+                        MyACCrow(iconImage: "images/payment.png", title: "Payment Method",onPressed: () {
+                          navigator?.pushNamed("paymentpage2");
+                        },),
 
                         SizedBox(height: 9),
 
                         Divider(color: Color.fromARGB(255, 163, 204, 166),),
 
                         SizedBox(height: 9),
-                        MyACCrow(iconImage: "images/support.png", title: "Payment Method"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Color(0xffCAEDCF),
-                              child: ColorFiltered(
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white,
-                                  BlendMode.modulate,
-                                ),
-                                child: Image.asset(
-                                  "images/support.png",
-                                  width: 70,
-                                  height: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Expanded(
-                              child: Text(
-                                "Help & Support",
-                                style: TextStyle(
-                                  color: Color(0xff1E9B3D),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage("images/arrow.png"))),
-                              // icon: Image.asset("images/arrow.png")
-                            ),
-                          ],
-                        ),
+                        MyACCrow(iconImage: "images/support.png", title: "Help & Support"),
                         SizedBox(height: 9),
                         Divider(
                           color: Color.fromARGB(255, 163, 204, 166),
                         ),
                         SizedBox(height: 9),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Color(0xffCAEDCF),
-                              child: ColorFiltered(
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white,
-                                  BlendMode.modulate,
-                                ),
-                                child: Image.asset(
-                                  "images/about.png",
-                                  width: 70,
-                                  height: 70,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Expanded(
-                              child: Text(
-                                "About App",
-                                style: TextStyle(
-                                  color: Color(0xff1E9B3D),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Image.asset("images/arrow.png")),
-                          ],
-                        ),
+                        MyACCrow(iconImage: "images/about.png", title: "About App"),
                       ],
                     ),
                   ),
