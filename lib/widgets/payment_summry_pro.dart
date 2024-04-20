@@ -1,26 +1,22 @@
+import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class payment_summary_pro extends StatefulWidget {
-  final int num1;
-  final int num2;
-  final int num3;
-  final int num4;
-  final int num5;
-
-  const payment_summary_pro({
+class payment_summary_pro extends StatelessWidget {
+   payment_summary_pro({
     super.key,
-    required this.num1,
+   
     required this.num2,
     required this.num3,
     required this.num4,
-    required this.num5,
   });
 
-  @override
-  State<payment_summary_pro> createState() => _payment_summary_proState();
-}
+  final int num2;
+  final int num3;
+  final int num4;
+  final CartController cartController = Get.put(CartController());
 
-class _payment_summary_proState extends State<payment_summary_pro> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,28 +69,28 @@ class _payment_summary_proState extends State<payment_summary_pro> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${widget.num1}',
+                  '${cartController.totalPrice}',
                   style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.num2}',
+                  '$num2',
                   style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.num3}',
+                  '$num3',
                   style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.num4}',
+                  '$num4',
                   style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
               ],
@@ -117,7 +113,7 @@ class _payment_summary_proState extends State<payment_summary_pro> {
                     fontSize: 18,
                     color: Color(0xff1B602D),
                     fontWeight: FontWeight.bold)),
-            Text("EGP: ${widget.num5}",
+            Text("EGP: ${(cartController.totalPrice-(num2+num3)+num4)}",
                 style: TextStyle(
                     fontSize: 18,
                     color: Color(0xff1B602D),

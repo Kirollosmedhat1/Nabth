@@ -1,7 +1,8 @@
 import 'package:application5/pages/Ship2_Edit.dart';
-import 'package:application5/pages/payment_summry_pro.dart';
+import 'package:application5/widgets/payment_summry_pro.dart';
 import 'package:application5/pages/ship3_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class Shipping_Process extends StatefulWidget {
@@ -16,26 +17,22 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            IconButton(
-                onPressed: () {},
+        leading:IconButton(
+                onPressed: () {
+                  Get.back();
+                },
                 icon: Image.asset(
                   "images/back.png",
                   height: 15,
-                )),
-            SizedBox(
-              width: 10,
-            ),
-            Text(
+                )) ,
+        title: Text(
               "Shipping Process ",
               style: TextStyle(
                   color: Color(0xff1A7431),
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             )
-          ],
-        ),
+          
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 30),
@@ -67,17 +64,13 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
               height: 30,
               indent: 1,
             ),
-            // SizedBox(
-            //   height: 5,
-            // ),
             Column(
               children: [
                 payment_summary_pro(
-                  num1: 74,
+                  
                   num2: 80,
                   num3: 80,
                   num4: 80,
-                  num5: 4757,
                 ),
                 Divider(
                   color: Color(0xff1B602D),
@@ -112,3 +105,5 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
     );
   }
 }
+
+

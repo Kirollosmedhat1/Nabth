@@ -1,6 +1,10 @@
+
+
 import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/pages/2check.dart';
 import 'package:application5/pages/checkout.dart';
 import 'package:application5/widgets/payment_summry.dart';
+import 'package:application5/widgets/payment_summry_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -230,42 +234,7 @@ class CartPage extends StatelessWidget {
             margin: EdgeInsets.fromLTRB(30, 10, 30, 0),
             child: Column(
               children: [
-                Text(
-                  "Payment Summary",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Color(0xff1B602D)),
-                ),
-                payment_summary(
-                    text: "Order total",
-                    number: 'EGP ${cartController.totalPrice}'),
-                payment_summary(text: "Items Discount", number: "0.0"),
-                payment_summary(text: "Coupon Discount", number: "0.0"),
-                payment_summary(text: "Shipping", number: "Free"),
-                Divider(
-                  color: Color(0xffB7D7BE),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text("  Total",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff184F27))),
-                    ),
-                    Container(
-                      child: Text(
-                        'EGP ${cartController.totalPrice}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xff184F27)),
-                      ),
-                    )
-                  ],
-                ),
+                payment_summary_pro( num2: 12, num3: 14, num4: 0,),
                 SizedBox(
                   height: 10,
                 ),
@@ -291,6 +260,7 @@ class CartPage extends StatelessWidget {
     );
   }
 }
+
 
 
 

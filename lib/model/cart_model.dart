@@ -12,3 +12,5 @@ class CartItem {
     int quantity = 1,
   }) : quantity = quantity.obs;
 }
+
+

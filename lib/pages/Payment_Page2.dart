@@ -307,14 +307,7 @@ class _PaymentPageState extends State<PaymentPage2> {
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
                           Get.to(PaymentSuccessPage());
-                          //  AwesomeDialog(
-                          //     context: context,
-                          //     dialogType: DialogType.success,
-                          //     animType: AnimType.bottomSlide,
-                          //     title: "Hello ",
-                          //     desc:
-                          //         " Your payment has been processed successfully. Thank you for your purchase!",
-                          //   ).show();
+                          
                         }
                       },
                       child: const Text("continue",
@@ -348,3 +341,5 @@ class _PaymentPageState extends State<PaymentPage2> {
     );
   }
 }
+
+

@@ -1,23 +1,29 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/model/cart_model.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/community.dart';
+import 'package:application5/pages/empty_cart.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class BottomBar extends StatefulWidget {
-  const BottomBar({super.key});
+   BottomBar({super.key});
 
   @override
   State<BottomBar> createState() => _BottomBarState();
+  
 }
 
 class _BottomBarState extends State<BottomBar> {
+  final CartController cartController = Get.put(CartController());
   int _selectedIndex = 0;
   final List<Widget> _pages = [
     HomePage(),
@@ -120,7 +126,12 @@ class _BottomBarState extends State<BottomBar> {
             icon: Image.asset("images/search.png")),
             IconButton(
             onPressed: () {
-              Get.to(CartPage());
+              if(cartController.cartItems.length==0){
+                Get.to(Empty_Cart());
+              }else{
+                Get.to(CartPage());
+              }
+              
             }, 
             icon: Image.asset("images/cart.png")),
         ],

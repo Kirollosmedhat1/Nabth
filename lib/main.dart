@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:application5/pages/MyOrderss.dart';
 import 'package:application5/pages/Payment_Page.dart';
 import 'package:application5/pages/Payment_Page2.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/Shipping_Process.dart';
 import 'package:application5/pages/bottom_Bar.dart';
-import 'package:application5/pages/cart.dart';
 import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/checkout.dart';
 import 'package:application5/pages/community.dart';
+import 'package:application5/pages/empty_cart.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
 import 'package:application5/pages/onboarding.dart';
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      home: Shipping_Process(),
+      home: SplashScreen(),
       // FirebaseAuth.instance.currentUser != null &&
       //         FirebaseAuth.instance.currentUser!.emailVerified
       //     ? BottomBar(),
@@ -76,10 +77,10 @@ class _MyAppState extends State<MyApp> {
           "onBoarding":(context)=> OnBoarding(),
           "cartpage":(context)=> CartPage(),
           "checkout":(context)=> checkout(),
-          "cartz":(context)=> Cart_Page(),
           "successpage":(context)=> PaymentSuccessPage(),
-          "Shipping_Process":(context)=>Shipping_Process(),
-   
+          "Shipping_Process":(context)=> Shipping_Process(),
+          "MyOrderss":(context)=> MyOrderss(),
+          "Empty_Cart":(context)=>Empty_Cart(),
       },
       debugShowCheckedModeBanner: false,
     );

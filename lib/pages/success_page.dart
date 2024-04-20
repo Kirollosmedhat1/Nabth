@@ -43,11 +43,6 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage>
                 child: Image.asset(
                   "images/Animation.gif",
                 )
-                // Icon(
-                //   Icons.check_circle,
-                //   color: Colors.green,
-                //   size: 100,
-                // ),
                 ),
             SizedBox(height: 20),
             FadeTransition(
@@ -67,3 +62,6 @@ class _PaymentSuccessPageState extends State<PaymentSuccessPage>
     );
   }
 }
+
+
+

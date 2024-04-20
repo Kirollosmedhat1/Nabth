@@ -14,5 +14,6 @@ class ProductModel{
     image=data ['image'] ;
     price=data["price"].toDouble();
   }
-
 }
+
+

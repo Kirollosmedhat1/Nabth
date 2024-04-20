@@ -1,4 +1,6 @@
+import 'package:application5/pages/MyOrderss.dart';
 import 'package:application5/pages/Payment_Page2.dart';
+import 'package:application5/pages/success_page.dart';
 import 'package:application5/widgets/myACCRow.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -115,8 +117,16 @@ class _Porfile_PageState extends State<Porfile_Page2> {
                         ),
                         SizedBox(height: 9),
 
+                        MyACCrow(iconImage: "images/myorder.png", title: "My Orders",onPressed: () {
+                          Get.to(MyOrderss());
+                        },),
+                        Divider(
+                          color: Color.fromARGB(255, 163, 204, 166),
+                        ),
+                        SizedBox(height: 9),
+
                         MyACCrow(iconImage: "images/payment.png", title: "Payment Method",onPressed: () {
-                          navigator?.pushNamed("paymentpage2");
+                         Get.off(PaymentSuccessPage());
                         },),
 
                         SizedBox(height: 9),

@@ -14,7 +14,6 @@ class HomePage extends StatefulWidget {
 }
 FirebaseAuth auth = FirebaseAuth.instance;
 var googleSignIn = GoogleSignIn();
-int kiro =0;
 class _HomePageState extends State<HomePage> {
   void signOutFromApp() async {
     try {
@@ -26,9 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Text("$kiro"),
-      ),
+      
     );
   }
 }
