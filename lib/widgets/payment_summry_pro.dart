@@ -1,20 +1,20 @@
 import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/pages/myTextFromField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class payment_summary_pro extends StatelessWidget {
-   payment_summary_pro({
+  payment_summary_pro({
     super.key,
-   
     required this.num2,
     required this.num3,
     required this.num4,
   });
 
-  final int num2;
-  final int num3;
-  final int num4;
+  final String num2;
+  final String num3;
+  final String num4;
   final CartController cartController = Get.put(CartController());
 
   @override
@@ -32,68 +32,38 @@ class payment_summary_pro extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Text(
+            "Order Total",
+            style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+          ),
+          Text(
+            '${cartController.total}',
+            style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+          ),
+        ]),
+        SizedBox(
+          height: 10,
+        ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Order Total",
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Items Discount",
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Coupon Discount",
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Shipping",
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-              ],
+            myTextFromFiled(hintText: "enter your copon"),
+            
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          children: [
+            Text(
+              "Shipping",
+              style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${cartController.totalPrice}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '$num2',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '$num3',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  '$num4',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
-                ),
-              ],
+            Text(
+              '$num4',
+              style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
             ),
           ],
         ),
@@ -113,7 +83,7 @@ class payment_summary_pro extends StatelessWidget {
                     fontSize: 18,
                     color: Color(0xff1B602D),
                     fontWeight: FontWeight.bold)),
-            Text("EGP: ${(cartController.totalPrice-(num2+num3)+num4)}",
+            Text("EGP: ${(cartController.total)}",
                 style: TextStyle(
                     fontSize: 18,
                     color: Color(0xff1B602D),

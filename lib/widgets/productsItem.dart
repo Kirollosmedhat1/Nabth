@@ -66,7 +66,8 @@ class ProductItemsWidget extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  final product = ProductModel(
+                  final product = CartItem(
+                    quantity: 1,
                     name: name,
                     image: img,
                     price: double.parse(price),
@@ -86,3 +87,5 @@ class ProductItemsWidget extends StatelessWidget {
     );
   }
 }
+
+

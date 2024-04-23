@@ -8,7 +8,6 @@ class ProductController extends GetxController {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection("Agrimarket")
-        
           .get();
 
       productlist.addAll(querySnapshot.docs);
@@ -25,4 +24,5 @@ class ProductController extends GetxController {
     super.onInit();
   }
 }
+
 

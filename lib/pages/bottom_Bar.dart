@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors
+
+
+
+
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/model/cart_model.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/community.dart';
+import 'package:application5/pages/communtiy.dart';
 import 'package:application5/pages/empty_cart.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/scan.dart';
@@ -15,23 +19,31 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class BottomBar extends StatefulWidget {
-   BottomBar({super.key});
+  final int selectedIndex;
+
+  BottomBar({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
-  
+  State<BottomBar> createState() => _BottomBarState(selectedIndex);
 }
 
 class _BottomBarState extends State<BottomBar> {
-  final CartController cartController = Get.put(CartController());
-  int _selectedIndex = 0;
-  final List<Widget> _pages = [
+  int _selectedIndex;
+
+  _BottomBarState(this._selectedIndex);
+
+  late List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
     HomePage(),
     Store(),
     ScanPage(),
-    CommunityPage(),
+    Communtiy(),
     Porfile_Page2(),
-  ];
+  ];}
   void signOutFromApp() async {
     try {
       await auth.signOut();
@@ -126,11 +138,10 @@ class _BottomBarState extends State<BottomBar> {
             icon: Image.asset("images/search.png")),
             IconButton(
             onPressed: () {
-              if(cartController.cartItems.length==0){
-                Get.to(Empty_Cart());
-              }else{
-                Get.to(CartPage());
-              }
+             
+                Get.to(CartPage(
+                  
+                ));
               
             }, 
             icon: Image.asset("images/cart.png")),
@@ -270,3 +281,9 @@ class _BottomBarState extends State<BottomBar> {
     );
   }
 }
+
+
+
+
+
+

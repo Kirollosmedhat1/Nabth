@@ -6,8 +6,10 @@ import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/Shipping_Process.dart';
 import 'package:application5/pages/bottom_Bar.dart';
 import 'package:application5/pages/cart_page.dart';
+import 'package:application5/pages/chat_page.dart';
 import 'package:application5/pages/checkout.dart';
 import 'package:application5/pages/community.dart';
+import 'package:application5/pages/communtiy.dart';
 import 'package:application5/pages/empty_cart.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
@@ -57,14 +59,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      home: SplashScreen(),
+      home: BottomBar(selectedIndex: 1,),
+      // BottomBar(selectedIndex: 0,),
       // FirebaseAuth.instance.currentUser != null &&
       //         FirebaseAuth.instance.currentUser!.emailVerified
       //     ? BottomBar(),
       //     : SplashScreen(),
       routes:{
         "porfile2": (context) => Porfile_Page2(),
-        "bottombar":(context) => BottomBar(),
         "homepage":(context) => HomePage(),
         "login":(context) => LoginPage(),
         "SignUp": (context) => SignUp(),
@@ -81,6 +83,8 @@ class _MyAppState extends State<MyApp> {
           "Shipping_Process":(context)=> Shipping_Process(),
           "MyOrderss":(context)=> MyOrderss(),
           "Empty_Cart":(context)=>Empty_Cart(),
+          "communtiy":(context) => Communtiy(),
+          "ChatPage":(context) => ChatPage(),
       },
       debugShowCheckedModeBanner: false,
     );

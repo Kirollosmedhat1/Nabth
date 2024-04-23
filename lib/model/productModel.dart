@@ -1,19 +1,17 @@
-class ProductModel{
-   late String name ;
-   late String image ;
-   late double price ;
-
-  ProductModel({
+class CartItem{
+   final String name ;
+   final String image ;
+   final double price ;
+   final int quantity;
+  
+  CartItem({
     required this.name,
     required this.image,
-   required this.price
+   required this.price,
+     required this.quantity
+    
   });
-  
-  ProductModel.fromMap(Map<String , dynamic> data){
-    name = data['name'];
-    image=data ['image'] ;
-    price=data["price"].toDouble();
-  }
+
 }
 
 

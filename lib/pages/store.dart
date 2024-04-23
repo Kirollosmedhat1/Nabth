@@ -93,6 +93,7 @@ class Store extends StatelessWidget {
                         itemCount: controller.productlist.length,
                         itemBuilder: (context, i) {
                           return ProductItemsWidget(
+                            
                             img: "${controller.productlist[i]["img"]}",
                             name: "${controller.productlist[i]["name"]}",
                             price: "${controller.productlist[i]["price"]}",

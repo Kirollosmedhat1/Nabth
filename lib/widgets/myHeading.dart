@@ -11,7 +11,7 @@ class MyHeading extends StatelessWidget {
     return Text(
       lable,
       style: TextStyle(
-        color: Color(0xff000000),
+        color: Colors.white,
         fontSize: 24,
         fontWeight: FontWeight.bold,
       ),

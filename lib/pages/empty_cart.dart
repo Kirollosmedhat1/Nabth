@@ -1,29 +1,13 @@
+import 'package:application5/pages/bottom_Bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class Empty_Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xffF1FCF3),
-        appBar: AppBar(
-            backgroundColor: Color(0xffF1FCF3),
-            leading: IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                "images/back.png",
-                height: 20,
-              ),
-            ),
-            title: Text(
-              "Cart",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(
-                    0xff1B602D,
-                  ),
-                  fontSize: 25),
-            )),
         body: Container(
             padding: EdgeInsets.symmetric(horizontal: 30),
             color: Colors.white,
@@ -41,7 +25,9 @@ class Empty_Cart extends StatelessWidget {
                               color: Color(0xff184F27)),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.off(BottomBar(selectedIndex: 1));
+                          },
                           child: Row(children: [
                             Icon(Icons.add),
                             SizedBox(

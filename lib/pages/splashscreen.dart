@@ -1,8 +1,11 @@
 import 'package:application5/controller/constant/imgs.dart';
+import 'package:application5/pages/bottom_Bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:type_text/type_text.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         });
       } else {
         Future.delayed(Duration(milliseconds: 5324), () {
-          Navigator.of(context).pushReplacementNamed("bottombar");
+          Get.off(BottomBar(selectedIndex: 0));
         });
       }
     });

@@ -69,48 +69,11 @@ class _Porfile_PageState extends State<Porfile_Page2> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 50),
+                    padding: EdgeInsets.symmetric(vertical: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                CircleAvatar(
-                                  radius: 25,
-                                  backgroundColor: Color(0xffCAEDCF),
-                                  child: Image.asset(
-                                    "images/favourites.png",
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  "Favourites",
-                                  style: TextStyle(
-                                    color: Color(0xff1E9B3D),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage("images/arrow.png"))),
-                              // icon: Image.asset("images/arrow.png")
-                            ),
-                          ],
-                        ),
+                        MyACCrow(iconImage:  "images/favourites.png", title: "Favourites"),
                         SizedBox(height: 9),
                         Divider(
                           color: Color.fromARGB(255, 163, 204, 166),

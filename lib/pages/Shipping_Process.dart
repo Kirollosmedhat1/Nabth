@@ -66,12 +66,12 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
             ),
             Column(
               children: [
-                payment_summary_pro(
+                // payment_summary_pro(
                   
-                  num2: 80,
-                  num3: 80,
-                  num4: 80,
-                ),
+                //   num2: 80,
+                //   num3: 80,
+                //   num4: 80,
+                // ),
                 Divider(
                   color: Color(0xff1B602D),
                   height: 30,
