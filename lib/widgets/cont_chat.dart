@@ -18,8 +18,8 @@ class cont_chat extends StatelessWidget {
             Container(
               height: 165,
               width: 310,
-              padding: EdgeInsets.all(7),
-              margin: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(7),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(20)),
               child: Center(

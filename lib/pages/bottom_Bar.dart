@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-
-
+import 'dart:ffi';
 
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
@@ -12,6 +11,7 @@ import 'package:application5/pages/empty_cart.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/store.dart';
+import 'package:application5/widgets/myDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,6 @@ import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class BottomBar extends StatefulWidget {
   final int selectedIndex;
-
   BottomBar({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
@@ -29,32 +28,41 @@ class BottomBar extends StatefulWidget {
 
 class _BottomBarState extends State<BottomBar> {
   int _selectedIndex;
-
+  final CartController cartController = Get.find<CartController>();
   _BottomBarState(this._selectedIndex);
 
   late List<Widget> _pages;
 
   @override
   void initState() {
-    super.initState();
-    _pages = [
-    HomePage(),
+  super.initState();
+  _pages = [
+    HomePage(
+      onTabChanged: (index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+    ),
     Store(),
     ScanPage(),
     Communtiy(),
     Porfile_Page2(),
-  ];}
+  ];
+}
+
   void signOutFromApp() async {
     try {
       await auth.signOut();
       await googleSignIn.signOut();
       Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
     } catch (error) {}
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       extendBody: true,
       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         domeHeight: 25,
@@ -129,161 +137,8 @@ class _BottomBarState extends State<BottomBar> {
           ),
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
-        actions: [
-             IconButton(
-            onPressed: () {
-            }, 
-            icon: Image.asset("images/search.png")),
-            IconButton(
-            onPressed: () {
-             
-                Get.to(CartPage(
-                  
-                ));
-              
-            }, 
-            icon: Image.asset("images/cart.png")),
-        ],
-      ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            Container(
-              height: 30,
-            ),
-            Row(
-              children: [
-                Text(
-                  " Agri",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff184F27)),
-                ),
-                Text(
-                  "livia",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff2CBB50)),
-                ),
-              ],
-            ),
-            Container(
-              height: 50,
-            ),
-            ListTile(
-              leading: Image.asset("images/settings.png"),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/notification.png"),
-              title: Text(
-                'Notifications',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/appearance.png"),
-              title: Text(
-                'Appearance',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/edit.png"),
-              title: Text(
-                'Edit account',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/language.png"),
-              title: Text(
-                'Language',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/Security.png"),
-              title: Text(
-                'Privacy and Security',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Spacer(),
-            ListTile(
-              leading: Image.asset("images/logout.png"),
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                signOutFromApp();
-              },
-            ),
-          ],
-        ),
-      ),
-      
-      body: Container(child: _pages[_selectedIndex]),
+      drawer: Mydrawer(),
+      body: _pages[_selectedIndex]
     );
   }
 }
-
-
-
-
-
-

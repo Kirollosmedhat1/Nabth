@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:application5/pages/bottom_Bar.dart';
+import 'package:application5/pages/signup.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:application5/widgets/myCircleButton.dart';
 import 'package:application5/widgets/myHeading.dart';
@@ -10,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
@@ -83,7 +86,7 @@ class _LoginState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Container(
                 decoration: BoxDecoration(
@@ -91,7 +94,7 @@ class _LoginState extends State<LoginPage> {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(35),
                         topRight: Radius.circular(35))),
-                padding: EdgeInsets.fromLTRB(45, 55, 44, 0),
+                padding: EdgeInsets.fromLTRB(45, 50, 44, 0),
                 child: Form(
                   key: formState,
                   child: Column(
@@ -186,8 +189,7 @@ class _LoginState extends State<LoginPage> {
                                     // isloading = false;
                                     setState(() {});
                                     if (credential.user!.emailVerified) {
-                                      Navigator.of(context)
-                                          .pushReplacementNamed("bottombar");
+                                     Get.offAll(BottomBar(selectedIndex: 0,));
                                     } else {
                                       FirebaseAuth.instance.currentUser!
                                           .sendEmailVerification();
@@ -271,8 +273,8 @@ class _LoginState extends State<LoginPage> {
                         Container(height: 40),
                         InkWell(
                           onTap: () {
-                            Navigator.pushNamed(context, "SignUp");
-                            // Get.off(SignUp());
+                           
+                            Get.off(SignUp());
                           },
                           child: const Center(
                             child: Text.rich(TextSpan(children: [

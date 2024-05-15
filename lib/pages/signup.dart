@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:application5/pages/login.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:application5/widgets/myCircleButton.dart';
 import 'package:application5/widgets/myHeading.dart';
@@ -7,6 +8,8 @@ import 'package:application5/widgets/myTextFieldLable.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -43,7 +46,7 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     MyHeading(lable: "Hello there, Start "),
                     MyHeading(lable: "Create new Account"),
-                    SizedBox(height: 30,)
+                    SizedBox(height: 20,)
                   ],
                 ),
                 ),
@@ -60,7 +63,7 @@ class _SignUpState extends State<SignUp> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(height: 10),
+                            Container(height: 40),
                             MyTextFieldLable(
                               lable: "Username",
                             ),
@@ -126,7 +129,7 @@ class _SignUpState extends State<SignUp> {
                                 Expanded(
                                   child: 
                                   MyButton(
-                                    lable: "login", 
+                                    lable: "Sign up", 
                                     onPressed: () async {
                           if (formState.currentState!.validate()) {
                             try {
@@ -203,8 +206,8 @@ class _SignUpState extends State<SignUp> {
                             Container(height: 50),
                             InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, "login");
-                                // Get.off(LoginPage());
+                                
+                                Get.off(LoginPage());
                               },
                               child: const Center(
                                 child: Text.rich(TextSpan(children: [

@@ -5,12 +5,12 @@ class myOrderEdit2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          color: Color(0xffF1FCF3),
-          borderRadius: BorderRadius.horizontal(
+          color: const Color(0xffF1FCF3),
+          borderRadius: const BorderRadius.horizontal(
               left: Radius.circular(10), right: Radius.circular(10)),
-          border: Border.all(color: Color(0xffB7D7BE))),
+          border: Border.all(color: const Color(0xffB7D7BE))),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -18,19 +18,19 @@ class myOrderEdit2 extends StatelessWidget {
             "images/image2.png",
             height: 150,
           ),
-          SizedBox(
+          const SizedBox(
             width: 50,
           ),
           Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "Order #790903254",
                 style: TextStyle(fontSize: 20, color: Color(0xff1A7431)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -39,11 +39,11 @@ class myOrderEdit2 extends StatelessWidget {
                     "images/cancel.png",
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     "  Cancelled",
                     style: TextStyle(fontSize: 20, color: Color(0xff1A7431)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
                 ],

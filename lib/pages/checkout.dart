@@ -1,5 +1,6 @@
 import 'package:application5/pages/Payment_Page2.dart';
 import 'package:application5/pages/myTextFromField.dart';
+import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
@@ -21,13 +22,10 @@ class _checkoutState extends State<checkout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF1FCF3),
-      bottomNavigationBar: MoltenBottomNavigationBar(
+       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         domeHeight: 25,
-        onTabChange: (index) {
-          
-        },
+        onTabChange: (index) {},
         borderColor: Color(0xff1E9B3D),
         barColor: Colors.white,
         domeCircleColor: Color(0xffCAEDCF),
@@ -94,27 +92,6 @@ class _checkoutState extends State<checkout> {
           ),
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
-        leading: IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: Image.asset(
-                  "images/back.png",
-                  height: 20,
-                )),
-        title:
-            
-            Text(
-              "Checkout",
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff1B602D)),
-            ),
-          
-      ),
       body: ListView(
         children: [
           Form(
@@ -138,6 +115,7 @@ class _checkoutState extends State<checkout> {
                     height: 20,
                   ),
                   myTextFromFiled(
+                  
                     hintText: "Building Name",
                     validator: (val) {
                       if (val == "") {
@@ -239,24 +217,12 @@ class _checkoutState extends State<checkout> {
                     height: 200,
                   ),
                   Center(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Color(0xFF1B602D),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 100,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (fromstate2.currentState!.validate()) {
-                          Get.to(PaymentPage2());
-                        }
-                      },
-                      child: const Text("continue",
-                          style: TextStyle(fontSize: 25)),
-                    ),
-                  )
+                    child: MyButton(lable: "Continue",onPressed: () {
+                            if (fromstate2.currentState!.validate()) {
+                            Get.to(PaymentPage2());
+                          }
+                          },),
+                  ),
                 ],
               ),
             ),

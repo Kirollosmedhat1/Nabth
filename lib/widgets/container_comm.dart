@@ -5,7 +5,7 @@ class container_comm extends StatefulWidget {
   final String text1;
   final String text2;
 
-  container_comm({
+  const container_comm({
     required this.image,
     required this.text1,
     required this.text2,

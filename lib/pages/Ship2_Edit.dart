@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Ship2_Edit extends StatefulWidget {
-  final String text1;
-  final String text2;
-  final String text3;
-  final String text4;
-  final String text5;
+  
 
   Ship2_Edit({
     super.key,
@@ -15,6 +11,11 @@ class Ship2_Edit extends StatefulWidget {
     required this.text4,
     required this.text5,
   });
+  final String text1;
+  final String text2;
+  final String text3;
+  final String text4;
+  final String text5;
 
   @override
   State<Ship2_Edit> createState() => _Ship2_EditState();
@@ -28,7 +29,7 @@ class _Ship2_EditState extends State<Ship2_Edit> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -83,37 +84,36 @@ class _Ship2_EditState extends State<Ship2_Edit> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '${widget.text1}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                Text( widget.text1 ,
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.text2}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                  widget.text2,
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.text3}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                  widget.text3,
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.text4}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                  widget.text4,
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  '${widget.text5}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                  widget.text5,
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 ),
               ],
             ),

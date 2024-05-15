@@ -67,7 +67,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Add new Card",
                           style:
@@ -88,7 +88,7 @@ class _PaymentPageState extends State<PaymentPage> {
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [
+                        colors: const [
                           Color.fromARGB(211, 0, 167, 136),
                           Color.fromARGB(214, 13, 173, 144),
                           Color.fromARGB(197, 22, 176, 148),
@@ -99,7 +99,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -231,7 +231,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                          children: const [
                             Text(
                               "More Payment options",
                               style: TextStyle(
@@ -248,7 +248,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
-                              children: [
+                              children: const [
                                 // Image.asset(
                                 //   "images/Vector.png",
                                 //   height: 25,

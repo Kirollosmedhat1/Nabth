@@ -1,0 +1,523 @@
+// // ignore_for_file: avoid_types_as_parameter_names
+
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:intl/intl.dart';
+// import 'package:medease/logic/controllers/pharmacy_controller.dart';
+// import 'package:medease/utilis/colors.dart';
+// import 'package:medease/view/screens/pages/pharmacy/order_details.dart';
+
+// class History extends StatelessWidget {
+//   const History({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final PharmacyController controller = Get.find<PharmacyController>();
+
+//     return Scaffold(
+//       body: Obx(() {
+//         if (controller.historyList.isNotEmpty) {
+//           return ListView.builder(
+//             itemCount: controller.historyList.length,
+//             itemBuilder: (context, index) {
+//               return OrderItem(orderDetails: controller.historyList[index]);
+//             },
+//           );
+//         } else {
+//           return const Center(
+//             child: Text("Empty history"),
+//           );
+//         }
+//       }),
+//     );
+//   }
+// }
+
+// class OrderItem extends StatelessWidget {
+//   final QueryDocumentSnapshot orderDetails;
+
+//   const OrderItem({Key? key, required this.orderDetails}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     DateTime orderDateTime = (orderDetails["timestamp"] as Timestamp).toDate();
+//     // Extracting the list of items from orderDetails
+//     List<dynamic> items = orderDetails["items"];
+//     // Calculating the total quantity of items
+//     int totalQuantity =
+//         items.fold<int>(0, (sum, item) => sum + (item["quantity"] ?? 0) as int);
+
+//     // Constructing the "3 items" text with capacity
+//     String itemsText = "$totalQuantity items";
+
+//     return Container(
+//       margin: const EdgeInsets.all(20),
+//       padding: const EdgeInsets.all(10),
+//       height: 145,
+//       decoration: BoxDecoration(
+//           color: white,
+//           borderRadius: BorderRadius.circular(5),
+//           border: Border.all(color: Colors.grey.withOpacity(.5)),
+//           boxShadow: [
+//             BoxShadow(
+//                 blurRadius: 7,
+//                 color: Colors.grey.withOpacity(.2),
+//                 offset: const Offset(0, 3))
+//           ]),
+//       child: Column(
+//         children: [
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   Container(
+//                     alignment: Alignment.center,
+//                     height: 21,
+//                     width: 87,
+//                     decoration: BoxDecoration(
+//                         color: Colors.grey.withOpacity(.4),
+//                         borderRadius: BorderRadius.circular(5)),
+//                     child: Text("${orderDetails["state"]}"),
+//                   ),
+//                   const SizedBox(
+//                     width: 5,
+//                   ),
+//                   Text(itemsText),
+//                 ],
+//               ),
+//               Text(
+//                 " ${DateFormat('yyyy-MM-dd').format(orderDateTime)}",
+//                 style: const TextStyle(
+//                     fontSize: 14, color: grey, fontWeight: FontWeight.w500),
+//               )
+//             ],
+//           ),
+//           const Divider(
+//             height: 30,
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               const Text(
+//                 "Total Price",
+//                 style: TextStyle(color: Colors.black, fontSize: 16),
+//               ),
+//               Text(
+//                 "EGP ${orderDetails["total"].toStringAsFixed(2)}",
+//                 style: const TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                     color: Colors.black,
+//                     fontSize: 16),
+//               ),
+//             ],
+//           ),
+//           Row(
+//             children: [
+//               Expanded(
+//                 child: MaterialButton(
+//                   height: 40,
+//                   onPressed: () {
+//                     Get.to(OrderDetails(orderDetails: orderDetails));
+//                   },
+//                   textColor: mainColor,
+//                   color: const Color.fromRGBO(1, 101, 252, 0.21),
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(5),
+//                   ),
+//                   child: Text(
+//                     "view details".tr,
+//                     style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:intl/intl.dart';
+// import 'package:medease/utilis/colors.dart';
+
+// class OrderDetails extends StatelessWidget {
+//   final QueryDocumentSnapshot orderDetails;
+
+//   const OrderDetails({Key? key, required this.orderDetails}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     List<dynamic> items = orderDetails["items"];
+//     DateTime orderDateTime = (orderDetails["timestamp"] as Timestamp).toDate();
+
+//     return Scaffold(
+//       appBar: AppBar(title: const Text('Order Details',
+//       style: TextStyle(fontSize: 24,fontWeight: FontWeight.w500),) ,centerTitle: true,),
+//       body: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(10.0),
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                 children: [
+//                   const Text(
+//                     'Order Date',
+//                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
+//                   ),
+//                   Text(
+//                     " ${DateFormat('yyyy-MM-dd').format(orderDateTime)}",
+//                     style: const TextStyle(
+//                         fontSize: 16, fontWeight: FontWeight.normal, color: grey),
+//                   )
+//                 ],
+//               ),
+//             ),
+
+//             const Divider(),
+  
+//             Expanded(
+//               child: ListView.builder(
+//                 itemCount: items.length,
+//                 itemBuilder: (context, index) {
+//                   var item = items[index];
+//                   int productQuantity = item["quantity"];
+//                   double productSubtotal = item["price"] * productQuantity;
+//                   return Container(
+//       height: 71,
+//       margin: const EdgeInsets.fromLTRB(20, 8, 20, 8),
+//       decoration: BoxDecoration(
+//           color: Colors.white,
+//           border: Border.all(color: Colors.grey.withOpacity(.5)),
+//           borderRadius: BorderRadius.circular(10)),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         children: [
+//           Row(
+//             children: [
+//               Container(
+//                 width: 60,
+//                 height: 40,
+//                 decoration: BoxDecoration(
+//                     image: DecorationImage(
+//                         fit: BoxFit.cover, image: NetworkImage(item["img"]))),
+//               ),
+//               const SizedBox(
+//                 width: 20,
+//               ),
+//               Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     item["name"],
+//                     style: const TextStyle(
+//                         color: Colors.black,
+//                         fontWeight: FontWeight.w500,
+//                         fontSize: 16),
+//                   ),
+//                   Text(
+//                    item["capacity"], 
+//                     style: const TextStyle(color: grey, fontSize: 13),
+//                   ),
+//                 ],
+//               )
+//             ],
+//           ),
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: [
+//               Text(
+//                  'EGP ${productSubtotal.toStringAsFixed(2)}',
+//                 style: const TextStyle(
+//                     fontSize: 18,
+//                     fontWeight: FontWeight.bold,
+//                     color: grey),
+//               )
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//                 },
+//               ),
+//             ),
+
+//             Container(
+//               height: 105,
+//               padding: const EdgeInsets.all(15),
+//         decoration: BoxDecoration(
+//           border: Border.all(color: Colors.grey.withOpacity(.5)),
+//           borderRadius: const BorderRadius.only(
+//             topLeft: Radius.circular(30),
+//             topRight: Radius.circular(30)
+//           )
+//         ),
+//         child: Column(
+//           children: 
+//             [
+//               Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 const Text(
+//                   'Total Price',
+//                   style: TextStyle(fontSize: 16, color: Colors.black),
+//                 ),
+                
+//                 Text(
+//                   " EGP ${orderDetails["total"].toStringAsFixed(2)}",
+//                   style: const TextStyle(
+//                       fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
+//                 )
+//               ],
+//             ),
+//            Text( "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
+//            style: TextStyle(
+//             color: Colors.grey.withOpacity(.2)
+//            ),),
+//            const SizedBox(height: 5,),
+//              Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 const Text(
+//                   'Status',
+//                   style: TextStyle(fontSize: 16, color: Colors.black),
+//                 ),
+//                Container(
+//                     alignment: Alignment.center,
+//                     height: 21,
+//                     width: 87,
+//                     decoration: BoxDecoration(
+//                         color: Colors.grey.withOpacity(.1), borderRadius: BorderRadius.circular(5)),
+//                     child: Text("${orderDetails["state"]}",
+//                     style: TextStyle(
+//                       color: Colors.grey.withOpacity(1)
+//                     ),),
+//                   ),
+//               ],
+//             ),
+//             ],
+//         ),
+//       ),
+
+              
+//           ],
+//         ),
+    
+     
+//     );
+//   }
+// }
+
+
+
+
+
+
+// Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Color(0xffF1FCF3),
+//       ),
+//       drawer: Drawer(
+//         child: Column(
+//           children: [
+//             Container(
+//               height: 30,
+//             ),
+//             Row(
+//               children: [
+//                 Text(
+//                   " Agri",
+//                   style: TextStyle(
+//                       fontSize: 30,
+//                       fontWeight: FontWeight.w600,
+//                       color: Color(0xff184F27)),
+//                 ),
+//                 Text(
+//                   "livia",
+//                   style: TextStyle(
+//                       fontSize: 30,
+//                       fontWeight: FontWeight.w600,
+//                       color: Color(0xff2CBB50)),
+//                 ),
+//               ],
+//             ),
+//             Container(
+//               height: 50,
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/settings.png"),
+//               title: Text(
+//                 'Settings',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/notification.png"),
+//               title: Text(
+//                 'Notifications',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/appearance.png"),
+//               title: Text(
+//                 'Appearance',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/edit.png"),
+//               title: Text(
+//                 'Edit account',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/language.png"),
+//               title: Text(
+//                 'Language',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             ListTile(
+//               leading: Image.asset("images/Security.png"),
+//               title: Text(
+//                 'Privacy and Security',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {},
+//             ),
+//             Spacer(),
+//             ListTile(
+//               leading: Image.asset("images/logout.png"),
+//               title: Text(
+//                 'Logout',
+//                 style: TextStyle(
+//                   color: Color(0xff184F27),
+//                   fontSize: 20,
+//                   fontWeight: FontWeight.w500,
+//                 ),
+//               ),
+//               onTap: () {
+//                 // signOutFromApp();
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//       body: Container(
+//         padding: EdgeInsets.only(top: 50),
+//         child: SingleChildScrollView(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Text("data"),
+//               Container(
+//                 decoration: BoxDecoration(
+//                     color: const Color.fromARGB(255, 255, 229, 151),
+//                     borderRadius: BorderRadius.only(
+//                         topLeft: Radius.circular(40),
+//                         topRight: Radius.circular(40))),
+//                 padding: EdgeInsets.symmetric(horizontal: 10),
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Divider(
+//                       color: Color(0xffB7D7BE),
+//                       indent: 2,
+//                     ),
+//                     Container(
+//                       height: 200,
+//                       child: Obx(() {
+//                         controller.ongoing();
+          
+//                         if (controller.ongoinglists.isNotEmpty) {
+//                           return ListView.builder(
+//                             itemCount: controller.ongoinglists.length,
+//                             itemBuilder: (context, index) {
+//                               return OrderItem(
+//                                   orderData: controller.ongoinglists[index]);
+//                             },
+//                           );
+//                         } else {
+//                           return const Center(
+//                             child: Text("Empty history"),
+//                           );
+//                         }
+//                       }),
+//                     ),
+//                   SizedBox(height: 20,),
+//                     Text("History"),
+//                                       SizedBox(height: 20,),
+
+//                     Divider(),
+//                                       SizedBox(height: 20,),
+
+//                     Container(
+//                       height: MediaQuery.sizeOf(context).height/2,
+//                       child: Obx(() {
+//                         controller.getHistory();
+//                         if (controller.historyList.isNotEmpty) {
+//                           return ListView.builder(
+//                             addAutomaticKeepAlives: false,
+//                             itemCount: controller.historyList.length, 
+//                             itemBuilder: (context, index) {
+//                               return OrderItem(
+//                                   orderData: controller.historyList[index]);
+//                             },
+//                           );
+//                         } else {
+//                           return const Center(
+//                             child: Text("Empty history"),
+//                           );
+//                         }
+//                       }),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

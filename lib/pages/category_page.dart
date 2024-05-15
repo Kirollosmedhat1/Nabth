@@ -1,7 +1,12 @@
 import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
+import 'package:application5/widgets/heading_with_back.dart';
+import 'package:application5/widgets/myDrawer.dart';
+import 'package:application5/widgets/myHeading.dart';
 import 'package:application5/widgets/productsItem.dart';
+import 'package:application5/widgets/store_Appbar.dart';
+import 'package:application5/widgets/titleWith_Shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:application5/controller/cont/product_controller.dart';
@@ -10,8 +15,6 @@ import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 class CategoryPage extends StatelessWidget {
   final String category;
   int _selectedIndex = 0;
-  
-
   CategoryPage({required this.category});
 
   final ProductController controller = Get.find<ProductController>();
@@ -43,135 +46,7 @@ class CategoryPage extends StatelessWidget {
     }
 
     return Scaffold(
-       drawer: Drawer(
-        child: Column(
-          children: [
-            Container(
-              height: 30,
-            ),
-            Row(
-              children: [
-                Text(
-                  " Agri",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff184F27)),
-                ),
-                Text(
-                  "livia",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff2CBB50)),
-                ),
-              ],
-            ),
-            Container(
-              height: 50,
-            ),
-            ListTile(
-              leading: Image.asset("images/settings.png"),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/notification.png"),
-              title: Text(
-                'Notifications',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/appearance.png"),
-              title: Text(
-                'Appearance',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/edit.png"),
-              title: Text(
-                'Edit account',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/language.png"),
-              title: Text(
-                'Language',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Image.asset("images/Security.png"),
-              title: Text(
-                'Privacy and Security',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            Spacer(),
-            ListTile(
-              leading: Image.asset("images/logout.png"),
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  color: Color(0xff184F27),
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onTap: () {
-                signOutFromApp();
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: Mydrawer(),
       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         domeHeight: 25,
@@ -242,34 +117,52 @@ class CategoryPage extends StatelessWidget {
           ),
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
-        actions: [
-          IconButton(onPressed: () {}, icon: Image.asset("images/search.png")),
-          IconButton(
-              onPressed: () {
-                Get.to(CartPage());
-              },
-              icon: Image.asset("images/cart.png")),
-        ],
-      ),
-      body: GridView.builder(
-        padding: EdgeInsets.only(left: 30, right: 30, top: 20),
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1,
-          mainAxisSpacing: 42,
-          crossAxisSpacing: 90,
+      appBar: StoreAppbar(),
+      body: Container(
+        color: const Color(0xffF1FCF3),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              HeadingWithBack(title: category, fontFamily: "WorkSans"),
+              Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 46, top: 18),
+                      child: TitleWithShadow(title: "AgriProducts"),
+                    ),
+                    GridView.builder(
+                      padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1,
+                        mainAxisSpacing: 42,
+                        crossAxisSpacing: 90,
+                      ),
+                      itemCount: categoryList.length,
+                      itemBuilder: (context, i) {
+                        return ProductItemsWidget(
+                          img: "${categoryList[i]["img"]}",
+                          name: "${categoryList[i]["name"]}",
+                          price: "${categoryList[i]["price"]}",
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        itemCount: categoryList.length,
-        itemBuilder: (context, i) {
-          return ProductItemsWidget(
-            img: "${categoryList[i]["img"]}",
-            name: "${categoryList[i]["name"]}",
-            price: "${categoryList[i]["price"]}",
-          );
-        },
       ),
     );
   }

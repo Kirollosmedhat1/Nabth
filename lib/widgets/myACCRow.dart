@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyACCrow extends StatelessWidget {
@@ -19,9 +18,9 @@ class MyACCrow extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 25,
-            backgroundColor: Color(0xffCAEDCF),
+            backgroundColor: const Color(0xffCAEDCF),
             child: ColorFiltered(
-              colorFilter: ColorFilter.mode(
+              colorFilter: const ColorFilter.mode(
                 Colors.white,
                 BlendMode.modulate,
               ),
@@ -32,25 +31,25 @@ class MyACCrow extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Expanded(
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xff1E9B3D),
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           Container(
             height: 30,
             width: 30,
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage("images/arrow.png"))),
+            decoration: const BoxDecoration(
+                image: const DecorationImage(image: AssetImage("images/arrow.png"))),
           ),
         ],
       ),

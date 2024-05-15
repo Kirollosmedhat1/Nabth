@@ -8,7 +8,7 @@ class MyCircleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialButton(
                   onPressed: onPressed,
-                  shape: CircleBorder(eccentricity: 0.1),
+                  shape: const CircleBorder(eccentricity: 0.1),
 
                   child: Image.asset(
                     image,

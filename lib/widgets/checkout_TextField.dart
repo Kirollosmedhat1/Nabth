@@ -17,10 +17,10 @@ class Checkout_Textfield extends StatelessWidget {
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: hintText,
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                   color: Colors.grey),
               filled: true,
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.red,
                 ),

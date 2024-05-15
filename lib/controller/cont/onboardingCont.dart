@@ -1,6 +1,7 @@
 import 'package:application5/controller/constant/imgs.dart';
 import 'package:application5/controller/constant/textOnBoard.dart';
 import 'package:application5/model/model_onboard.dart';
+import 'package:application5/pages/welcome_page.dart';
 import 'package:application5/widgets/onboardwid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,7 +54,7 @@ class OnBoardingCont extends GetxController {
 
     Future.delayed(Duration(milliseconds: 7324), () {
     
-      Get.offNamed("login");
+      Get.off(WelcomePage());
     });
   }
 }

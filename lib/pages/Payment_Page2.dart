@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/success_page.dart';
+import 'package:application5/widgets/myButton.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterme_credit_card/flutterme_credit_card.dart';
@@ -33,7 +35,7 @@ class _PaymentPageState extends State<PaymentPage2> {
     cvv.addListener(() => setState(() {}));
     holder.addListener(() => setState(() {}));
   }
-
+  final cartController=Get.put(CartController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -295,24 +297,12 @@ class _PaymentPageState extends State<PaymentPage2> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Color(0xFF1B602D),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 7,
-                          horizontal: 90,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {
+                    MyButton(lable: "Continue",onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              cartController.placeOrder();
                           Get.to(PaymentSuccessPage());
-                          
                         }
-                      },
-                      child: const Text("continue",
-                          style: TextStyle(fontSize: 24)),
-                    )
+                          },),
                   ],
                 ),
               ),

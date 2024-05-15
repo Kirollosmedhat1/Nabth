@@ -52,7 +52,7 @@ class CartItemsWidget extends StatelessWidget {
                     
                     Container(
                       margin: EdgeInsets.only(bottom: 5),
-                      child: Text("EGP${cartController.total.toStringAsFixed(2)}",
+                      child: Text("EGP${(cartItem.price*quantity)}",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
@@ -82,8 +82,9 @@ class CartItemsWidget extends StatelessWidget {
               ),
               Container(
                 margin:  EdgeInsets.only(right: 18,bottom: 5),
+        
                 width: 69,
-                height: 21,
+                height: 25,
                 decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffB7D7BE), width: 2)),
                 child: Row(
@@ -101,12 +102,13 @@ class CartItemsWidget extends StatelessWidget {
                         )),
                     Text("$quantity",
                         style: TextStyle(
+                          fontFamily: "WorkSans",
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             color: Color(0xff1A7431))),
                     InkWell(
                         onTap: () {
-                          cartController.removeProductFromCart(cartItem);
+                          cartController.addProduct(cartItem);
                         },
                         child: Icon(Icons.add_rounded,
                             size: 20, color: Color(0xff1A7431))),

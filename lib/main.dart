@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/pages/2orders.dart';
 import 'package:application5/pages/MyOrderss.dart';
 import 'package:application5/pages/Payment_Page.dart';
 import 'package:application5/pages/Payment_Page2.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/Shipping_Process.dart';
-import 'package:application5/pages/bottom_Bar.dart';
 import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/chat_page.dart';
 import 'package:application5/pages/checkout.dart';
@@ -19,9 +20,12 @@ import 'package:application5/pages/signup.dart';
 import 'package:application5/pages/splashscreen.dart';
 import 'package:application5/pages/store.dart';
 import 'package:application5/pages/success_page.dart';
+import 'package:application5/pages/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
@@ -32,7 +36,8 @@ Future<void> main() async {
           apiKey: "AIzaSyDPVSJbwS4GpdmC1nsYDdT7Puv71DQs5Rw",
           appId: "1:1028160968707:android:af85f262e79b630bb39636",
           messagingSenderId: "1028160968707",
-          projectId: "application5-3bcfb"));
+          projectId: "application5-3bcfb")
+          );
   runApp(const MyApp());
 }
 
@@ -59,7 +64,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
-      home: BottomBar(selectedIndex: 1,),
+      home: SplashScreen(),
       // BottomBar(selectedIndex: 0,),
       // FirebaseAuth.instance.currentUser != null &&
       //         FirebaseAuth.instance.currentUser!.emailVerified
@@ -67,7 +72,6 @@ class _MyAppState extends State<MyApp> {
       //     : SplashScreen(),
       routes:{
         "porfile2": (context) => Porfile_Page2(),
-        "homepage":(context) => HomePage(),
         "login":(context) => LoginPage(),
         "SignUp": (context) => SignUp(),
         "store":(context) =>  Store(),
@@ -81,11 +85,15 @@ class _MyAppState extends State<MyApp> {
           "checkout":(context)=> checkout(),
           "successpage":(context)=> PaymentSuccessPage(),
           "Shipping_Process":(context)=> Shipping_Process(),
-          "MyOrderss":(context)=> MyOrderss(),
           "Empty_Cart":(context)=>Empty_Cart(),
           "communtiy":(context) => Communtiy(),
           "ChatPage":(context) => ChatPage(),
+          "OrdersPage":(context) =>OrdersPage(),
+          "myorders":(context) =>MyOrderss(),
       },
+      initialBinding: BindingsBuilder(() {
+        Get.put(CartController());
+      }),
       debugShowCheckedModeBanner: false,
     );
   }

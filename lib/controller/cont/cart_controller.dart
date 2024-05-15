@@ -1,14 +1,128 @@
 import 'package:application5/model/productModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
   var productMap = <CartItem, int>{}.obs;
+  RxDouble total = 0.0.obs;
+  RxBool couponApplied = false.obs;
+  RxString couponCode = ''.obs;
+  RxInt totalQuantity = 0.obs;
+  RxDouble Discount = 0.0.obs;
+ 
+
+  var ongoinglists = [].obs;
+  void ongoing() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    try {
+      if (user != null) {
+        QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+            .collection("orders")
+            .where("userId", isEqualTo: user.uid)
+            .where("state", isEqualTo: 'ongoing')
+            .get();
+        ongoinglists.assignAll(querySnapshot.docs);
+        print(ongoinglists);
+      }
+    } catch (e) {
+      print("Error fetching ongoing orders: $e");
+    }
+  }
+
+  Future<void> placeOrder() async {
+    final user = FirebaseAuth.instance.currentUser!;
+    final userid = user?.uid;
+    final username = user?.displayName;
+    String orderId = '';
+    if (userid != null && username != null) {
+      List<Map<String, dynamic>> productsList = productMap.entries.map((entry) {
+        return {
+          'quantity': entry.value,
+          'name': entry.key.name,
+          'price': entry.key.price,
+        };
+      }).toList();
+
+      // Create an order object with the necessary details
+      Map<String, dynamic> orderData = {
+        "userId": userid,
+        "username": username,
+        'dateTime': DateTime.now(),
+        'products': productsList,
+        'total': total.value,
+        'couponApplied': couponApplied.value,
+        'couponCode': couponCode.value,
+        'timestamp': FieldValue.serverTimestamp(),
+        "state": "ongoing",
+      };
+
+      final CollectionReference ordersCollection =
+          FirebaseFirestore.instance.collection('orders');
+
+      DocumentReference orderRef = await ordersCollection.add(orderData);
+
+      // Get the ID of the newly added order
+      orderId = orderRef.id;
+
+      clearCart();
+    }
+  }
+
+  Future<void> markOrderAsCancel(DocumentSnapshot orderDoc) async {
+    try {
+      await orderDoc.reference.update({'state': 'Canceled'});
+      ongoing(); 
+      update();
+    } catch (e) {
+      print("$e Error: to mark order as done");
+    }
+  }
+
+  Future<void> markOrderAsDeliverd(DocumentSnapshot orderDoc) async {
+    try {
+      await orderDoc.reference.update({'state': 'Deliverd'});
+
+      ongoing();
+      update();
+    } catch (e) {
+      print("$e Error: to mark order as done");
+    }
+  }
+
+  // Clear the cart after placing an order
+  void clearCart() {
+    productMap.clear();
+    total.value = 0.0;
+    couponApplied.value = false;
+    couponCode.value = '';
+    totalQuantity.value = 0;
+    Discount.value = 0.0; // Reset discount to zero
+  }
+
+  var historyList=[].obs;
+  void getHistory() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+            .collection("orders")
+            .where('userId', isEqualTo: user.uid)
+            .where("state", whereIn: ["Canceled", "Deliverd"])
+            // .where("state", isEqualTo: "done")
+            .get();
+
+        historyList.assignAll(querySnapshot.docs);
+      }
+    } catch (e) {
+      print("$e Error: to get products");
+    }
+  }
 
   void addProduct(CartItem cartItem) {
     bool found = false;
     for (var item in productMap.keys) {
       if (item.name == cartItem.name) {
-        // Product with the same name already exists in cart
         productMap[item] = productMap[item]! + 1;
         found = true;
         break;
@@ -16,145 +130,66 @@ class CartController extends GetxController {
     }
 
     if (!found) {
-      // If product is not found, add it with quantity 1
       productMap[cartItem] = 1;
     }
+    total.value = calculateTotal();
+    totalQuantity.value = calculateTotalQuantity();
   }
 
   void removeProductFromCart(CartItem cartItem) {
     if (productMap.containsKey(cartItem) && productMap[cartItem]! > 1) {
-      // If product exists in cart and its quantity is greater than 1, reduce quantity
       productMap[cartItem] = productMap[cartItem]! - 1;
     } else {
-      // If quantity is 1 or less, remove the product from cart
       productMap.remove(cartItem);
     }
+    total.value = calculateTotal();
+    totalQuantity.value = calculateTotalQuantity();
   }
 
   void removeItem(CartItem cartItem) {
     productMap.remove(cartItem);
+    total.value = calculateTotal();
+    totalQuantity.value = calculateTotalQuantity();
   }
 
-  double get total {
-    // Calculate total price of all products in the cart
+  void applyDiscount(double discountAmount) {
+    total.value -= discountAmount;
+    couponApplied.value = true;
+    Discount.value = discountAmount; // Set Discount to the applied amount
+  }
+
+  void removeDiscount() {
+    total.value = calculateTotal();
+    couponApplied.value = false;
+    couponCode.value = '';
+    Discount.value = 0.0; // Reset Discount to zero
+  }
+
+  double calculateTotal() {
     return productMap.entries
         .map((entry) => entry.key.price * entry.value)
         .fold(0, (prev, amount) => prev + amount);
   }
+
+  int calculateTotalQuantity() {
+    return productMap.values.fold(0, (prev, quantity) => prev + quantity);
+  }
+
+  void applyCoupon(String code) {
+    if (code == 'kiro10') {
+      applyDiscount(total.value * 0.1);
+      couponCode.value = code;
+    } else if (code == 'kiro15') {
+      applyDiscount(total.value * 0.15);
+      couponCode.value = code;
+    } else if (code == 'mtarek25') {
+      if (total.value > 200) {
+        applyDiscount(50);
+      } else {
+        applyDiscount(total.value * 0.25);
+        couponCode.value = code;
+      }
+    }
+  }
 }
-
-
-
-
-//   @override
-//   void onInit() {
-//     super.onInit();
-//   } 
-
-  // void addProduct(ProductModel product) {
-  //   if (cartItems.containsKey(product.name)) {
-  //     // If product already exists in cart, update the quantity
-  //     final existingItem = cartItems[product.name]!;
-  //     existingItem.price += product.price;
-  //     cartItems[product.name] = existingItem;
-  //   } else {
-  //     // If product is not in cart, add it
-  //     cartItems[product.name] = product;
-  //   }
-  //   update();
-  // }
-
-//   void removeProduct(ProductModel product) {
-//     cartItems.remove(product.name);
-//     update();
-//   }
-
-//   void updateQuantity(ProductModel product, int quantity) {
-//     if (cartItems.containsKey(product.name)) {
-//       // If product exists in cart, update the quantity
-//       final existingItem = cartItems[product.name]!;
-//       existingItem.price = product.price * quantity;
-//       if (quantity <= 0) {
-//         cartItems.remove(product.name);
-//       } else {
-//         cartItems[product.name] = existingItem;
-//       }
-//     }
-//     update();
-//   }
-
-//   double get totalPrice {
-//     double total = 0.0;
-//     for (final item in cartItems.values) {
-//       total += item.price;
-//     }
-//     return total;
-//   }
-
-//   Future<void> addProductToFirestore(ProductModel product) async {
-//     try {
-//       await FirebaseFirestore.instance.collection('products').add(product.toJson());
-//       print('Product added to Firestore successfully!');
-//     } catch (e) {
-//       print('Error adding product to Firestore: $e');
-//     }
-//   }
-// }
-
-
-
-
-
-
-// import 'package:application5/model/cart_model.dart';
-// import 'package:application5/model/productModel.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:get/get.dart';
-
-// class CartController extends GetxController {
-//   final cartItems = <CartItem>[].obs;
-//   RxList<ProductModel>productModel=<ProductModel>[].obs;
-//   @override
-//   void onInit() {
-//     super.onInit();
-    
-//   }
-//   void addProduct(ProductModel product) {
-//     final existingItem =
-//         cartItems.firstWhereOrNull((item) => item.product.name == product.name);
-//     if (existingItem != null) {
-//       existingItem.quantity++;
-//     } else {
-//       cartItems.add(CartItem(product: product));
-//     }
-//   }
-
-//   void removeProduct(ProductModel product) {
-//     cartItems.removeWhere((item) => item.product.name == product.name);
-//   }
-  
-
-//   void updateQuantity(ProductModel product, int quantity) {
-//     final existingItem =
-//         cartItems.firstWhereOrNull((item) => item.product.name == product.name);
-//     if (existingItem != null) {
-//             existingItem.quantity.value = quantity;
-//             if (quantity <= 0) {
-//                 cartItems.remove(existingItem);
-//             }
-//         }
-//         update();
-//   }
-
-//   double get totalPrice {
-//     double total = 0.0;
-//     for (final item in cartItems) {
-//       total += item.product.price * item.quantity.value;
-//     }
-//     return total;
-//   }
-  
-
-// }
-
 

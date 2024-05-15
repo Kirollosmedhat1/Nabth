@@ -1,74 +1,177 @@
-// import 'package:application5/controller/cont/orders_controller.dart';
-// import 'package:application5/model/order_model.dart';
-// import 'package:application5/pages/2details.dart';
+
+import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+class OrdersPage extends StatelessWidget {
+  final CartController _cartController = Get.put(CartController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('My Orders'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Obx(() {
+          
+            return ListView.builder(
+              itemCount: _cartController.ongoinglists.length,
+              itemBuilder: (context, index) {
+                return Text("${_cartController.ongoinglists[index]["total"]}");
+              },
+            );
+
+        }),
+      ),
+    );
+  }
+}
+
+class OrderItem extends StatelessWidget {
+  final QueryDocumentSnapshot orderData;
+
+  const OrderItem({Key? key, required this.orderData}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Extracting order details
+    String orderId = orderData.id;
+    String orderDateTime = orderData['dateTime'].toString();
+    double orderTotal = orderData['total'];
+
+    return Card(
+      elevation: 2,
+      margin: EdgeInsets.symmetric(vertical: 8),
+      child: ListTile(
+        title: Text('Order ID: $orderId'),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Date: $orderDateTime'),
+            Text('Total: EGP $orderTotal'),
+          ],
+        ),
+        onTap: () {
+          // You can add navigation or further actions here
+        },
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+// import 'package:application5/controller/cont/cart_controller.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
-// class MyOrdersPage extends StatelessWidget {
-//   final OrdersController ordersController = Get.put(OrdersController());
-
+// class OrdersPage extends StatelessWidget {
+//   final cartController = Get.put(CartController()); 
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('My Orders'),
-//       ),
-//       body: Obx(() {
-//         // Separate ongoing and completed orders
-//         final ongoingOrders = ordersController.ordersList.where((order) => order.status == 'Ongoing').toList();
-//         final completedOrders = ordersController.ordersList.where((order) => order.status != 'Ongoing').toList();
-
-//         return ListView(
-//           children: [
-//             // Display ongoing orders
-//             if (ongoingOrders.isNotEmpty)
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//                     child: Text('Ongoing Orders', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-//                   ),
-//                   ...ongoingOrders.map((order) => OrderCard(order: order)).toList(),
-//                   SizedBox(height: 20),
-//                 ],
-//               ),
-//             // Display completed orders
-//             if (completedOrders.isNotEmpty)
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//                     child: Text('Order History', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-//                   ),
-//                   ...completedOrders.map((order) => OrderCard(order: order)).toList(),
-//                 ],
-//               ),
-//           ],
-//         );
-//       }),
-//     );
-//   }
-// }
-
-// class OrderCard extends StatelessWidget {
-//   final Order order;
-
-//   OrderCard({required this.order});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Card(
-//       margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-//       child: ListTile(
-//         title: Text('Order ID: ${order.orderId}'),
-//         subtitle: Text('Total: EGP ${order.totalPrice.toStringAsFixed(2)}'),
-//         trailing: Text(order.status),
-//         onTap: () {
-//           Get.to(OrderDetailsPage(order: order));
-//         },
-//       ),
+      // appBar: AppBar(
+      //   title: Text('My Orders'),
+      // ),
+      // body: StreamBuilder(
+      //   stream: FirebaseFirestore.instance.collection('orders').snapshots(),
+      //   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      //     if (snapshot.hasData) {
+      //       return ListView.builder(
+      //         itemCount: cartController.ongoinglist.length,
+      //         itemBuilder: (context, index) {
+      //           // var order = snapshot.data!.docs[index];
+      //           // var orderData = order.data() as Map<String, dynamic>;
+      //           // List<dynamic> productsList = orderData['products'];
+      //           // double total = orderData['total'];
+      //           // bool couponApplied = orderData['couponApplied'];
+      //           // String couponCode = orderData['couponCode'];
+      //           // Map<String, dynamic> shippingDetails =
+      //           //     orderData['shippingDetails'];
+      //           // Build order item widget
+      //           return Card(
+      //             margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      //             child: Padding(
+      //               padding: EdgeInsets.all(15),
+      //               child: Column(
+      //                 crossAxisAlignment: CrossAxisAlignment.start,
+      //                 children: [
+      //                   Text(
+      //                     'Order ${index + 1}',
+      //                     style: TextStyle(
+      //                       fontSize: 18,
+      //                       fontWeight: FontWeight.bold,
+      //                     ),
+      //                   ),
+      //                   SizedBox(height: 10),
+      //                   Text('Total: EGP ${cartController.ongoinglist[index]["total"]}'),
+      //                   SizedBox(height: 10),
+      //                   Text('Coupon Applied: ${couponApplied ? 'Yes' : 'No'}'),
+      //                   if (couponApplied) Text('Coupon Code: $couponCode'),
+      //                   SizedBox(height: 10),
+      //                   Text(
+      //                     'Shipping Details:',
+      //                     style: TextStyle(
+      //                       fontSize: 16,
+      //                       fontWeight: FontWeight.bold,
+      //                     ),
+      //                   ),
+      //                   SizedBox(height: 5),
+      //                   Text('Building Name: ${shippingDetails['buildingName']}'),
+      //                   Text('Apartment No: ${shippingDetails['apartmentNo']}'),
+      //                   Text('Floor No: ${shippingDetails['floorNo']}'),
+      //                   Text('Street Name: ${shippingDetails['streetName']}'),
+      //                   if (shippingDetails['additionalDirection'].isNotEmpty)
+      //                     Text(
+      //                       'Additional Direction: ${shippingDetails['additionalDirection']}',
+      //                     ),
+      //                   Text('Phone: ${shippingDetails['phone']}'),
+      //                   SizedBox(height: 10),
+      //                   Text(
+      //                     'Products:',
+      //                     style: TextStyle(
+      //                       fontSize: 16,
+      //                       fontWeight: FontWeight.bold,
+      //                     ),
+      //                   ),
+      //                   Column(
+      //                     crossAxisAlignment: CrossAxisAlignment.start,
+      //                     children: productsList
+      //                         .map((product) => Padding(
+      //                               padding: EdgeInsets.symmetric(vertical: 5),
+      //                               child: Row(
+      //                                 mainAxisAlignment:
+      //                                     MainAxisAlignment.spaceBetween,
+      //                                 children: [
+      //                                   Text('${product['name']}'),
+      //                                   Text('Quantity: ${product['quantity']}'),
+      //                                   Text('Price: EGP ${product['price']}'),
+      //                                 ],
+      //                               ),
+      //                             ))
+      //                         .toList(),
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
+      //           );
+      //         },
+      //       );
+      //     } else {
+      //       return Center(child: CircularProgressIndicator());
+      //     }
+      //   },
+      // ),
 //     );
 //   }
 // }

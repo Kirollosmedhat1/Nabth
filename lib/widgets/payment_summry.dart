@@ -4,7 +4,7 @@ class payment_summary extends StatefulWidget {
   final String text;
   final String number;
 
-  payment_summary({super.key, required this.text, required this.number});
+  const payment_summary({super.key, required this.text, required this.number});
 
   @override
   State<payment_summary> createState() => _payment_summaryState();
@@ -15,7 +15,7 @@ class _payment_summaryState extends State<payment_summary> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Row(
@@ -25,14 +25,14 @@ class _payment_summaryState extends State<payment_summary> {
               children: [
                 Text(
                   widget.text,
-                  style: TextStyle(fontSize: 15, color: Color(0xff184F27)),
+                  style: const TextStyle(fontSize: 15, color: const Color(0xff184F27)),
                 ),
               ],
             ),
             Row(
               children: [
                 Text(widget.number,
-                    style: TextStyle(fontSize: 15, color: Color(0xff184F27))),
+                    style: const TextStyle(fontSize: 15, color: Color(0xff184F27))),
               ],
             )
           ],
