@@ -60,7 +60,14 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
        extendBody: true,
-      bottomNavigationBar: MyBotttomnaNigationBar(selectedIndex: _selectedIndex),
+      bottomNavigationBar: MyBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        onTabChange: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
       drawer: Mydrawer(),
       body: _pages[_selectedIndex]
     );
