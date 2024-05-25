@@ -1,8 +1,12 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class ProductController extends GetxController {
   final productlist = [].obs;
+  final searchList = [].obs;
+  var isExpanded = false.obs;
+  TextEditingController searchcontroller = TextEditingController();
 
   void getProduct() async {
     try {
@@ -16,7 +20,26 @@ class ProductController extends GetxController {
     }
   }
 
+  void addSearchToList(String searchName) {
+    searchList.value = productlist
+        .where((search) =>
+            search["name"].toLowerCase().contains(searchName.toLowerCase()))
+        .toList();
+  }
+  
+  void toggle() {
+    isExpanded.value = !isExpanded.value;
+  }
 
+  void clearSearch() {
+    searchcontroller.clear();
+    addSearchToList("");
+  }
+  
+  void toggleAndClearSearch() {
+  toggle();
+  clearSearch();
+}
 
   @override 
   void onInit() {
@@ -24,5 +47,3 @@ class ProductController extends GetxController {
     super.onInit();
   }
 }
-
-

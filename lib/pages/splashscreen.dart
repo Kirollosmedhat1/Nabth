@@ -25,11 +25,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        Future.delayed(Duration(milliseconds: 5324), () {
+        Future.delayed(const Duration(milliseconds: 5324), () {
           Navigator.of(context).pushReplacementNamed("onBoarding");
         });
       } else {
-        Future.delayed(Duration(milliseconds: 5324), () {
+        Future.delayed(const Duration(milliseconds: 5324), () {
           Get.off(BottomBar(selectedIndex: 0));
         });
       }
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1FCF3),
+      backgroundColor: const Color(0xFFF1FCF3),
       body: Stack(
         children: <Widget>[
           if (!firstAnimationCompleted)
@@ -47,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
               child: BounceInUp(
                 animate: true,
                 from: 500,
-                duration: Duration(seconds: 3),
-                child: Image(
+                duration: const Duration(seconds: 3),
+                child: const Image(
                   image: AssetImage(logo),
                   width: 90,
                   height: 90,
@@ -62,12 +62,12 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           if (firstAnimationCompleted) ...[
             AnimatedPositioned(
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
               left: 138,
               top: MediaQuery.of(context).size.height / 2 - 24,
               child: Text("Agri",
                   style: GoogleFonts.lexendDeca(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 40,
                           color: Color.fromRGBO(27, 96, 45, 1),
                           fontWeight: FontWeight.w600))),
@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
               left: 30,
               top: MediaQuery.of(context).size.height / 2 -
                   45, // Center vertically
-              child: Image(
+              child: const Image(
                 image: AssetImage(logo),
                 width: 90,
                 height: 90,
@@ -102,11 +102,11 @@ class _SplashScreenState extends State<SplashScreen> {
               AnimatedPositioned(
                 left: 223,
                 top: MediaQuery.of(context).size.height / 2 - 22,
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 child: TypeText(
                   "Livia",
-                  duration: Duration(seconds: 1),
-                  style: TextStyle(
+                  duration: const Duration(seconds: 1),
+                  style: const TextStyle(
                       fontSize: 40,
                       color: Color.fromRGBO(44, 187, 80, 1),
                       fontWeight: FontWeight.w600),

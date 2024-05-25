@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CycleItem extends StatelessWidget {
-  CycleItem({
+  const CycleItem({
     Key? key,
     required this.image,
     required this.name,
@@ -31,14 +31,14 @@ class CycleItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: Mydrawer(),
+      drawer: const Mydrawer(),
       body: ListView(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               InkWell(
@@ -50,12 +50,12 @@ class CycleItem extends StatelessWidget {
                   height: 15,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 60,
               ),
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Color(0xff4F795B),
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
@@ -63,23 +63,23 @@ class CycleItem extends StatelessWidget {
               ),
             ],
           ),
-          Divider(
+          const Divider(
             color: Color(0xffB7D7BE),
           ),
           CycleInfoContainer(title: "conditions", info: conditions),
           CycleInfoContainer(title: "timing", info: timing),
           Container(
-            margin: EdgeInsets.only(top: 30),
-            padding: EdgeInsets.fromLTRB(15, 15, 15, 20),
+            margin: const EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.fromLTRB(15, 15, 15, 20),
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0xffF2F2F2)),
+              border: Border.all(color: const Color(0xffF2F2F2)),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "   Steps",
                   style: TextStyle(
                       color: Color(0xff4F795B),
@@ -89,7 +89,7 @@ class CycleItem extends StatelessWidget {
                 ),
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: steps.length,
                   itemBuilder: (context, index) {
                     return ListTile(

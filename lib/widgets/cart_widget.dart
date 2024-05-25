@@ -35,25 +35,25 @@ class CartItemsWidget extends StatelessWidget {
                   ),
                   fit: BoxFit.fill,
                 ),
-                border: Border.all(color: Color(0xffD9D9D9),width: 2,),
+                border: Border.all(color: const Color(0xffD9D9D9),width: 2,),
                 borderRadius: BorderRadius.circular(15)
                 ),
               ),
-              SizedBox(width: 5,),
+              const SizedBox(width: 5,),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(cartItem.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
                             color: Color(0xff1A7431))),
                     
                     Container(
-                      margin: EdgeInsets.only(bottom: 5),
+                      margin: const EdgeInsets.only(bottom: 5),
                       child: Text("EGP${(cartItem.price*quantity)}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 16,
                               color: Color(0xff1A7431))),
@@ -76,17 +76,17 @@ class CartItemsWidget extends StatelessWidget {
                 child: Container(
                   width: 18,
                   height: 18,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(image: AssetImage("images/x.png"))),
                 ),
               ),
               Container(
-                margin:  EdgeInsets.only(right: 18,bottom: 5),
+                margin:  const EdgeInsets.only(right: 18,bottom: 5),
         
                 width: 69,
                 height: 25,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xffB7D7BE), width: 2)),
+                    border: Border.all(color: const Color(0xffB7D7BE), width: 2)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,13 +95,13 @@ class CartItemsWidget extends StatelessWidget {
                         onTap: () {
                           cartController.removeProductFromCart(cartItem);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.remove_rounded,
                           size: 20,
                           color: Color(0xff1A7431),
                         )),
                     Text("$quantity",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: "WorkSans",
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
@@ -110,7 +110,7 @@ class CartItemsWidget extends StatelessWidget {
                         onTap: () {
                           cartController.addProduct(cartItem);
                         },
-                        child: Icon(Icons.add_rounded,
+                        child: const Icon(Icons.add_rounded,
                             size: 20, color: Color(0xff1A7431))),
                   ],
                 ),

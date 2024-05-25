@@ -56,12 +56,12 @@ class _TopArticleWidgetState extends State<TopArticleWidget> {
         ));
       },
       child: Container(
-        margin: EdgeInsets.only(top: 30),
-        padding: EdgeInsets.all(5),
+        margin: const EdgeInsets.only(top: 30),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Color(0xffCAEDCF))),
+            border: Border.all(color: const Color(0xffCAEDCF))),
         height: 62.29,
         child: Row(
           children: [
@@ -69,19 +69,19 @@ class _TopArticleWidgetState extends State<TopArticleWidget> {
               height: 52,
               width: 56,
               decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
                     image: AssetImage("images/1.png"), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(6),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             Container(
               width: 200,
               child: Text(
                 widget.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.w600,
                 ),
@@ -102,8 +102,8 @@ class _TopArticleWidgetState extends State<TopArticleWidget> {
                     color: Colors.white,
                     image: DecorationImage(
                         image: _isFavorite
-                            ? AssetImage("images/Heart.png")
-                            : AssetImage("images/HeartSelecteed.png"))),
+                            ? const AssetImage("images/Heart.png")
+                            : const AssetImage("images/HeartSelecteed.png"))),
               ),
 
             ),

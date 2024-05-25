@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class cont_chat extends StatelessWidget {
   final String text1;
   final String Image;
-  cont_chat({required this.text1, required this.Image});
+  const cont_chat({required this.text1, required this.Image});
   @override
   Widget build(BuildContext context) {
     return Column(

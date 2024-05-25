@@ -42,9 +42,9 @@ class _TopArticleItemState extends State<TopArticleItem> {
   Widget build(BuildContext context) {
     final CycleController controller = Get.find();
     return Scaffold(
-      backgroundColor: Color(0xffF1FCF3),
+      backgroundColor: const Color(0xffF1FCF3),
       appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
+        backgroundColor: const Color(0xffF1FCF3),
       ),
       drawer: const Mydrawer(),
       body: ListView(
@@ -57,7 +57,7 @@ class _TopArticleItemState extends State<TopArticleItem> {
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_ios_new,
                   size: 20,
                   color: Color(0xff1A7431),
@@ -75,7 +75,7 @@ class _TopArticleItemState extends State<TopArticleItem> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               InkWell(
@@ -92,8 +92,8 @@ class _TopArticleItemState extends State<TopArticleItem> {
                     color: Colors.white,
                     image: DecorationImage(
                       image: isFavorite
-                          ? AssetImage("images/Heart.png")
-                          : AssetImage("images/HeartSelecteed.png"),
+                          ? const AssetImage("images/Heart.png")
+                          : const AssetImage("images/HeartSelecteed.png"),
                     ),
                   ),
                 ),

@@ -21,8 +21,8 @@ class Orderdata extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 40,),
-           HeadingWithBack(title: "Shipping Process ", fontFamily: "WorkSans"),
+          const SizedBox(height: 40,),
+           const HeadingWithBack(title: "Shipping Process ", fontFamily: "WorkSans"),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
@@ -98,7 +98,7 @@ class Orderdata extends StatelessWidget {
                 ),
                 Text(
                   "${orderData['products']}",
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                 ),
                 const SizedBox(
                   height: 5,
@@ -142,7 +142,7 @@ class Orderdata extends StatelessWidget {
                     return ListTile(
                       title: Text(
                         '$item', // Adjust the format as needed
-                        style: TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     );
                   }).toList(),

@@ -31,7 +31,7 @@ class _MyCartPart1State extends State<MyCartPart1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -41,13 +41,13 @@ class _MyCartPart1State extends State<MyCartPart1> {
                   width: 70,
                   height: 70,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xffD9D9D9), width: 2),
+                      border: Border.all(color: const Color(0xffD9D9D9), width: 2),
                       borderRadius: BorderRadius.circular(15)),
                   child: Image.asset(
                     "images/photo.png",
                     fit: BoxFit.contain,
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 25,
               ),
               Column(
@@ -55,7 +55,7 @@ class _MyCartPart1State extends State<MyCartPart1> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(widget.text),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(widget.number)
@@ -72,7 +72,7 @@ class _MyCartPart1State extends State<MyCartPart1> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 70,
                       ),
                       IconButton(
@@ -84,34 +84,34 @@ class _MyCartPart1State extends State<MyCartPart1> {
                           )),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
                     width: 70,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xffB7D7BE)),
-                      color: Color(0xffF1FCF3),
+                      border: Border.all(color: const Color(0xffB7D7BE)),
+                      color: const Color(0xffF1FCF3),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
                             onTap: () {},
-                            child: Icon(
+                            child: const Icon(
                               Icons.remove,
                               color: Color(0xff1A7431),
                               size: 15,
                             )),
 
-                        Text(
+                        const Text(
                           '0',
                           style: TextStyle(fontSize: 15),
                         ),
                         // SizedBox(width: 1),
                         InkWell(
                             onTap: () {},
-                            child: Icon(
+                            child: const Icon(
                               Icons.add,
                               color: Color(0xff1A7431),
                               size: 15,

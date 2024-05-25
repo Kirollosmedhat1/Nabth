@@ -52,9 +52,9 @@ class OnBoardingCont extends GetxController {
   void onInit() {
     super.onInit();
 
-    Future.delayed(Duration(milliseconds: 7324), () {
+    Future.delayed(const Duration(milliseconds: 7324), () {
     
-      Get.off(WelcomePage());
+      Get.off(const WelcomePage());
     });
   }
 }

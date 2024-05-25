@@ -1,7 +1,9 @@
 import 'package:application5/controller/constant/imgs.dart';
 import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/widgets/animatedSearch.dart';
 import 'package:application5/widgets/myDrawer.dart';
 import 'package:application5/widgets/productsItem.dart';
+import 'package:application5/widgets/homeSearch.dart';
 import 'package:application5/widgets/store_Appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,109 +20,130 @@ class Store extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => CartController());
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: StoreAppbar(),
       drawer: const Mydrawer(),
       body: Container(
         color: const Color(0xffF1FCF3),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 50),
-              child: Text(
-                        "Categories",
-                        style: GoogleFonts.workSans(
-                          color: const Color.fromRGBO(24, 79, 39, 1),
-                          fontSize: 25,
-                          letterSpacing: -0.24,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  Container(
-                    padding: const EdgeInsets.only(left: 57),
-                    alignment: Alignment.topLeft,
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildCategoryContainer(
-                        image: seedling,
-                        categoryName: "Seedlings",
-                      ),
-                      _buildCategoryContainer(
-                        image: Tools,
-                        categoryName: "Farming Tools",
-                      ),
-                      _buildCategoryContainer(
-                        image: fertilizer,
-                        categoryName: "Fertilizers",
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                  SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(left: 30),
-                          child: Text(
-                            "All Products",
-                            style: GoogleFonts.workSans(
-                              color: const Color.fromRGBO(24, 79, 39, 1),
-                              fontSize: 21,
-                              letterSpacing: -0.24,
-                              fontWeight: FontWeight.w500,
-                            ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Text(
+                          "Categories",
+                          style: GoogleFonts.workSans(
+                            color: const Color.fromRGBO(24, 79, 39, 1),
+                            fontSize: 25,
+                            letterSpacing: -0.24,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(
-                          height: 428,
-                          child: Obx(() {
-                            return GridView.builder(
-                              padding: const EdgeInsets.only(
-                                  left: 30, right: 30, top: 20),
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1,
-                                mainAxisSpacing: 42,
-                                crossAxisSpacing: 90,
-                              ),
-                              itemCount: controller.productlist.length,
-                              itemBuilder: (context, i) {
-                                return ProductItemsWidget(
-                                  img: "${controller.productlist[i]["img"]}",
-                                  name: "${controller.productlist[i]["name"]}",
-                                  price:
-                                      "${controller.productlist[i]["price"]}",
-                                );
-                              },
-                            );
-                          }),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.only(left: 57),
+                      alignment: Alignment.topLeft,
+                    ),
+                    const SizedBox(
+                      height: 9,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildCategoryContainer(
+                          image: seedling,
+                          categoryName: "Seedlings",
+                        ),
+                        _buildCategoryContainer(
+                          image: Tools,
+                          categoryName: "Farming Tools",
+                        ),
+                        _buildCategoryContainer(
+                          image: fertilizer,
+                          categoryName: "Fertilizers",
                         ),
                       ],
                     ),
-                  )
-                ],
+                    const SizedBox(height: 30),
+                    SingleChildScrollView(
+                      
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: Text(
+                              "All Products",
+                              style: GoogleFonts.workSans(
+                                color: const Color.fromRGBO(24, 79, 39, 1),
+                                fontSize: 21,
+                                letterSpacing: -0.24,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Obx(() {
+                            return controller.searchList.isEmpty &&
+                          controller.searchcontroller.text.isNotEmpty
+                      ? Center(child: Center(child: Text("Product not found"))):
+                            SizedBox(
+                              height: MediaQuery.sizeOf(context).height/2,
+                              child: GridView.builder(
+                                padding: const EdgeInsets.only(
+                                    left: 30, right: 30, top: 20),
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 1,
+                                  mainAxisSpacing: 42,
+                                  crossAxisSpacing: 90,
+                                ),
+                                itemCount: controller.searchList.isEmpty
+                                ? controller.productlist.length
+                                : controller.searchList.length,
+                                itemBuilder: (context, i) {
+                                  if (controller.searchList.isEmpty){
+                                  return  ProductItemsWidget(
+                                    
+                                    img: "${controller.productlist[i]["img"]}",
+                                    name: "${controller.productlist[i]["name"]}",
+                                    price:
+                                        "${controller.productlist[i]["price"]}",
+                                  );
+                                  }else{
+                                    return ProductItemsWidget(
+                                    
+                                    img: "${controller.searchList[i]["img"]}",
+                                    name: "${controller.searchList[i]["name"]}",
+                                    price:
+                                        "${controller.searchList[i]["price"]}",
+                                  );
+                                  }
+                                  
+                                },
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

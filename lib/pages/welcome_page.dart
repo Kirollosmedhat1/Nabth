@@ -17,23 +17,23 @@ class WelcomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(top: 30),
+              margin: const EdgeInsets.only(top: 30),
               height: 180,
               width: 180,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage("images/logo.png"), fit: BoxFit.cover),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Container(
-              padding: EdgeInsets.only(left: 26),
-              child: Row(
+              padding: const EdgeInsets.only(left: 26),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "Welcome To",
                     style: TextStyle(
                         color: Color(0xff1B602D),
@@ -58,7 +58,7 @@ class WelcomePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             const Text(
@@ -69,22 +69,22 @@ class WelcomePage extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                   fontFamily: "WorkSans"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             MyButton(
               lable: "Login",
               onPressed: () {
-                Get.off(LoginPage());
+                Get.off(const LoginPage());
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             MyButton(
               lable: "Sign up",
               onPressed: () {
-                Get.off(SignUp());
+                Get.off(const SignUp());
               },
             ),
           ],

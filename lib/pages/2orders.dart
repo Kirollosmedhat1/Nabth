@@ -11,7 +11,7 @@ class OrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Orders'),
+        title: const Text('My Orders'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -44,7 +44,7 @@ class OrderItem extends StatelessWidget {
 
     return Card(
       elevation: 2,
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text('Order ID: $orderId'),
         subtitle: Column(

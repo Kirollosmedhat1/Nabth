@@ -1,19 +1,18 @@
 import 'package:application5/pages/bottom_Bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class Empty_Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xffF1FCF3),
+        backgroundColor: const Color(0xffF1FCF3),
         body: Container(
-          padding: EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 20),
           // color: Color(0xffF1FCF3),
           color: Colors.amber,
           child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               color: Colors.white,
               child: Center(
                 child: Column(
@@ -21,7 +20,7 @@ class Empty_Cart extends StatelessWidget {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "0 Items in your cart",
                             style: TextStyle(
                                 fontSize: 15,
@@ -30,9 +29,9 @@ class Empty_Cart extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.off(BottomBar(selectedIndex: 1));
+                              Get.off(const BottomBar(selectedIndex: 1));
                             },
-                            child: Row(children: [
+                            child: const Row(children: [
                               Icon(Icons.add),
                               SizedBox(
                                 width: 10,
@@ -52,7 +51,7 @@ class Empty_Cart extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             "Your Cart is Empty",
                             style: TextStyle(
                                 fontSize: 16,
@@ -60,7 +59,7 @@ class Empty_Cart extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xff8E8E93)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           Container(
@@ -69,7 +68,7 @@ class Empty_Cart extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(142.5),
                               border: Border.all(color: Colors.grey),
-                              image: DecorationImage(
+                              image: const DecorationImage(
                                   image: AssetImage(
                                       "images/empty_cart.gif"),
                                   fit: BoxFit.fill),

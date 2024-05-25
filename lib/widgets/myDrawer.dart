@@ -1,3 +1,4 @@
+import 'package:application5/pages/editprofile_Page.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
 import 'package:flutter/material.dart';
@@ -5,12 +6,12 @@ import 'package:get/get.dart';
 
 class Mydrawer extends StatelessWidget {
   const Mydrawer({super.key});
-  
+
   void signOutFromApp() async {
     try {
       await auth.signOut();
       await googleSignIn.signOut();
-     Get.off(const LoginPage(), arguments: (route) => false);
+      Get.off(const LoginPage(), arguments: (route) => false);
     } catch (error) {}
   }
 
@@ -44,19 +45,10 @@ class Mydrawer extends StatelessWidget {
             height: 50,
           ),
           ListTile(
-            leading: Image.asset("images/settings.png"),
-            title: const Text(
-              'Settings',
-              style: TextStyle(
-                color: Color(0xff184F27),
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-              ),
+            leading: Image.asset(
+              "images/IconNotification.png",
+              height: 30,
             ),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Image.asset("images/notification.png"),
             title: const Text(
               'Notifications',
               style: TextStyle(
@@ -68,7 +60,10 @@ class Mydrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: Image.asset("images/appearance.png"),
+            leading: Image.asset(
+              "images/IconAppearance.png",
+              height: 30,
+            ),
             title: const Text(
               'Appearance',
               style: TextStyle(
@@ -80,19 +75,10 @@ class Mydrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: Image.asset("images/edit.png"),
-            title: const Text(
-              'Edit account',
-              style: TextStyle(
-                color: Color(0xff184F27),
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-              ),
+            leading: Image.asset(
+              "images/IconLanguage.png",
+              height: 30,
             ),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Image.asset("images/language.png"),
             title: const Text(
               'Language',
               style: TextStyle(
@@ -104,9 +90,42 @@ class Mydrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: Image.asset("images/Security.png"),
+            leading: Image.asset(
+              "images/IconSecurity.png",
+              height: 30,
+            ),
             title: const Text(
               'Privacy and Security',
+              style: TextStyle(
+                color: Color(0xff184F27),
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Image.asset(
+              "images/IconHelp.png",
+              height: 30,
+            ),
+            title: const Text(
+              'Help & Support',
+              style: TextStyle(
+                color: Color(0xff184F27),
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Image.asset(
+              "images/IconAboutapp.png",
+              height: 30,
+            ),
+            title: const Text(
+              'About App',
               style: TextStyle(
                 color: Color(0xff184F27),
                 fontSize: 20,

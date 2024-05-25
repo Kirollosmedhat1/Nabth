@@ -11,13 +11,13 @@ class CycleCatWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(left: 20),
+        margin: const EdgeInsets.only(left: 20),
         width: 200,
         height: 250,
         decoration: BoxDecoration(
-          color: Color(0xffF1FCF3),
+          color: const Color(0xffF1FCF3),
             borderRadius: BorderRadius.circular(15),
-            border: Border.all(color: Color(0xffB7D7BE), width: 1)),
+            border: Border.all(color: const Color(0xffB7D7BE), width: 1)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,9 +32,9 @@ class CycleCatWidget extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(20, 20, 0, 0),
+              margin: const EdgeInsets.fromLTRB(20, 20, 0, 0),
               child: Text(title,
-              style: TextStyle(
+              style: const TextStyle(
                         color: Color(0xff4F795B),
                         fontFamily: "WorkSans",
                         fontWeight: FontWeight.w600,

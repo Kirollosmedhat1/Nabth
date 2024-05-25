@@ -7,7 +7,7 @@ import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 import 'package:phone_input/phone_input_package.dart';
 
 class checkout extends StatefulWidget {
-  checkout({super.key});
+  const checkout({super.key});
 
   @override
   State<checkout> createState() => _checkoutState();
@@ -26,9 +26,9 @@ class _checkoutState extends State<checkout> {
         selectedIndex: _selectedIndex,
         domeHeight: 25,
         onTabChange: (index) {},
-        borderColor: Color(0xff1E9B3D),
+        borderColor: const Color(0xff1E9B3D),
         barColor: Colors.white,
-        domeCircleColor: Color(0xffCAEDCF),
+        domeCircleColor: const Color(0xffCAEDCF),
         tabs: [
           MoltenTab(
             icon: Image.asset(
@@ -36,8 +36,8 @@ class _checkoutState extends State<checkout> {
                   ? 'images/home-selected.png'
                   : 'images/home.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'home',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -48,8 +48,8 @@ class _checkoutState extends State<checkout> {
                   ? 'images/store-selected.png'
                   : 'images/store.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'AgriMarket',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -60,8 +60,8 @@ class _checkoutState extends State<checkout> {
                   ? 'images/scan-selected.png'
                   : 'images/scan.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Scan',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -72,8 +72,8 @@ class _checkoutState extends State<checkout> {
                   ? 'images/community-selected.png'
                   : 'images/community.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Community',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -84,8 +84,8 @@ class _checkoutState extends State<checkout> {
                   ? 'images/profile-selected.png'
                   : 'images/profile.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Account',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -97,21 +97,21 @@ class _checkoutState extends State<checkout> {
           Form(
             key: fromstate2,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               width: double.infinity,
               height: 900,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Color(0xffFFFFFF),
                   borderRadius: BorderRadius.horizontal(
                       left: Radius.circular(20), right: Radius.circular(20))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Delivery Address",
                     style: TextStyle(fontSize: 20, color: Color(0xff1A7431)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   myTextFromFiled(
@@ -121,9 +121,10 @@ class _checkoutState extends State<checkout> {
                       if (val == "") {
                         return "cant not to empty";
                       }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -138,11 +139,12 @@ class _checkoutState extends State<checkout> {
                               if (val == "") {
                                 return "cant not to empty";
                               }
+                              return null;
                             },
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Container(
@@ -154,12 +156,13 @@ class _checkoutState extends State<checkout> {
                             if (val == "") {
                               return "cant not to empty";
                             }
+                            return null;
                           },
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   myTextFromFiled(
@@ -168,9 +171,10 @@ class _checkoutState extends State<checkout> {
                       if (val == "") {
                         return "cant not to empty";
                       }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   myTextFromFiled(
@@ -179,9 +183,10 @@ class _checkoutState extends State<checkout> {
                       if (val == "") {
                         return "cant not to empty";
                       }
+                      return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   PhoneInput(
@@ -191,7 +196,7 @@ class _checkoutState extends State<checkout> {
                     shouldFormat: true,
                     defaultCountry: IsoCode.EG,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide:
@@ -200,7 +205,7 @@ class _checkoutState extends State<checkout> {
                     validator: PhoneValidator.validMobile(),
                     isCountrySelectionEnabled: true,
                     countrySelectorNavigator:
-                        CountrySelectorNavigator.bottomSheet(),
+                        const CountrySelectorNavigator.bottomSheet(),
                     showFlagInInput: true, // Default
                     flagShape: BoxShape.rectangle, // Default
                     showArrow: true, // Default
@@ -213,7 +218,7 @@ class _checkoutState extends State<checkout> {
                     // onSaved: (PhoneNumber p) => print('saved $p'), // Default null
                     // onChanged: (PhoneNumber p) => print('changed $p'), // Default null
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 200,
                   ),
                   Center(

@@ -10,10 +10,10 @@ class CycleInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 25),
-      padding: EdgeInsets.fromLTRB(15, 15, 15, 20),
+      margin: const EdgeInsets.only(top: 25),
+      padding: const EdgeInsets.fromLTRB(15, 15, 15, 20),
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xffF2F2F2)),
+        border: Border.all(color: const Color(0xffF2F2F2)),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -22,7 +22,7 @@ class CycleInfoContainer extends StatelessWidget {
         children: [
           Text(
             "   $title",
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color(0xff4F795B),
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
@@ -30,7 +30,7 @@ class CycleInfoContainer extends StatelessWidget {
           ),
           Text(
             info,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 fontFamily: "WorkSans"),

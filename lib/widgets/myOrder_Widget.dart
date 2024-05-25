@@ -34,12 +34,12 @@ class MyOrder_Widget extends StatelessWidget {
         child: Container(
           height: 110,
           width: 370,
-          padding: EdgeInsets.fromLTRB(5, 5, 30, 5),
+          padding: const EdgeInsets.fromLTRB(5, 5, 30, 5),
           decoration: BoxDecoration(
-              color: Color(0xffF1FCF3),
-              borderRadius: BorderRadius.horizontal(
+              color: const Color(0xffF1FCF3),
+              borderRadius: const BorderRadius.horizontal(
                   left: Radius.circular(10), right: Radius.circular(10)),
-              border: Border.all(color: Color(0xffB7D7BE))),
+              border: Border.all(color: const Color(0xffB7D7BE))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -57,14 +57,14 @@ class MyOrder_Widget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 40,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -73,11 +73,11 @@ class MyOrder_Widget extends StatelessWidget {
                           Text(
                             "Order $orderID",
                             maxLines: 1,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20, color: Color(0xff1A7431)),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -87,10 +87,10 @@ class MyOrder_Widget extends StatelessWidget {
                               'images/$iconToShow',
                               height: 16,
                             ),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Text(
                               orderState,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 21,
                                   color: Color(0xff1A7431),
                                   fontWeight: FontWeight.w500,
@@ -105,7 +105,7 @@ class MyOrder_Widget extends StatelessWidget {
                     ),
                   ],
                 ),
-                 ImageIcon(
+                 const ImageIcon(
                   AssetImage('images/IconForward.png'),
                   size: 15, // adjust size as needed
                 ),

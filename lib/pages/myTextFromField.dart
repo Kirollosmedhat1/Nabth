@@ -6,7 +6,7 @@ class myTextFromFiled extends StatelessWidget {
   final String? Function(String?)? validator;
   
 
-  myTextFromFiled({
+  const myTextFromFiled({
     super.key,
     required this.hintText,
     this.validator,
@@ -24,9 +24,9 @@ class myTextFromFiled extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: Colors.white,
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey,fontSize: 17,fontWeight: FontWeight.w500,fontFamily: "WorkSans"),
+          hintStyle: const TextStyle(color: Colors.grey,fontSize: 17,fontWeight: FontWeight.w500,fontFamily: "WorkSans"),
           filled: true,
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.red,
             ),

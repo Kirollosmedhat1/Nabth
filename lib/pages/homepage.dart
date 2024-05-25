@@ -1,27 +1,28 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:application5/controller/cont/cycleController.dart';
+import 'package:application5/controller/cont/authcontroller.dart';
 import 'package:application5/pages/agri_Tips.dart';
-import 'package:application5/pages/bottom_Bar.dart';
-import 'package:application5/widgets/myDrawer.dart';
+import 'package:application5/widgets/home_Container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatelessWidget {
-   final Function(int) onTabChanged; // Callback function
+  final AuthController controller = AuthController();
 
-  const HomePage({Key? key, required this.onTabChanged}) : super(key: key);
 
+  final ImagePicker _picker = ImagePicker();
+  final Function(int) onTabChanged; // Callback function
+   HomePage({Key? key, required this.onTabChanged}) : super(key: key);
   void changeSelectedIndex() {
-    // Call the callback function to change the selected index to 2
+    onTabChanged(1);
     onTabChanged(2);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Stack(
         children: [
           Positioned.fill(
@@ -42,9 +43,9 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 60),
                 // color: Colors.black,
                 child: RichText(
-                    text: TextSpan(children: [
+                    text: TextSpan(children:[
                   TextSpan(
-                    text: "HI, Camelia",
+                    text: controller.displayUsername.value,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 26,
@@ -76,7 +77,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            changeSelectedIndex();
+                            onTabChanged(2);
                           },
                           child: Container(
                             height: 45,
@@ -113,50 +114,220 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 30,
                         ),
-                        Container(
-                          height: 270,
-                          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                          margin: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: const Color(0xffEDEDED),
+                        HomeContainer(
+                          padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+                          widget: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.to(AgryCycle());
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "images/Icontips.png"),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    RichText(
+                                        text: TextSpan(
+                                            text: "Tips & Information",
+                                            style: TextStyle(
+                                              color: Color(0xff1B602D),
+                                              fontFamily: "WorkSans",
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              letterSpacing: -0.24,
+                                            ),
+                                            children: <TextSpan>[
+                                          TextSpan(
+                                            text:
+                                                "\nCultivating with expertise and \ndistinction.",
+                                            style: TextStyle(
+                                              color: Color(0xff4F795B),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ]))
+                                  ],
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(30),
-                              boxShadow: [
-                                const BoxShadow(
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    offset: Offset(0, 0),
-                                    color: Colors.black26)
-                              ]),
+                              Divider(
+                                color: Color(0xffF1FCF3),
+                                thickness: 2,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  onTabChanged(3);
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "images/IconcommunityHome.png"),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    RichText(
+                                        text: TextSpan(
+                                            text: "Community",
+                                            style: TextStyle(
+                                              color: Color(0xff1B602D),
+                                              fontFamily: "WorkSans",
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                              letterSpacing: -0.24,
+                                            ),
+                                            children: <TextSpan>[
+                                          TextSpan(
+                                            text:
+                                                "\nAsk questions and get support.",
+                                            style: TextStyle(
+                                              color: Color(0xff4F795B),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ]))
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                        Container(
-                          height: 191,
-                          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                          margin: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: const Color(0xffEDEDED),
-                              ),
-                              borderRadius: BorderRadius.circular(30),
-                              boxShadow: [
-                                const BoxShadow(
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    offset: Offset(0, 0),
-                                    color: Colors.black26)
-                              ]),
+                        InkWell(
+                          onTap: () {},
+                          child: HomeContainer(
+                              padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                              widget: Row(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      RichText(
+                                          text: TextSpan(
+                                              text: "Plant Life Cycle",
+                                              style: TextStyle(
+                                                color: Color(0xff1B602D),
+                                                fontFamily: "worksansbold",
+                                                fontSize: 28,
+                                                letterSpacing: -0.24,
+                                              ),
+                                              children: <TextSpan>[
+                                            TextSpan(
+                                              text:
+                                                  "\nTake step to start \nplanting.",
+                                              style: TextStyle(
+                                                fontFamily: "WorkSans",
+                                                color: Color(0xff4F795B),
+                                                fontSize: 24,
+                                              ),
+                                            ),
+                                          ])),
+                                      Container(
+                                        margin: EdgeInsets.only(left: 15),
+                                        height: 100,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  color: Colors.black12,
+                                                  spreadRadius: 2,
+                                                  blurRadius: 2,
+                                                  blurStyle: BlurStyle.normal,
+                                                  offset: Offset(0, 0))
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: Color(0xffF1FCF3),
+                                              width: 2,
+                                            ),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "images/gifCycle.gif"),
+                                                fit: BoxFit.cover)),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              )),
                         ),
                         InkWell(
                           onTap: () {
-                            Get.to(AgryCycle());
+                            onTabChanged(1);
                           },
-                          child: Container(
-                            height: 100,
-                            color: Colors.black,
-                          ),
+                          child: HomeContainer(
+                              padding: EdgeInsets.symmetric(horizontal: 25),
+                              widget: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RichText(
+                                      text: TextSpan(
+                                          text:
+                                              "Get 10% off\non your\nfirst order ",
+                                          style: TextStyle(
+                                            wordSpacing: -1,
+                                            color: Color(0xff1A7431),
+                                            fontFamily: "worksansbold",
+                                            fontSize: 28,
+                                            letterSpacing: -0.24,
+                                          ),
+                                          children: <TextSpan>[
+                                        TextSpan(
+                                          text: "\nAgriMarket",
+                                          style: TextStyle(
+                                            fontFamily: "WorkSans",
+                                            color: Color(0xff1E9B3D),
+                                            fontSize: 26,
+                                          ),
+                                        ),
+                                      ])),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 15),
+                                    height: 150,
+                                    width: 135,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.black12,
+                                              spreadRadius: 2,
+                                              blurRadius: 2,
+                                              blurStyle: BlurStyle.normal,
+                                              offset: Offset(0, 0))
+                                        ],
+                                        borderRadius: BorderRadius.circular(15),
+                                        border: Border.all(
+                                          color: Color(0xffF1FCF3),
+                                          width: 2,
+                                        ),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                "images/agriMarketOffer.png"),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                ],
+                              )),
+                        ),
+                        SizedBox(
+                          height: 70,
                         )
                       ],
                     ),
@@ -176,10 +347,13 @@ var googleSignIn = GoogleSignIn();
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
-  final Function()? onMenuPressed; // Callback to open drawer
-  // Add any other app bar properties you want to customize
+  final AuthController controller = AuthController();
 
-  CustomAppBar({required this.title, this.onMenuPressed});
+
+  final ImagePicker _picker = ImagePicker();
+  final Function()? onMenuPressed;
+
+   CustomAppBar({required this.title, this.onMenuPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -196,7 +370,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: onMenuPressed,
       ),
       actions: [
-        CircleAvatar(),
+        Obx(() => CircleAvatar(
+                            backgroundImage: controller
+                                    .displayUserPhoto.value.isNotEmpty
+                                ? NetworkImage(
+                                    controller.displayUserPhoto.value)
+                                : const NetworkImage(
+                                    "https://firebasestorage.googleapis.com/v0/b/application5-3bcfb.appspot.com/o/profile_images%2F2024-04-27%2021%3A38%3A28.619365.jpg?alt=media&token=38a95ecd-be26-4306-b3af-97d73fcedcbf")),
+                      ),
         Container(
           width: 20,
         )

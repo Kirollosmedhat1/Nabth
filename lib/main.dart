@@ -12,7 +12,6 @@ import 'package:application5/pages/checkout.dart';
 import 'package:application5/pages/community.dart';
 import 'package:application5/pages/communtiy.dart';
 import 'package:application5/pages/empty_cart.dart';
-import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
 import 'package:application5/pages/onboarding.dart';
 import 'package:application5/pages/scan.dart';
@@ -20,13 +19,10 @@ import 'package:application5/pages/signup.dart';
 import 'package:application5/pages/splashscreen.dart';
 import 'package:application5/pages/store.dart';
 import 'package:application5/pages/success_page.dart';
-import 'package:application5/pages/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +32,7 @@ Future<void> main() async {
           apiKey: "AIzaSyDPVSJbwS4GpdmC1nsYDdT7Puv71DQs5Rw",
           appId: "1:1028160968707:android:af85f262e79b630bb39636",
           messagingSenderId: "1028160968707",
+          storageBucket: "application5-3bcfb.appspot.com",
           projectId: "application5-3bcfb")
           );
   runApp(const MyApp());

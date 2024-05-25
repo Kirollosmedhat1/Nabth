@@ -11,7 +11,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -238,7 +237,7 @@ class _LoginState extends State<LoginPage> {
                         Container(
                           height: 50,
                         ),
-                        Row(children: [
+                        Row(children: const [
                           Expanded(
                               child: Divider(
                             thickness: 1.5,

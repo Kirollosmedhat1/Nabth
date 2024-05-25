@@ -7,14 +7,14 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: InkWell(
               child: Image.asset(
                 "images/back.png",
                 height: 5,
               ),
             )),
-        title: Column(
+        title: const Column(
           mainAxisAlignment:
               MainAxisAlignment.center, // Adjust alignment as needed
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,15 +45,15 @@ class ChatPage extends StatelessWidget {
             child: Container(
               height: 700,
               width: 600,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/imagesss.jpg'), // Background image
                   fit: BoxFit.cover,
                 ),
               ),
               child: ListView(
-                padding: EdgeInsets.all(20),
-                children: [
+                padding: const EdgeInsets.all(20),
+                children: const [
                   cont_chat(
                       Image: "cCCc.png",
                       text1:
@@ -71,7 +71,7 @@ class ChatPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -85,13 +85,13 @@ class ChatPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 InkWell(
                     child: Image.asset(
                   "images/Vector.png",
                   color: Colors.grey,
                 )),
-                SizedBox(
+                const SizedBox(
                   width: 2,
                 ),
                 InkWell(
@@ -124,28 +124,28 @@ class ChatBubble extends StatelessWidget {
       mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
         if (!isMe) ...[
-          CircleAvatar(
+          const CircleAvatar(
             // User avatar for messages from others
             backgroundColor: Colors.blue,
             child: Icon(Icons.person),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
         ],
         Expanded(
           child: Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: isMe ? Colors.grey.shade200 : Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-                bottomLeft: isMe ? Radius.circular(20) : Radius.zero,
-                bottomRight: !isMe ? Radius.circular(20) : Radius.zero,
+                topLeft: const Radius.circular(20),
+                topRight: const Radius.circular(20),
+                bottomLeft: isMe ? const Radius.circular(20) : Radius.zero,
+                bottomRight: !isMe ? const Radius.circular(20) : Radius.zero,
               ),
             ),
             child: Text(
               text,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ),

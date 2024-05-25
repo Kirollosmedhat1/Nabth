@@ -1,31 +1,27 @@
+// ignore_for_file: camel_case_types, file_names
 
-import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/2orders.dart';
+import 'package:application5/controller/cont/authcontroller.dart';
 import 'package:application5/pages/MyOrderss.dart';
-import 'package:application5/pages/success_page.dart';
+import 'package:application5/pages/editprofile_Page.dart';
+import 'package:application5/pages/favourites_Page.dart';
 import 'package:application5/widgets/myACCRow.dart';
+import 'package:application5/widgets/myDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-class Porfile_Page2 extends StatefulWidget {
-  Porfile_Page2({super.key});
-  
-
-
-  @override
-  State<Porfile_Page2> createState() => _Porfile_PageState();
-}
-
-class _Porfile_PageState extends State<Porfile_Page2> {
-  int _selectedIndex = 0;
-  final CartController _cartController = Get.put(CartController());
+class Porfile_Page2 extends StatelessWidget {
+  final AuthController controller = AuthController();
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF1FCF3),
+      appBar: AppBar(backgroundColor: const Color(0xffF1FCF3),),
+      drawer: const Mydrawer(),
+      backgroundColor: const Color(0xffF1FCF3),
       body: Container(
-        padding: EdgeInsets.fromLTRB(0, 120, 0, 0),
+        padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
         child: Stack(
             clipBehavior: Clip.none,
             alignment: AlignmentDirectional.center,
@@ -33,7 +29,7 @@ class _Porfile_PageState extends State<Porfile_Page2> {
               Container(
                 height: 800,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
@@ -48,21 +44,27 @@ class _Porfile_PageState extends State<Porfile_Page2> {
                     Container(
                       height: 120,
                       width: 120,
-                      child: CircleAvatar(
-                        radius: 50,
-                        backgroundImage: AssetImage("images/user.png"),
+                      child: 
+                      Obx(() => CircleAvatar(
+                            radius: 50,
+                            backgroundImage: controller
+                                    .displayUserPhoto.value.isNotEmpty
+                                ? NetworkImage(
+                                    controller.displayUserPhoto.value)
+                                : const NetworkImage(
+                                    "https://firebasestorage.googleapis.com/v0/b/application5-3bcfb.appspot.com/o/profile_images%2F2024-04-27%2021%3A38%3A28.619365.jpg?alt=media&token=38a95ecd-be26-4306-b3af-97d73fcedcbf")),
                       ),
                     ),
-                    SizedBox(height: 13),
+                    const SizedBox(height: 13),
                     Text(
-                      "Camelia Waheeb",
-                      style: TextStyle(
+                      controller.displayUsername.value,
+                      style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF1A7431)),
                     ),
                     Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                     ),
                   ],
                 ),
@@ -72,54 +74,43 @@ class _Porfile_PageState extends State<Porfile_Page2> {
                 left: -15,
                 right: 0,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         MyACCrow(
-                            iconImage: "images/favourites.png",
-                            title: "Favourites"),
-                        SizedBox(height: 9),
-                        Divider(
+                          iconImage: "images/IconEditProfile.png",
+                          title: "Edit Profile",
+                          onTap: () {
+                            Get.to(()=>EditProfilePage());
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        const Divider(
                           color: Color.fromARGB(255, 163, 204, 166),
                         ),
-                        SizedBox(height: 9),
+                        const SizedBox(height: 10),
                         MyACCrow(
-                          iconImage: "images/myorder.png",
+                          iconImage: "images/IconFavourites.png",
+                          title: "Favourites",
+                          onTap: () {
+                            Get.to(() => const FavouritesPage());
+                          },
+                        ),
+                        const SizedBox(height: 10),
+                        const Divider(
+                          color: Color.fromARGB(255, 163, 204, 166),
+                        ),
+                        const SizedBox(height: 10),
+                        MyACCrow(
+                          iconImage: "images/IconOrders.png",
                           title: "My Orders",
-                          onPressed: () {
-                           
-                            Get.to(MyOrderss());
+                          onTap: () {
+                            Get.to(()=>MyOrderss());
                           },
                         ),
-                        Divider(
-                          color: Color.fromARGB(255, 163, 204, 166),
-                        ),
-                        SizedBox(height: 9),
-                        MyACCrow(
-                          iconImage: "images/payment.png",
-                          title: "Payment Method",
-                          onPressed: () {
-                            Get.off(PaymentSuccessPage());
-                          },
-                        ),
-                        SizedBox(height: 9),
-                        Divider(
-                          color: Color.fromARGB(255, 163, 204, 166),
-                        ),
-                        SizedBox(height: 9),
-                        MyACCrow(
-                            iconImage: "images/support.png",
-                            title: "Help & Support"),
-                        SizedBox(height: 9),
-                        Divider(
-                          color: Color.fromARGB(255, 163, 204, 166),
-                        ),
-                        SizedBox(height: 9),
-                        MyACCrow(
-                            iconImage: "images/about.png", title: "About App"),
                       ],
                     ),
                   ),

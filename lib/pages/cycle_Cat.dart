@@ -1,14 +1,11 @@
 import 'package:application5/controller/cont/cycleController.dart';
-import 'package:application5/pages/cart_page.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/login.dart';
 import 'package:application5/widgets/cycleItemWidget.dart';
 import 'package:application5/widgets/heading_with_back.dart';
 import 'package:application5/widgets/myDrawer.dart';
-import 'package:application5/widgets/productsItem.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:application5/controller/cont/product_controller.dart';
 import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -21,7 +18,7 @@ class CategoryPage extends StatelessWidget {
     try {
       await auth.signOut();
       await googleSignIn.signOut();
-      Get.off(LoginPage());
+      Get.off(const LoginPage());
       // Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
     } catch (error) {}
   }
@@ -50,14 +47,14 @@ class CategoryPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Mydrawer(),
+      drawer: const Mydrawer(),
       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         domeHeight: 25,
         onTabChange: (Index) {},
-        borderColor: Color(0xff1E9B3D),
+        borderColor: const Color(0xff1E9B3D),
         barColor: Colors.white,
-        domeCircleColor: Color(0xffCAEDCF),
+        domeCircleColor: const Color(0xffCAEDCF),
         tabs: [
           MoltenTab(
             icon: Image.asset(
@@ -65,8 +62,8 @@ class CategoryPage extends StatelessWidget {
                   ? 'images/home-selected.png'
                   : 'images/home.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'home',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -77,8 +74,8 @@ class CategoryPage extends StatelessWidget {
                   ? 'images/store-selected.png'
                   : 'images/store.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'AgriMarket',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -89,8 +86,8 @@ class CategoryPage extends StatelessWidget {
                   ? 'images/scan-selected.png'
                   : 'images/scan.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Scan',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -101,8 +98,8 @@ class CategoryPage extends StatelessWidget {
                   ? 'images/community-selected.png'
                   : 'images/community.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Community',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -113,8 +110,8 @@ class CategoryPage extends StatelessWidget {
                   ? 'images/profile-selected.png'
                   : 'images/profile.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Account',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -122,18 +119,18 @@ class CategoryPage extends StatelessWidget {
         ],
       ),
       appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
+        backgroundColor: const Color(0xffF1FCF3),
       ),
       body: Container(
-        color: Color(0xffF1FCF3),
+        color: const Color(0xffF1FCF3),
         child: Column(
           children: [
             HeadingWithBack(title: category, fontFamily: "WorkSans"),
             Expanded(
               child: Container(
-                  padding: EdgeInsets.all(15),
-                  margin: EdgeInsets.only(top: 40),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.all(15),
+                  margin: const EdgeInsets.only(top: 40),
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
@@ -141,11 +138,11 @@ class CategoryPage extends StatelessWidget {
                   ),
                   child: ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: categoryList.length,
                       itemBuilder: (constex, i) {
                         return Stack(
-                          alignment: Alignment(0.94, 0.88),
+                          alignment: const Alignment(0.94, 0.88),
                           children: [
                             CycleItemWidget(
                               image: "${categoryList[i]["img"]}",

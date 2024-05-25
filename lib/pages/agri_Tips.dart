@@ -1,8 +1,6 @@
 import 'package:application5/controller/cont/cycleController.dart';
 import 'package:application5/pages/cycle_Cat.dart';
-import 'package:application5/pages/cycle_Item_Info.dart';
 import 'package:application5/widgets/cycleCatWidget.dart';
-import 'package:application5/widgets/cycleItemWidget.dart';
 import 'package:application5/widgets/heading_with_back.dart';
 import 'package:application5/widgets/myDrawer.dart';
 import 'package:application5/widgets/topArticlesWidget.dart';
@@ -30,7 +28,7 @@ class AgryCycle extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HeadingWithBack(title: "AgriTips", fontFamily: "WorkSans"),
+              const HeadingWithBack(title: "AgriTips", fontFamily: "WorkSans"),
               Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,
@@ -104,8 +102,8 @@ class AgryCycle extends StatelessWidget {
                             color: const Color(0xffEDEDED),
                           ),
                           borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                                 spreadRadius: 1,
                                 blurRadius: 5,
                                 offset: Offset(0, 0),

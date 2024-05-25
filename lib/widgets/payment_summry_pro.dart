@@ -16,7 +16,7 @@ class PaymentSummaryPro extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "Payment Summary",
           style: TextStyle(
             fontSize: 20,
@@ -24,25 +24,25 @@ class PaymentSummaryPro extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Order Total",
               style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
             ),
             Obx(() => Text(
                   '${cartController.total.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 14, color: Color(0xff1B602D)),
+                  style: const TextStyle(fontSize: 14, color: Color(0xff1B602D)),
                 )),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Coupon Discount",
               style: TextStyle(
                 fontSize: 14,
@@ -54,7 +54,7 @@ class PaymentSummaryPro extends StatelessWidget {
               bool couponApplied = cartController.couponApplied.value;
               return Text(
                  couponApplied? "-${cartController.Discount.value.toStringAsFixed(2)}":"0.00" ,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   color: Color(0xff1B602D),
                   fontWeight: FontWeight.w400,
@@ -63,12 +63,12 @@ class PaymentSummaryPro extends StatelessWidget {
             }),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           decoration: BoxDecoration(
               border: Border.all(
-                color: Color(0xFFB7D7BE),
+                color: const Color(0xFFB7D7BE),
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(15)),
@@ -77,7 +77,7 @@ class PaymentSummaryPro extends StatelessWidget {
               Expanded(
                 child: TextFormField(
                   controller: couponController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: "Enter coupon code",
                     hintStyle: TextStyle(
                       fontSize: 13,
@@ -110,7 +110,7 @@ class PaymentSummaryPro extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: couponApplied
                           ? const Color.fromARGB(255, 205, 39, 39)
-                          : Color(0xff1A7431),
+                          : const Color(0xff1A7431),
                     ),
                   ),
                 );
@@ -119,8 +119,8 @@ class PaymentSummaryPro extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10),
-        Row(
+        const SizedBox(height: 10),
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -142,16 +142,16 @@ class PaymentSummaryPro extends StatelessWidget {
             ),
           ],
         ),
-        Divider(
+        const Divider(
           color: Color(0xffB7D7BE),
           height: 30,
           indent: 1,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               "Total",
               style: TextStyle(
                 fontSize: 18,
@@ -161,7 +161,7 @@ class PaymentSummaryPro extends StatelessWidget {
             ),
             Obx(() => Text(
                   "EGP: ${cartController.total.value.toStringAsFixed(2)}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Color(0xff1B602D),
                     fontWeight: FontWeight.bold,
@@ -169,13 +169,13 @@ class PaymentSummaryPro extends StatelessWidget {
                 )),
           ],
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Center(
           child: MyButton(
             lable: "Continue",
             onPressed: () {
               
-              Get.to(checkout());
+              Get.to(const checkout());
               
             },
           ),

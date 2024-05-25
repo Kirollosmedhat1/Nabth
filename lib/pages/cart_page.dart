@@ -29,7 +29,7 @@ class CartPage extends StatelessWidget {
             height: 20,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Cart',
           style: TextStyle(
             color: Color(0xff1B602D),
@@ -42,11 +42,11 @@ class CartPage extends StatelessWidget {
         selectedIndex: _selectedIndex,
         domeHeight: 25,
         onTabChange: (index) {
-          Get.to(BottomBar(selectedIndex: 1));
+          Get.to(const BottomBar(selectedIndex: 1));
         },
-        borderColor: Color(0xff1E9B3D),
+        borderColor: const Color(0xff1E9B3D),
         barColor: Colors.white,
-        domeCircleColor: Color(0xffCAEDCF),
+        domeCircleColor: const Color(0xffCAEDCF),
         tabs: [
           MoltenTab(
             icon: Image.asset(
@@ -54,8 +54,8 @@ class CartPage extends StatelessWidget {
                   ? 'images/home-selected.png'
                   : 'images/home.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'home',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -67,8 +67,8 @@ class CartPage extends StatelessWidget {
                   ? 'images/store-selected.png'
                   : 'images/store.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'AgriMarket',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -79,8 +79,8 @@ class CartPage extends StatelessWidget {
                   ? 'images/scan-selected.png'
                   : 'images/scan.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Scan',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -91,8 +91,8 @@ class CartPage extends StatelessWidget {
                   ? 'images/community-selected.png'
                   : 'images/community.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Community',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -103,8 +103,8 @@ class CartPage extends StatelessWidget {
                   ? 'images/profile-selected.png'
                   : 'images/profile.png',
             ),
-            selectedColor: Color(0xff1E9B3D),
-            title: Text(
+            selectedColor: const Color(0xff1E9B3D),
+            title: const Text(
               'Account',
               style: TextStyle(color: Color(0xff1E9B3D)),
             ),
@@ -112,7 +112,7 @@ class CartPage extends StatelessWidget {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+        padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
         child: Column(
           children: [
             Expanded(
@@ -126,13 +126,13 @@ class CartPage extends StatelessWidget {
                     return Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.fromLTRB(18, 0, 18, 10),
+                          margin: const EdgeInsets.fromLTRB(18, 0, 18, 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                  "${cartController.totalQuantity.value} Items in your cart",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xff1B602D),
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -142,7 +142,7 @@ class CartPage extends StatelessWidget {
                                 onTap: () {
                                   Get.off(BottomBar(selectedIndex: _selectedIndex = 1));
                                 },
-                                child: Row(
+                                child: const Row(
                                   children: [
                                     Icon(Icons.add),
                                     Text("Add more",
@@ -169,7 +169,7 @@ class CartPage extends StatelessWidget {
                                     .toList()[index],
                               );
                             },
-                            separatorBuilder: (context, index) => SizedBox(
+                            separatorBuilder: (context, index) => const SizedBox(
                               height: 20,
                             ),
                             itemCount: cartController.productMap.length,

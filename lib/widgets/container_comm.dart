@@ -22,10 +22,10 @@ class _container_commState extends State<container_comm> {
       width: 160,
       height: 200,
       decoration: BoxDecoration(
-        color: Color(0xffF1FCF3),
-        border: Border.all(color: Color(0xffB7D7BE)),
+        color: const Color(0xffF1FCF3),
+        border: Border.all(color: const Color(0xffB7D7BE)),
         borderRadius: BorderRadius.circular(10)),
-      margin: EdgeInsets.only(left: 25,top: 25),
+      margin: const EdgeInsets.only(left: 25,top: 25),
       child: Column(
         children: [
           Column(
@@ -36,7 +36,7 @@ class _container_commState extends State<container_comm> {
                 fit: BoxFit.fill,
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(4, 7, 4, 0),
+                padding: const EdgeInsets.fromLTRB(4, 7, 4, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -44,14 +44,14 @@ class _container_commState extends State<container_comm> {
                       "${widget.text1}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Color(0xff4F795B),
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         fontFamily: "WorkSans",
                       ),
                     ),
-                    SizedBox(height: 3),
+                    const SizedBox(height: 3),
                     Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -63,11 +63,11 @@ class _container_commState extends State<container_comm> {
                       width: 15,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   Text("${widget.text2}",
-                  style: TextStyle(
+                  style: const TextStyle(
                   color: Color(0xff67717A),
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
@@ -76,10 +76,10 @@ class _container_commState extends State<container_comm> {
                   ),
                 ],
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Row(
                 children: [
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                   InkWell(
                     onTap: () {
                       
@@ -89,7 +89,7 @@ class _container_commState extends State<container_comm> {
                       width: 64,
                       height: 15,
                       child: 
-                       Center(
+                       const Center(
                          child: Text(
                           "Join Now",
                          style: TextStyle(

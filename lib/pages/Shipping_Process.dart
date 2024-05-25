@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 
 class Shipping_Process extends StatefulWidget {
-  Shipping_Process({super.key});
+  const Shipping_Process({super.key});
 
   @override
   State<Shipping_Process> createState() => _Shipping_ProcessState();
@@ -25,7 +25,7 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
                   "images/back.png",
                   height: 15,
                 )) ,
-        title: Text(
+        title: const Text(
               "Shipping Process ",
               style: TextStyle(
                   color: Color(0xff1A7431),
@@ -35,10 +35,10 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
           
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 Text(
                   "Reciept",
@@ -59,7 +59,7 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
                 ),
               ],
             ),
-            Divider(
+            const Divider(
               color: Color(0xffB7D7BE),
               height: 30,
               indent: 1,
@@ -72,19 +72,19 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
                 //   num3: 80,
                 //   num4: 80,
                 // ),
-                Divider(
+                const Divider(
                   color: Color(0xff1B602D),
                   height: 30,
                   endIndent: 1,
                   indent: 5,
                 ),
-                Ship2_Edit(
+                const Ship2_Edit(
                     text1: "April 26,2024|10:00AM",
                     text2: "Credit Card",
                     text3: 'Paid ',
                     text4: '#MNFG3435tss4',
                     text5: 'April 30,2024|9:00PM'),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(

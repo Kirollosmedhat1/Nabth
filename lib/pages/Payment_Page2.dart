@@ -150,7 +150,7 @@ class _PaymentPageState extends State<PaymentPage2> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
-                      children: [
+                      children: const [
                         Text(
                           "Add new Card",
                           style:
@@ -259,7 +259,7 @@ class _PaymentPageState extends State<PaymentPage2> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
+                            children: const [
                               Text(
                                 "More Payment options",
                                 style: TextStyle(

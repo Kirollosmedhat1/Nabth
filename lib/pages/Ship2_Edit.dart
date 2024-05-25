@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Ship2_Edit extends StatefulWidget {
   
 
-  Ship2_Edit({
+  const Ship2_Edit({
     super.key,
     required this.text1,
     required this.text2,

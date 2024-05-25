@@ -5,19 +5,19 @@ class MyACCrow extends StatelessWidget {
       {super.key,
       required this.iconImage,
       required this.title,
-      this.onPressed});
+      this.onTap});
   final String iconImage;
   final String title;
-  final void Function()? onPressed;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CircleAvatar(
-            radius: 25,
+            radius: 27,
             backgroundColor: const Color(0xffCAEDCF),
             child: ColorFiltered(
               colorFilter: const ColorFilter.mode(
@@ -38,19 +38,14 @@ class MyACCrow extends StatelessWidget {
             child: Text(
               title,
               style: const TextStyle(
-                color: Color(0xff1E9B3D),
+                color: Color(0xff1A7431),
                 fontSize: 16,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
           const SizedBox(width: 5),
-          Container(
-            height: 30,
-            width: 30,
-            decoration: const BoxDecoration(
-                image: const DecorationImage(image: AssetImage("images/arrow.png"))),
-          ),
+          Icon(Icons.arrow_forward_ios,color: Color(0xff1E9B3D),size: 25,),
         ],
       ),
     );

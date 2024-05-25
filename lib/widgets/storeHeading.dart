@@ -13,7 +13,7 @@ class Storeheading extends StatelessWidget {
             child: Text(
               heading,
               style: GoogleFonts.workSans(
-                color: Color(0xff1A7431),
+                color: const Color(0xff1A7431),
                 fontSize: 25,
                 letterSpacing: -0.24,
                 fontWeight: FontWeight.w600,
