@@ -1,6 +1,6 @@
 import 'package:application5/controller/cont/cycleController.dart';
 // import 'package:application5/pages/cycle_Item_Info.dart';
-import 'package:application5/pages/topArticle_Item.dart';
+import 'package:application5/pages/cycle&tips/topArticle_Item.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

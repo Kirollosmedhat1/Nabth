@@ -1,6 +1,6 @@
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/Shipping_Process.dart';
-import 'package:application5/pages/orderData.dart';
+import 'package:application5/pages/agriMarket/Shipping_Process.dart';
+import 'package:application5/pages/agriMarket/orderData.dart';
 import 'package:application5/widgets/heading_with_back.dart';
 import 'package:application5/widgets/myDrawer.dart';
 import 'package:application5/widgets/myOrder_Widget.dart';

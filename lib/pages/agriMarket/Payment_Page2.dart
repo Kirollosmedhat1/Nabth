@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/success_page.dart';
+import 'package:application5/pages/agriMarket/success_page.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';

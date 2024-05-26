@@ -1,4 +1,4 @@
-import 'package:application5/pages/cycle_Item_Info.dart';
+import 'package:application5/pages/cycle&tips/cycle_Item_Info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

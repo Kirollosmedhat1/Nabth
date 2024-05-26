@@ -1,6 +1,6 @@
-import 'package:application5/pages/Ship2_Edit.dart';
+import 'package:application5/widgets/Ship2_Edit.dart';
 import 'package:application5/widgets/payment_summry_pro.dart';
-import 'package:application5/pages/ship3_image.dart';
+import 'package:application5/widgets/ship3_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,24 +1,23 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/2orders.dart';
-import 'package:application5/pages/MyOrderss.dart';
-import 'package:application5/pages/Payment_Page.dart';
-import 'package:application5/pages/Payment_Page2.dart';
+import 'package:application5/pages/agriMarket/MyOrderss.dart';
+import 'package:application5/pages/agriMarket/Payment_Page.dart';
+import 'package:application5/pages/agriMarket/Payment_Page2.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
-import 'package:application5/pages/Shipping_Process.dart';
-import 'package:application5/pages/cart_page.dart';
+import 'package:application5/pages/agriMarket/Shipping_Process.dart';
+import 'package:application5/pages/agriMarket/cart_page.dart';
 import 'package:application5/pages/chat_page.dart';
-import 'package:application5/pages/checkout.dart';
-import 'package:application5/pages/community.dart';
-import 'package:application5/pages/communtiy.dart';
-import 'package:application5/pages/empty_cart.dart';
+import 'package:application5/pages/agriMarket/checkout.dart';
+import 'package:application5/pages/community/community.dart';
+import 'package:application5/pages/community/communtiy.dart';
+import 'package:application5/pages/agriMarket/empty_cart.dart';
 import 'package:application5/pages/login.dart';
 import 'package:application5/pages/onboarding.dart';
 import 'package:application5/pages/scan.dart';
 import 'package:application5/pages/signup.dart';
 import 'package:application5/pages/splashscreen.dart';
-import 'package:application5/pages/store.dart';
-import 'package:application5/pages/success_page.dart';
+import 'package:application5/pages/agriMarket/store.dart';
+import 'package:application5/pages/agriMarket/success_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +84,6 @@ class _MyAppState extends State<MyApp> {
           "Empty_Cart":(context)=>Empty_Cart(),
           "communtiy":(context) => Communtiy(),
           "ChatPage":(context) => ChatPage(),
-          "OrdersPage":(context) =>OrdersPage(),
           "myorders":(context) =>MyOrderss(),
       },
       initialBinding: BindingsBuilder(() {

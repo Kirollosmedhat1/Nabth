@@ -8,7 +8,7 @@ import 'package:application5/widgets/store_Appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:application5/controller/cont/product_controller.dart';
-import 'package:application5/pages/category_page.dart';
+import 'package:application5/pages/agriMarket/storeCategory_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Store extends StatelessWidget {

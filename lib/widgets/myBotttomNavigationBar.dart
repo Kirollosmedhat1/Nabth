@@ -35,7 +35,7 @@ class MyBottomNavigationBar extends StatelessWidget {
           selectedColor: Color(0xff1E9B3D),
           title: Text(
             'home',
-            style: TextStyle(color: Color(0xff1E9B3D)),
+            style: TextStyle(color: Color(0xff184F27)),
           ),
         ),
         MoltenTab(
@@ -51,7 +51,7 @@ class MyBottomNavigationBar extends StatelessWidget {
           selectedColor: Color(0xff1E9B3D),
           title: Text(
             'AgriMarket',
-            style: TextStyle(color: Color(0xff1E9B3D)),
+            style: TextStyle(color: Color(0xff184F27)),
           ),
         ),
         MoltenTab(
@@ -67,7 +67,7 @@ class MyBottomNavigationBar extends StatelessWidget {
           selectedColor: Color(0xff1E9B3D),
           title: Text(
             'Scan',
-            style: TextStyle(color: Color(0xff1E9B3D)),
+            style: TextStyle(color: Color(0xff184F27)),
           ),
         ),
         MoltenTab(
@@ -83,7 +83,7 @@ class MyBottomNavigationBar extends StatelessWidget {
           selectedColor: Color(0xff1E9B3D),
           title: Text(
             'Community',
-            style: TextStyle(color: Color(0xff1E9B3D)),
+            style: TextStyle(color: Color(0xff184F27)),
           ),
         ),
         MoltenTab(

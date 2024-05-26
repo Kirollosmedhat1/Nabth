@@ -1,5 +1,4 @@
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/code';
 import 'package:application5/widgets/heading_with_back.dart';
 import 'package:application5/widgets/payment_summry_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +15,7 @@ class Orderdata extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> items = orderData['products'];
     DateTime orderDateTime = (orderData['timestamp'] as Timestamp).toDate();
+    
 
     return Scaffold(
       body: Column(
@@ -141,7 +141,7 @@ class Orderdata extends StatelessWidget {
                   children: items.map<Widget>((item) {
                     return ListTile(
                       title: Text(
-                        '$item', // Adjust the format as needed
+                        '${item["name"]}', // Adjust the format as needed
                         style: const TextStyle(color: Colors.black),
                       ),
                     );

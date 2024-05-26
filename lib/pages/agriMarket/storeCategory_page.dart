@@ -25,7 +25,7 @@ class CategoryPage extends StatelessWidget {
       // Navigator.of(context).pushNamedAndRemoveUntil("login", (route) => false);
     } catch (error) {}
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     List<dynamic> categoryList = [];
@@ -46,76 +46,6 @@ class CategoryPage extends StatelessWidget {
 
     return Scaffold(
       drawer: const Mydrawer(),
-      bottomNavigationBar: MoltenBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        domeHeight: 25,
-        onTabChange: (Index) {},
-        borderColor: const Color(0xff1E9B3D),
-        barColor: Colors.white,
-        domeCircleColor: const Color(0xffCAEDCF),
-        tabs: [
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 0
-                  ? 'images/home-selected.png'
-                  : 'images/home.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'home',
-              style: TextStyle(color: const Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 1
-                  ? 'images/store-selected.png'
-                  : 'images/store.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'AgriMarket',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 2
-                  ? 'images/scan-selected.png'
-                  : 'images/scan.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Scan',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 3
-                  ? 'images/community-selected.png'
-                  : 'images/community.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Community',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 4
-                  ? 'images/profile-selected.png'
-                  : 'images/profile.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Account',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-        ],
-      ),
       appBar: StoreAppbar(),
       body: Container(
         color: const Color(0xffF1FCF3),

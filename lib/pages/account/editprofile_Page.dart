@@ -11,7 +11,7 @@ class EditProfilePage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  final AuthController controller = AuthController();
+  final AuthController controller = Get.put(AuthController());
 
 
   final ImagePicker _picker = ImagePicker();

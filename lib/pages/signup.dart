@@ -8,11 +8,8 @@ import 'package:application5/widgets/myCircleButton.dart';
 import 'package:application5/widgets/myHeading.dart';
 import 'package:application5/widgets/myTextField.dart';
 import 'package:application5/widgets/myTextFieldLable.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignUp extends StatefulWidget {
@@ -45,6 +42,7 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  // ignore: unused_element
   void _getImageOptions() {
     showModalBottomSheet(
       context: Get.context!,

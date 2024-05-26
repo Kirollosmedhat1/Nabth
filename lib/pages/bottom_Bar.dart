@@ -3,10 +3,10 @@
 
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
-import 'package:application5/pages/communtiy.dart';
+import 'package:application5/pages/community/communtiy.dart';
 import 'package:application5/pages/homepage.dart';
 import 'package:application5/pages/scan.dart';
-import 'package:application5/pages/store.dart';
+import 'package:application5/pages/agriMarket/store.dart';
 import 'package:application5/widgets/myBotttomNavigationBar.dart';
 import 'package:application5/widgets/myDrawer.dart';
 import 'package:flutter/material.dart';

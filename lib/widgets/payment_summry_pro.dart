@@ -1,6 +1,6 @@
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/checkout.dart';
-import 'package:application5/pages/success_page.dart';
+import 'package:application5/pages/agriMarket/checkout.dart';
+import 'package:application5/pages/agriMarket/success_page.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

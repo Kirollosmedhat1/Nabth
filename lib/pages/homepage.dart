@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:application5/controller/cont/authcontroller.dart';
-import 'package:application5/pages/agri_Tips.dart';
+import 'package:application5/pages/cycle&tips/agri_Tips.dart';
 import 'package:application5/widgets/home_Container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 
 class HomePage extends StatelessWidget {
-  final AuthController controller = AuthController();
+  final AuthController controller = Get.put(AuthController());
 
 
   final ImagePicker _picker = ImagePicker();
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   Scaffold.of(context).openDrawer();
                 },
               ),
-              Container(
+              Obx(()=>Container(
                 padding: EdgeInsets.symmetric(horizontal: 60),
                 // color: Colors.black,
                 child: RichText(
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   )
                 ])),
-              ),
+              ),),
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
@@ -347,7 +347,7 @@ var googleSignIn = GoogleSignIn();
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
-  final AuthController controller = AuthController();
+  final AuthController controller = Get.put(AuthController());
 
 
   final ImagePicker _picker = ImagePicker();

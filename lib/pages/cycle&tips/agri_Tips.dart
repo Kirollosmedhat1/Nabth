@@ -1,5 +1,5 @@
 import 'package:application5/controller/cont/cycleController.dart';
-import 'package:application5/pages/cycle_Cat.dart';
+import 'package:application5/pages/cycle&tips/cycle_Cat.dart';
 import 'package:application5/widgets/cycleCatWidget.dart';
 import 'package:application5/widgets/heading_with_back.dart';
 import 'package:application5/widgets/myDrawer.dart';

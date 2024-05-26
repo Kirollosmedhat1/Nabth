@@ -1,7 +1,7 @@
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/bottom_Bar.dart';
-import 'package:application5/pages/checkout.dart';
-import 'package:application5/pages/empty_cart.dart';
+import 'package:application5/pages/agriMarket/checkout.dart';
+import 'package:application5/pages/agriMarket/empty_cart.dart';
 import 'package:application5/widgets/cart_widget.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:application5/widgets/payment_summry_pro.dart';
@@ -37,79 +37,6 @@ class CartPage extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-      ),
-      bottomNavigationBar: MoltenBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        domeHeight: 25,
-        onTabChange: (index) {
-          Get.to(const BottomBar(selectedIndex: 1));
-        },
-        borderColor: const Color(0xff1E9B3D),
-        barColor: Colors.white,
-        domeCircleColor: const Color(0xffCAEDCF),
-        tabs: [
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 0
-                  ? 'images/home-selected.png'
-                  : 'images/home.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'home',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-            
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 1
-                  ? 'images/store-selected.png'
-                  : 'images/store.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'AgriMarket',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 2
-                  ? 'images/scan-selected.png'
-                  : 'images/scan.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Scan',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 3
-                  ? 'images/community-selected.png'
-                  : 'images/community.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Community',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 4
-                  ? 'images/profile-selected.png'
-                  : 'images/profile.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Account',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-        ],
       ),
       body: Container(
         padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),

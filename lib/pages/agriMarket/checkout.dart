@@ -1,5 +1,5 @@
-import 'package:application5/pages/Payment_Page2.dart';
-import 'package:application5/pages/myTextFromField.dart';
+import 'package:application5/pages/agriMarket/Payment_Page2.dart';
+import 'package:application5/widgets/myTextFromField.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,76 +22,6 @@ class _checkoutState extends State<checkout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       bottomNavigationBar: MoltenBottomNavigationBar(
-        selectedIndex: _selectedIndex,
-        domeHeight: 25,
-        onTabChange: (index) {},
-        borderColor: const Color(0xff1E9B3D),
-        barColor: Colors.white,
-        domeCircleColor: const Color(0xffCAEDCF),
-        tabs: [
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 0
-                  ? 'images/home-selected.png'
-                  : 'images/home.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'home',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 1
-                  ? 'images/store-selected.png'
-                  : 'images/store.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'AgriMarket',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 2
-                  ? 'images/scan-selected.png'
-                  : 'images/scan.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Scan',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 3
-                  ? 'images/community-selected.png'
-                  : 'images/community.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Community',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-          MoltenTab(
-            icon: Image.asset(
-              _selectedIndex == 4
-                  ? 'images/profile-selected.png'
-                  : 'images/profile.png',
-            ),
-            selectedColor: const Color(0xff1E9B3D),
-            title: const Text(
-              'Account',
-              style: TextStyle(color: Color(0xff1E9B3D)),
-            ),
-          ),
-        ],
-      ),
       body: ListView(
         children: [
           Form(

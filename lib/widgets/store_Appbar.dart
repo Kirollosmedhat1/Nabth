@@ -1,5 +1,5 @@
 import 'package:application5/controller/cont/cart_controller.dart';
-import 'package:application5/pages/cart_page.dart';
+import 'package:application5/pages/agriMarket/cart_page.dart';
 import 'package:application5/widgets/homeSearch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

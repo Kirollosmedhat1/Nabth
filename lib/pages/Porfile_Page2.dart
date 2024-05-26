@@ -1,9 +1,9 @@
 // ignore_for_file: camel_case_types, file_names
 
 import 'package:application5/controller/cont/authcontroller.dart';
-import 'package:application5/pages/MyOrderss.dart';
-import 'package:application5/pages/editprofile_Page.dart';
-import 'package:application5/pages/favourites_Page.dart';
+import 'package:application5/pages/agriMarket/MyOrderss.dart';
+import 'package:application5/pages/account/editprofile_Page.dart';
+import 'package:application5/pages/cycle&tips/favourites_Page.dart';
 import 'package:application5/widgets/myACCRow.dart';
 import 'package:application5/widgets/myDrawer.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +11,10 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Porfile_Page2 extends StatelessWidget {
-  final AuthController controller = AuthController();
+  final  controller = Get.put(AuthController());
   final ImagePicker _picker = ImagePicker();
+
+  Porfile_Page2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +58,13 @@ class Porfile_Page2 extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 13),
-                    Text(
+                    Obx(()=>Text(
                       controller.displayUsername.value,
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF1A7431)),
-                    ),
+                    ),),
                     Container(
                       padding: const EdgeInsets.all(20),
                     ),
