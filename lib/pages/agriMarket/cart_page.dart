@@ -1,13 +1,10 @@
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/bottom_Bar.dart';
-import 'package:application5/pages/agriMarket/checkout.dart';
 import 'package:application5/pages/agriMarket/empty_cart.dart';
 import 'package:application5/widgets/cart_widget.dart';
-import 'package:application5/widgets/myButton.dart';
 import 'package:application5/widgets/payment_summry_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
 class CartPage extends StatelessWidget {
   final CartController cartController = Get.put(CartController());

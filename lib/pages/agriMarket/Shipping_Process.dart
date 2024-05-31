@@ -1,5 +1,4 @@
 import 'package:application5/widgets/Ship2_Edit.dart';
-import 'package:application5/widgets/payment_summry_pro.dart';
 import 'package:application5/widgets/ship3_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,9 +35,9 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
+        child: const Column(
           children: [
-            const Row(
+            Row(
               children: [
                 Text(
                   "Reciept",
@@ -59,7 +58,7 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
                 ),
               ],
             ),
-            const Divider(
+            Divider(
               color: Color(0xffB7D7BE),
               height: 30,
               indent: 1,
@@ -72,19 +71,19 @@ class _Shipping_ProcessState extends State<Shipping_Process> {
                 //   num3: 80,
                 //   num4: 80,
                 // ),
-                const Divider(
+                Divider(
                   color: Color(0xff1B602D),
                   height: 30,
                   endIndent: 1,
                   indent: 5,
                 ),
-                const Ship2_Edit(
+                Ship2_Edit(
                     text1: "April 26,2024|10:00AM",
                     text2: "Credit Card",
                     text3: 'Paid ',
                     text4: '#MNFG3435tss4',
                     text5: 'April 30,2024|9:00PM'),
-                const SizedBox(
+                SizedBox(
                   height: 30,
                 ),
                 Row(

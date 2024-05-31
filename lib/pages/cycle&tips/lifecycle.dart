@@ -26,9 +26,9 @@ class _LifecycleState extends State<Lifecycle>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF1FCF3),
+      backgroundColor: const Color(0xffF1FCF3),
       appBar: AppBar(
-        backgroundColor: Color(0xffF1FCF3),
+        backgroundColor: const Color(0xffF1FCF3),
         leading: InkWell(
           onTap: () {},
           // child: Image.asset("images/newmenu.png"),
@@ -63,7 +63,7 @@ class _LifecycleState extends State<Lifecycle>
           //     ),
           //   ],
           // ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -74,23 +74,23 @@ class _LifecycleState extends State<Lifecycle>
             child: TabBar(
               controller: _tabController,
               labelColor: Colors.white,
-              unselectedLabelColor: Color(0xff1A7431),
+              unselectedLabelColor: const Color(0xff1A7431),
               indicatorSize: TabBarIndicatorSize.tab,
               indicator: BoxDecoration(
-                  color: Color(0xff1A7431),
+                  color: const Color(0xff1A7431),
                   borderRadius: BorderRadius.circular(10)),
               tabs: [
                 Container(
                   width: 150,
-                  child: Tab(
+                  child: const Tab(
                     text: 'My Plants',
                   ),
                 ),
-                Container(width: 150, child: Tab(text: 'Reminders')),
+                Container(width: 150, child: const Tab(text: 'Reminders')),
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: TabBarView(
               controller: _tabController,
@@ -99,18 +99,18 @@ class _LifecycleState extends State<Lifecycle>
                 SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
                       Container(
                         height: 630,
                         width: 600,
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.vertical(top: Radius.circular(35))),
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 50,
                             ),
                             // Image.asset(
@@ -118,7 +118,7 @@ class _LifecycleState extends State<Lifecycle>
                             //   height: 100,
                             //   width: 100,
                             // ),
-                            Text(
+                            const Text(
                               'You have no plants',
                               style: TextStyle(
                                 fontSize: 26,
@@ -126,8 +126,8 @@ class _LifecycleState extends State<Lifecycle>
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            SizedBox(height: 10),
-                            Text(
+                            const SizedBox(height: 10),
+                            const Text(
                               'Add Your First Plant and \n carry out its daily \n Reminders.',
                               style: TextStyle(
                                 fontSize: 22,
@@ -136,24 +136,24 @@ class _LifecycleState extends State<Lifecycle>
                               ),
                               textAlign: TextAlign.center,
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xff1A7431),
+                                backgroundColor: const Color(0xff1A7431),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 30, vertical: 10),
                               ),
-                              child: Text(
+                              child: const Text(
                                 'Add',
                                 style:
                                     TextStyle(fontSize: 16, color: Colors.white),
                               ),
                             ),
-                            SizedBox(height: 50),
+                            const SizedBox(height: 50),
                           ],
                         ),
                       ),
@@ -162,15 +162,15 @@ class _LifecycleState extends State<Lifecycle>
                 ),
                 // Content for 'Reminders' Tab
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(35),
                           topRight: Radius.circular(35))),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       // Image.asset(
@@ -178,7 +178,7 @@ class _LifecycleState extends State<Lifecycle>
                       //   height: 100,
                       //   width: 100,
                       // ),
-                      Text(
+                      const Text(
                         'You have no plants',
                         style: TextStyle(
                           fontSize: 26,
@@ -186,8 +186,8 @@ class _LifecycleState extends State<Lifecycle>
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         'Add Your First Plant and \n carry out its daily \n Reminders.',
                         style: TextStyle(
                           fontSize: 22,
@@ -196,23 +196,23 @@ class _LifecycleState extends State<Lifecycle>
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff1A7431),
+                          backgroundColor: const Color(0xff1A7431),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 30, vertical: 10),
                         ),
-                        child: Text(
+                        child: const Text(
                           'Add',
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ),
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                     ],
                   ),
                 ),

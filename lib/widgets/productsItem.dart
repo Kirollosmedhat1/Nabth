@@ -1,8 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/model/productModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductItemsWidget extends StatelessWidget {

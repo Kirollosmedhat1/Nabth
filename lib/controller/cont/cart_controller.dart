@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';  // Add this import
 import 'package:application5/model/productModel.dart';  // Import CartItem from here
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,8 +45,8 @@ class CartController extends GetxController {
       String type
     ) async {
     final user = FirebaseAuth.instance.currentUser!;
-    final userid = user?.uid;
-    final username = user?.displayName;
+    final userid = user.uid;
+    final username = user.displayName;
     String orderId = '';
     if (userid != null && username != null) {
       List<Map<String, dynamic>> productsList = productMap.entries.map((entry) {

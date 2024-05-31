@@ -1,9 +1,11 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class ship3 extends StatefulWidget {
   final String imageName;
   final String text;
-  ship3({super.key, required this.imageName, required this.text});
+  const ship3({super.key, required this.imageName, required this.text});
 
   @override
   State<ship3> createState() => _ship3State();
@@ -35,8 +37,8 @@ class _ship3State extends State<ship3> {
               height: 120,
             ),
             Text(
-              "${widget.text}",
-              style: TextStyle(fontSize: 23),
+              widget.text,
+              style: const TextStyle(fontSize: 23),
             )
           ],
         ),

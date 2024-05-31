@@ -96,7 +96,7 @@ class Store extends StatelessWidget {
                           Obx(() {
                             return controller.searchList.isEmpty &&
                           controller.searchcontroller.text.isNotEmpty
-                      ? Center(child: Center(child: Text("Product not found"))):
+                      ? const Center(child: Center(child: Text("Product not found"))):
                             SizedBox(
                               height: MediaQuery.sizeOf(context).height/2,
                               child: GridView.builder(

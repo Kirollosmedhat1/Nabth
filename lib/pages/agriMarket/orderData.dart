@@ -40,7 +40,7 @@ class Orderdata extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
                   ),
-                  Container(
+                  SizedBox(
                     width: 170,
                     child: Text(
                       "Order ID $orderId",
@@ -106,7 +106,7 @@ class Orderdata extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
+                          const Column(
                             children: [
                               Text(
                                 '\nTotal Order\nCoupon Discount\nShipping',
@@ -122,7 +122,7 @@ class Orderdata extends StatelessWidget {
                               Text(
                                 "\n${subTotal.toStringAsFixed(2)}\n-${orderData["couponDiscount"]}\nFree",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Color(0xff1B602D),
                                     fontSize: 14,
                                     height: 1.7),
@@ -172,7 +172,7 @@ class Orderdata extends StatelessWidget {
                               Text(
                                "${DateFormat('yyy,MM,dd, h,m,s').format(orderDateTime)}\n kk\ndf",
                                 textAlign: TextAlign.right,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Color(0xff1B602D),
                                     fontSize: 14,
                                     height: 2.3),

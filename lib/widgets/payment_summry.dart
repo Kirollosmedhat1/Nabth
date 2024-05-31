@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 
 class payment_summary extends StatefulWidget {
@@ -25,7 +27,7 @@ class _payment_summaryState extends State<payment_summary> {
               children: [
                 Text(
                   widget.text,
-                  style: const TextStyle(fontSize: 15, color: const Color(0xff184F27)),
+                  style: const TextStyle(fontSize: 15, color: Color(0xff184F27)),
                 ),
               ],
             ),

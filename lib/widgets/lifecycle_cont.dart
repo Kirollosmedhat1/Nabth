@@ -1,10 +1,8 @@
-import 'package:application5/controller/cont/cycleController.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 // ignore: camel_case_types
 class container_in_life extends StatelessWidget {
-   container_in_life({super.key, required this.img, required this.name});
+   const container_in_life({super.key, required this.img, required this.name});
      final String img;
      final String name;
 
@@ -28,7 +26,7 @@ class container_in_life extends StatelessWidget {
                   Image.network(img,
                   height: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                     
                   ),
@@ -38,15 +36,15 @@ class container_in_life extends StatelessWidget {
                       Text(
                         name,
                         textAlign: TextAlign.start,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color(0xff1A7431),
                             fontSize: 20,
                             fontWeight: FontWeight.w400),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Row(
+                      const Row(
                         children: [
                           Text(
                             "2 Reminder set",
@@ -97,7 +95,7 @@ class container_in_life extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 5),
                 child:  Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Image.asset(
@@ -105,7 +103,7 @@ class container_in_life extends StatelessWidget {
                       height: 38,
                       width: 27,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Image.asset(

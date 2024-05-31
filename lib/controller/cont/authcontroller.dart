@@ -215,7 +215,7 @@ class AuthController extends GetxController {
       displayUserID.value = auth.currentUser!.uid;
 
       update();
-      Get.offAll(BottomBar(selectedIndex: 0));
+      Get.offAll(const BottomBar(selectedIndex: 0));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -255,14 +255,14 @@ class AuthController extends GetxController {
 
   
       update();
-      Get.offAll(BottomBar(selectedIndex: 0));
+      Get.offAll(const BottomBar(selectedIndex: 0));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.snackbar("", "",
-            messageText: Column(
+            messageText: const Column(
               children: [
              
-                const Text(
+                Text(
                   "No user found for that email",
                   style: TextStyle(
                       color: Colors.black,
@@ -275,10 +275,10 @@ class AuthController extends GetxController {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         Get.snackbar("", "",
-            messageText: Column(
+            messageText: const Column(
               children: [
                 
-                const Text(
+                Text(
                   "Wrong password provided for that user.",
                   style: TextStyle(
                       color: Colors.black,
@@ -330,7 +330,7 @@ class AuthController extends GetxController {
           isSignedIn = true;
           
           update();
-          Get.offAll(BottomBar(selectedIndex: 0));
+          Get.offAll(const BottomBar(selectedIndex: 0));
         }
       } else {
         // Handle the case where Google sign-in is canceled or fails
@@ -365,7 +365,7 @@ class AuthController extends GetxController {
       
 
         // Navigate to the location screen
-        Get.offAll(BottomBar(selectedIndex: 0));
+        Get.offAll(const BottomBar(selectedIndex: 0));
       } else {
         // Handle the case where Google sign-in is canceled
         Get.snackbar("Error!", "Google sign-in canceled.",
@@ -420,7 +420,7 @@ class AuthController extends GetxController {
       // displayEmail.value = "";
      
       update();
-      Get.offAll(SignUp());
+      Get.offAll(const SignUp());
     } catch (error) {
       Get.snackbar("Erorr!", error.toString(),
           snackPosition: SnackPosition.BOTTOM,
@@ -454,7 +454,7 @@ class AuthController extends GetxController {
       
       update();
 
-      Get.offAll(SignUp());
+      Get.offAll(const SignUp());
 
       print('User account deleted successfully.');
     } catch (e) {

@@ -11,14 +11,14 @@ class _NoplantState extends State<Noplant> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35), topRight: Radius.circular(35))),
       child: Center(
           child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
           Image.asset("images/IconNOplant.png"),

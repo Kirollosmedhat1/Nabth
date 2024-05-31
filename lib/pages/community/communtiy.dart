@@ -121,11 +121,11 @@ class _communtiyState extends State<Communtiy> {
                       ),
                       Container(
                         padding: const EdgeInsets.all(27),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               "My Communities",
                               style: TextStyle(
                                 color: Color(0xff1A7431),
@@ -142,7 +142,7 @@ class _communtiyState extends State<Communtiy> {
                                 ],
                               ),
                             ),
-                             const SizedBox(
+                             SizedBox(
                         height: 20,
                       ),
                       coummuntiyEdit(
@@ -150,7 +150,7 @@ class _communtiyState extends State<Communtiy> {
                         text: "Aromatic Plant Growing",
                         text2: "10k Members",
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 20,
                       ),
                       coummuntiyEdit(

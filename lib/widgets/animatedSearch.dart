@@ -14,10 +14,10 @@ class AnimatedTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           AnimatedContainer(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             width: _controller.isExpanded.value ? 200 : 0,
             child: _controller.isExpanded.value
-                ? TextField(
+                ? const TextField(
                     decoration: InputDecoration(
                       labelText: 'Enter text',
                       border: OutlineInputBorder(),

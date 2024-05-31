@@ -18,7 +18,7 @@ class SearchHome extends StatelessWidget {
               Stack(
                 children: [
                   AnimatedContainer(
-                    padding: EdgeInsets.only(left: 35),
+                    padding: const EdgeInsets.only(left: 35),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
@@ -28,7 +28,7 @@ class SearchHome extends StatelessWidget {
                       
                       
                     ),
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     width: controllers.isExpanded.value ? 300 : 0,
                     child: controllers.isExpanded.value
                         ? TextField(
@@ -41,7 +41,7 @@ class SearchHome extends StatelessWidget {
                             decoration: InputDecoration(
                               filled: true,
                               fillColor:
-                                  Color.fromARGB(255, 255, 255, 255),
+                                  const Color.fromARGB(255, 255, 255, 255),
                               contentPadding:
                                   const EdgeInsets.only(top: 0, bottom: 0),
                               enabledBorder: OutlineInputBorder(
@@ -64,7 +64,7 @@ class SearchHome extends StatelessWidget {
                                 onPressed: () {
                                   controllers.toggleAndClearSearch();
                                 },
-                                icon: Icon(Icons.close),
+                                icon: const Icon(Icons.close),
                               ),
                             ),
                           )

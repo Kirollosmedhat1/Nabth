@@ -1,9 +1,10 @@
+// ignore_for_file: camel_case_types
+
 import 'package:application5/pages/agriMarket/Payment_Page.dart';
 import 'package:application5/widgets/myTextFromField.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 import 'package:phone_input/phone_input_package.dart';
 
 class checkout extends StatefulWidget {
@@ -17,7 +18,8 @@ class checkout extends StatefulWidget {
 class _checkoutState extends State<checkout> {
   GlobalKey<FormState> fromstate2 = GlobalKey<FormState>();
   
-  int _selectedIndex =1;
+  // ignore: unused_field
+  final int _selectedIndex =1;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +62,7 @@ class _checkoutState extends State<checkout> {
                   Row(
                     children: [
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                           width: 170,
                           height: 50,
                           child: myTextFromFiled(
@@ -77,7 +79,7 @@ class _checkoutState extends State<checkout> {
                       const SizedBox(
                         width: 20,
                       ),
-                      Container(
+                      SizedBox(
                         width: 170,
                         height: 50,
                         child: myTextFromFiled(
@@ -140,7 +142,7 @@ class _checkoutState extends State<checkout> {
                     flagShape: BoxShape.rectangle, // Default
                     showArrow: true, // Default
                     flagSize: 26, // Default
-                    autofillHints: [
+                    autofillHints: const [
                       AutofillHints.telephoneNumber
                     ], // Default to null
                     enabled: true, // Default

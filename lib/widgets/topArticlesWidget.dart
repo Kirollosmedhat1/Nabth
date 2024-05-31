@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:application5/controller/cont/cycleController.dart';
 // import 'package:application5/pages/cycle_Item_Info.dart';
 import 'package:application5/pages/cycle&tips/topArticle_Item.dart';
@@ -77,7 +79,7 @@ class _TopArticleWidgetState extends State<TopArticleWidget> {
             const SizedBox(
               width: 20,
             ),
-            Container(
+            SizedBox(
               width: 200,
               child: Text(
                 widget.name,
