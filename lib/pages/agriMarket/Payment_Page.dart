@@ -1,14 +1,23 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:application5/controller/cont/cart_controller.dart';
+import 'package:application5/pages/agriMarket/success_page.dart';
+import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterme_credit_card/flutterme_credit_card.dart';
+import 'package:get/get.dart';
+import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
 
-class PaymentPage extends StatefulWidget {
+class PaymentPage2 extends StatefulWidget {
   @override
-  State<PaymentPage> createState() => _PaymentPageState();
+  State<PaymentPage2> createState() => _PaymentPageState();
 }
 
-class _PaymentPageState extends State<PaymentPage> {
+class _PaymentPageState extends State<PaymentPage2> {
+
+
+  int _selectedIndex = 4;
+
   final TextEditingController number = TextEditingController();
 
   final TextEditingController validThru = TextEditingController();
@@ -27,27 +36,101 @@ class _PaymentPageState extends State<PaymentPage> {
     cvv.addListener(() => setState(() {}));
     holder.addListener(() => setState(() {}));
   }
-
+  final cartController=Get.put(CartController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: MoltenBottomNavigationBar(
+        selectedIndex: _selectedIndex,
+        domeHeight: 25,
+        onTabChange: (index) {
+          
+        },
+        borderColor: Color(0xff1E9B3D),
+        barColor: Colors.white,
+        domeCircleColor: Color(0xffCAEDCF),
+        tabs: [
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 0
+                  ? 'images/home-selected.png'
+                  : 'images/home.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'home',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 1
+                  ? 'images/store-selected.png'
+                  : 'images/store.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'AgriMarket',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 2
+                  ? 'images/scan-selected.png'
+                  : 'images/scan.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Scan',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 3
+                  ? 'images/community-selected.png'
+                  : 'images/community.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Community',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+          MoltenTab(
+            icon: Image.asset(
+              _selectedIndex == 4
+                  ? 'images/profile-selected.png'
+                  : 'images/profile.png',
+            ),
+            selectedColor: Color(0xff1E9B3D),
+            title: Text(
+              'Account',
+              style: TextStyle(color: Color(0xff1E9B3D)),
+            ),
+          ),
+        ],
+      ),
       appBar: AppBar(
         backgroundColor: Color(0xffF1FCF3),
-        title: Row(
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.arrow_back_ios),
-            ),
+        leading: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Image.asset(
+                  "images/back.png",
+                  height: 20,
+                )),
+        title: 
             Text(
               "Payment Methods",
-              style: TextStyle(color: Color(0xff1B602D),fontWeight: FontWeight.w600,fontSize: 20),
+              style: TextStyle(color: Color(0xff1A7431)),
             ),
-          ],
-        ),
+         
       ),
       body: Container(
-        padding: EdgeInsets.all(30),
+        padding: EdgeInsets.all(20),
         child: Form(
           key: formkey,
           child: ListView(
@@ -55,9 +138,10 @@ class _PaymentPageState extends State<PaymentPage> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
+                  padding: EdgeInsets.all(5),
                   child: Text(
                     "Credit & Debit Card",
-                    style: TextStyle(fontSize: 20, color: Color(0xff1A7431),fontWeight: FontWeight.w500),
+                    style: TextStyle(fontSize: 25, color: Color(0xff1A7431)),
                   ),
                 ),
               ),
@@ -71,7 +155,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         Text(
                           "Add new Card",
                           style:
-                              TextStyle(fontSize: 18, color: Color(0xff1A7431),fontWeight: FontWeight.w500),
+                              TextStyle(fontSize: 18, color: Color(0xff1A7431)),
                         ),
                       ],
                     ),
@@ -79,87 +163,19 @@ class _PaymentPageState extends State<PaymentPage> {
                   ],
                 ),
               ),
-              Center(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                  height: 180,
-                  width: 340,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: const [
-                          Color.fromARGB(211, 0, 167, 136),
-                          Color.fromARGB(214, 13, 173, 144),
-                          Color.fromARGB(197, 22, 176, 148),
-                          Color.fromARGB(235, 187, 236, 227),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(18)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "  Debit",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 11),
-                          ),
-                          Text("VISA",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 27))
-                        ],
-                      ),
-                      Image(image: AssetImage("images/sim-card-chip.png")),
-                      Text(" 1111    4343    5556    7676",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "  Camelia Waheeb",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 11),
-                            ), 
-                          Column(
-                            children: [
-                              Text(
-                                "Expires            ",
-                                style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10),
-                                ),
-                             Text(
-                                "07/25            ",
-                                style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10),
-                                ),
-                            ],
-                          )
-                          ],
-                      ),
-                    ],
-                  ),
-                ),
+              FMCreditCard(
+                height: 0,
+                number: number.text,
+                numberMaskType: FMMaskType.first6last2,
+                cvv: cvv.text,
+                cvvMaskType: FMMaskType.full,
+                validThru: validThru.text,
+                validThruMaskType: FMMaskType.none,
+                holder: holder.text,
               ),
               Container(
-                margin: const EdgeInsets.all(5),
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(12),
                 child: Column(
                   children: [
                     FMHolderField(
@@ -167,18 +183,26 @@ class _PaymentPageState extends State<PaymentPage> {
                       cursorColor: const Color(0xFF1A7431),
                       decoration: InputDecoration(
                         labelText: "Card Holder Name",
+                        labelStyle: TextStyle(
+                          color: Color(0xFF1A7431),
+                        ),
                         hintText: "John Doe",
                       ),
                     ),
                     const SizedBox(height: 20),
                     FMNumberField(
-                      controller: number,
-                      cursorColor: const Color(0xFF1A7431),
-                      decoration: InputDecoration(
-                        labelText: "Card Number",
-                        hintText: "0000 0000 0000 0000",
-                      ),
-                    ),
+                        style: TextStyle(color: Color(0xFF1A7431)),
+                        controller: number,
+                        cursorColor: Color(0xff1A7431),
+                        decoration: InputDecoration(
+                            labelText: "Card Number",
+                            labelStyle: TextStyle(
+                              color: Color(0xFF1A7431),
+                            ),
+                            hintText: "0000 0000 0000 0000",
+                            fillColor: Color(0xFF1A7431),
+                            counterStyle: TextStyle(color: Color(0xFF1A7431)),
+                            focusColor: Color(0xFF1A7431))),
                     const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -207,6 +231,9 @@ class _PaymentPageState extends State<PaymentPage> {
                             cursorColor: const Color(0xFF1A7431),
                             decoration: InputDecoration(
                               labelText: "CVV",
+                              labelStyle: TextStyle(
+                                color: Color(0xFF1A7431),
+                              ),
                               hintText: "***",
                             ),
                           ),
@@ -214,75 +241,75 @@ class _PaymentPageState extends State<PaymentPage> {
                       ],
                     ),
                     SizedBox(height: 10),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Checkbox(
-                              value: true,
-                              onChanged: (t) {},
-                              activeColor: Color(0xff1A7431),
-                            ),
-                            Text(
-                              "Save Card Info",
-                              style: TextStyle(color: Color(0xff1A7431)),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "More Payment options",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xff1A7431)),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: const [
-                                // Image.asset(
-                                //   "images/Vector.png",
-                                //   height: 25,
-                                // ),
-                                SizedBox(
-                                  width: 7,
-                                ),
-                                Text("Cash")
-                              ],
-                            ),
-                            Radio(
+                    Container(
+                      padding: EdgeInsets.all(3),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Checkbox(
                                 value: true,
-                                groupValue: "ad",
-                                onChanged: (t) {})
-                          ],
-                        ),
-                      ],
+                                onChanged: (t) {},
+                                activeColor: Color(0xff1A7431),
+                              ),
+                              Text(
+                                "Save Card Info",
+                                style: TextStyle(color: Color(0xff1A7431)),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "More Payment options",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xff1A7431)),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    "images/scan.png",
+                                    height: 25,
+                                  ),
+                                  SizedBox(
+                                    width: 7,
+                                  ),
+                                  Text("Cash")
+                                ],
+                              ),
+                              Radio(
+                                  value: true,
+                                  groupValue: "ad",
+                                  onChanged: (t) {
+                                   setState(() {
+                                      t!="td";
+                                   });
+                                  })
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 10),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Color(0xFF1B602D),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 7,
-                          horizontal: 90,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (formkey.currentState!.validate()) {}
-                      },
-                      child: const Text("continue",
-                          style: TextStyle(fontSize: 24)),
-                    )
+                    MyButton(lable: "Continue",onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              cartController.placeOrder("Credit Card");
+                          Get.to(PaymentSuccessPage());
+                        }else {
+                          
+                        }
+                          },),
                   ],
                 ),
               ),
@@ -290,21 +317,10 @@ class _PaymentPageState extends State<PaymentPage> {
           ),
         ),
       ),
-      // bottomNavigationBar: StylishBottomBar(
-      //   option: AnimatedBarOptions(),
-      //   items: [
-      //     BottomBarItem(icon: Icon(Icons.access_alarm), title: Text('Home')),
-      //     BottomBarItem(
-      //         icon: Icon((Icons.access_alarm)), title: Text('Search')),
-      //     BottomBarItem(
-      //         icon: Icon((Icons.access_alarm)), title: Text('Search')),
-      //   ],
-      //   onTap: (value) {},
-      // ),
+      
     );
   }
 
-  // input decoration for card fields
   InputDecoration inputDecoration({
     required String labelText,
     required String hintText,
@@ -322,3 +338,5 @@ class _PaymentPageState extends State<PaymentPage> {
     );
   }
 }
+
+

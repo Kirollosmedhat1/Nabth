@@ -2,7 +2,6 @@
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/agriMarket/MyOrderss.dart';
 import 'package:application5/pages/agriMarket/Payment_Page.dart';
-import 'package:application5/pages/agriMarket/Payment_Page2.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/agriMarket/Shipping_Process.dart';
 import 'package:application5/pages/agriMarket/cart_page.dart';
@@ -73,7 +72,6 @@ class _MyAppState extends State<MyApp> {
         "store":(context) =>  Store(),
          "Scanpage":(context) => ScanPage(),
         "communitypage":(context) => CommunityPage(),
-        "paymentpage":(context) => PaymentPage(),
         "paymentpage2":(context) => PaymentPage2(),
          "splash":(context) => SplashScreen(),
           "onBoarding":(context)=> OnBoarding(),

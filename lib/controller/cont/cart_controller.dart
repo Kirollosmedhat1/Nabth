@@ -16,6 +16,8 @@ class CartController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    ongoing();
+    getHistory();
     loadCart();
   }
     var ongoinglists = [].obs;
@@ -37,7 +39,9 @@ class CartController extends GetxController {
   }
   
 
-    Future<void> placeOrder() async {
+    Future<void> placeOrder(
+      String type
+    ) async {
     final user = FirebaseAuth.instance.currentUser!;
     final userid = user?.uid;
     final username = user?.displayName;
@@ -48,7 +52,7 @@ class CartController extends GetxController {
           'quantity': entry.value,
           'name': entry.key.name,
           'price': entry.key.price,
-        };
+        }; 
       }).toList();
 
       // Create an order object with the necessary details
@@ -60,8 +64,10 @@ class CartController extends GetxController {
         'total': total.value,
         'couponApplied': couponApplied.value,
         'couponCode': couponCode.value,
+        'couponDiscount': Discount.value,
         'timestamp': FieldValue.serverTimestamp(),
         "state": "ongoing",
+        "type":type
       };
 
       final CollectionReference ordersCollection =

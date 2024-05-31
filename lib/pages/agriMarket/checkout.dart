@@ -1,4 +1,4 @@
-import 'package:application5/pages/agriMarket/Payment_Page2.dart';
+import 'package:application5/pages/agriMarket/Payment_Page.dart';
 import 'package:application5/widgets/myTextFromField.dart';
 import 'package:application5/widgets/myButton.dart';
 import 'package:flutter/material.dart';

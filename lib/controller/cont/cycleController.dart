@@ -9,6 +9,7 @@ class CycleController extends GetxController {
   void onInit() {
     getAgricycles();
     getTopArticles();
+    getMyplante();
     super.onInit();
   }
 
@@ -63,5 +64,12 @@ class CycleController extends GetxController {
     } catch (e) {
       print("Error toggling favorite: $e");
     }
+  }
+
+  final myplanet = [].obs;
+  void getMyplante() async {
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection("Agricycles").get();
+    myplanet.addAll(querySnapshot.docs);
   }
 }

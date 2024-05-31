@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:application5/controller/cont/authcontroller.dart';
 import 'package:application5/pages/cycle&tips/agri_Tips.dart';
+import 'package:application5/pages/cycle&tips/lifecycle.dart';
+import 'package:application5/pages/cycle&tips/lifecyclee.dart';
 import 'package:application5/widgets/home_Container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -146,7 +148,7 @@ class HomePage extends StatelessWidget {
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: -0.24,
                                             ),
-                                            children: <TextSpan>[
+                                            children: const <TextSpan>[
                                           TextSpan(
                                             text:
                                                 "\nCultivating with expertise and \ndistinction.",
@@ -191,7 +193,7 @@ class HomePage extends StatelessWidget {
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: -0.24,
                                             ),
-                                            children: <TextSpan>[
+                                            children: const <TextSpan>[
                                           TextSpan(
                                             text:
                                                 "\nAsk questions and get support.",
@@ -209,7 +211,9 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(Lifecycleee());
+                          },
                           child: HomeContainer(
                               padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
                               widget: Row(
@@ -227,7 +231,7 @@ class HomePage extends StatelessWidget {
                                                 fontSize: 28,
                                                 letterSpacing: -0.24,
                                               ),
-                                              children: <TextSpan>[
+                                              children: const <TextSpan>[
                                             TextSpan(
                                               text:
                                                   "\nTake step to start \nplanting.",
@@ -244,7 +248,7 @@ class HomePage extends StatelessWidget {
                                         width: 100,
                                         decoration: BoxDecoration(
                                             color: Colors.white,
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                   color: Colors.black12,
                                                   spreadRadius: 2,
@@ -289,7 +293,7 @@ class HomePage extends StatelessWidget {
                                             fontSize: 28,
                                             letterSpacing: -0.24,
                                           ),
-                                          children: <TextSpan>[
+                                          children: const <TextSpan>[
                                         TextSpan(
                                           text: "\nAgriMarket",
                                           style: TextStyle(
@@ -305,7 +309,7 @@ class HomePage extends StatelessWidget {
                                     width: 135,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                               color: Colors.black12,
                                               spreadRadius: 2,

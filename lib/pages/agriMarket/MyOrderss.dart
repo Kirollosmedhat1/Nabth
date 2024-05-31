@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 
 class MyOrderss extends StatelessWidget {
   MyOrderss({Key? key}) : super(key: key);
-  final CartController controller = Get.find<CartController>();
+  final CartController controller = Get.put(CartController());
 
   int historyIndex = 0; // Declare historyIndex as a field of the class
 
@@ -33,7 +33,10 @@ class MyOrderss extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-               const HeadingWithBack(title: "My Orders", fontFamily: '',),
+                const HeadingWithBack(
+                  title: "My Orders",
+                  fontFamily: '',
+                ),
                 Container(
                   decoration: const BoxDecoration(
                       color: Colors.white,
@@ -52,7 +55,8 @@ class MyOrderss extends StatelessWidget {
                         indent: 2,
                       ),
                       Obx(() {
-                        controller.ongoing();
+                        final CartController controller =
+                            Get.find<CartController>();
 
                         if (controller.ongoinglists.isNotEmpty) {
                           return ListView.builder(
@@ -82,7 +86,8 @@ class MyOrderss extends StatelessWidget {
                         indent: 2,
                       ),
                       Obx(() {
-                        controller.getHistory();
+                        final CartController controller =
+                            Get.find<CartController>();
 
                         if (controller.historyList.isNotEmpty) {
                           return ListView.builder(
