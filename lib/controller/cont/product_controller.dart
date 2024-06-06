@@ -8,6 +8,8 @@ class ProductController extends GetxController {
   var isExpanded = false.obs;
   TextEditingController searchcontroller = TextEditingController();
 
+  final PageController indecator  =PageController();
+
   void getProduct() async {
     try {
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance

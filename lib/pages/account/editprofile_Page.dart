@@ -215,7 +215,9 @@ class EditProfilePage extends StatelessWidget {
               ),
               
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  controller.updateProfile(newEmail: _emailController.text,newName: _usernameController.text);
+                },
                 child: Container(
                   decoration: BoxDecoration(
                       color: const Color(0xff1A7431),
@@ -228,7 +230,7 @@ class EditProfilePage extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w600, 
                         letterSpacing: -0.24,
                         fontFamily: "WorkSans",
                       ),

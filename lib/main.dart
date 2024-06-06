@@ -5,7 +5,7 @@ import 'package:application5/pages/agriMarket/Payment_Page.dart';
 import 'package:application5/pages/Porfile_Page2.dart';
 import 'package:application5/pages/agriMarket/Shipping_Process.dart';
 import 'package:application5/pages/agriMarket/cart_page.dart';
-import 'package:application5/pages/chat_page.dart';
+import 'package:application5/pages/community/chat_page.dart';
 import 'package:application5/pages/agriMarket/checkout.dart';
 import 'package:application5/pages/community/community.dart';
 import 'package:application5/pages/community/communtiy.dart';
@@ -59,6 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  GetMaterialApp(
+     
       home: SplashScreen(),
       // BottomBar(selectedIndex: 0,),
       // FirebaseAuth.instance.currentUser != null &&

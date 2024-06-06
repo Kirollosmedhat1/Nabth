@@ -24,7 +24,7 @@ class CartController extends GetxController {
   }
     var ongoinglists = [].obs;
   void ongoing() async {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
     try {
       if (user != null) {
         QuerySnapshot querySnapshot = await FirebaseFirestore.instance
@@ -40,10 +40,7 @@ class CartController extends GetxController {
     }
   }
   
-
-    Future<void> placeOrder(
-      String type
-    ) async {
+ Future<void> placeOrder(String type) async {
     final user = FirebaseAuth.instance.currentUser!;
     final userid = user.uid;
     final username = user.displayName;
@@ -54,7 +51,7 @@ class CartController extends GetxController {
           'quantity': entry.value,
           'name': entry.key.name,
           'price': entry.key.price,
-        }; 
+        };
       }).toList();
 
       // Create an order object with the necessary details
@@ -69,7 +66,7 @@ class CartController extends GetxController {
         'couponDiscount': Discount.value,
         'timestamp': FieldValue.serverTimestamp(),
         "state": "ongoing",
-        "type":type
+        "type": type
       };
 
       final CollectionReference ordersCollection =
@@ -83,6 +80,7 @@ class CartController extends GetxController {
       clearCart();
     }
   }
+
 
     Future<void> markOrderAsCancel(DocumentSnapshot orderDoc) async {
     try {

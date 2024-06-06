@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:application5/pages/agriMarket/success_page.dart';
 import 'package:application5/widgets/myButton.dart';
@@ -14,19 +12,16 @@ class PaymentPage2 extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage2> {
-
-
   int _selectedIndex = 4;
 
   final TextEditingController number = TextEditingController();
-
   final TextEditingController validThru = TextEditingController();
-
   final TextEditingController cvv = TextEditingController();
-
   final TextEditingController holder = TextEditingController();
 
   final formkey = GlobalKey<FormState>();
+
+  bool isCreditCard = false;
 
   void initState() {
     super.initState();
@@ -36,16 +31,16 @@ class _PaymentPageState extends State<PaymentPage2> {
     cvv.addListener(() => setState(() {}));
     holder.addListener(() => setState(() {}));
   }
-  final cartController=Get.put(CartController());
+
+  final cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: MoltenBottomNavigationBar(
         selectedIndex: _selectedIndex,
         domeHeight: 25,
-        onTabChange: (index) {
-          
-        },
+        onTabChange: (index) {},
         borderColor: Color(0xff1E9B3D),
         barColor: Colors.white,
         domeCircleColor: Color(0xffCAEDCF),
@@ -115,19 +110,18 @@ class _PaymentPageState extends State<PaymentPage2> {
       appBar: AppBar(
         backgroundColor: Color(0xffF1FCF3),
         leading: IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: Image.asset(
-                  "images/back.png",
-                  height: 20,
-                )),
-        title: 
-            Text(
-              "Payment Methods",
-              style: TextStyle(color: Color(0xff1A7431)),
-            ),
-         
+          onPressed: () {
+            Get.back();
+          },
+          icon: Image.asset(
+            "images/back.png",
+            height: 20,
+          ),
+        ),
+        title: Text(
+          "Payment Methods",
+          style: TextStyle(color: Color(0xff1A7431)),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(20),
@@ -159,165 +153,166 @@ class _PaymentPageState extends State<PaymentPage2> {
                         ),
                       ],
                     ),
-                    Radio(value: true, groupValue: "ad", onChanged: (t) {})
+                    Radio(
+                      value: true,
+                      groupValue: isCreditCard,
+                      onChanged: (value) {
+                        setState(() {
+                          isCreditCard = true;
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
-              FMCreditCard(
-                height: 0,
-                number: number.text,
-                numberMaskType: FMMaskType.first6last2,
-                cvv: cvv.text,
-                cvvMaskType: FMMaskType.full,
-                validThru: validThru.text,
-                validThruMaskType: FMMaskType.none,
-                holder: holder.text,
-              ),
-              Container(
-                margin: EdgeInsets.all(5),
-                padding: EdgeInsets.all(12),
-                child: Column(
+              if (isCreditCard)
+                Column(
                   children: [
-                    FMHolderField(
-                      controller: holder,
-                      cursorColor: const Color(0xFF1A7431),
-                      decoration: InputDecoration(
-                        labelText: "Card Holder Name",
-                        labelStyle: TextStyle(
-                          color: Color(0xFF1A7431),
-                        ),
-                        hintText: "John Doe",
-                      ),
+                    FMCreditCard(
+                      height: 0,
+                      number: number.text,
+                      numberMaskType: FMMaskType.first6last2,
+                      cvv: cvv.text,
+                      cvvMaskType: FMMaskType.full,
+                      validThru: validThru.text,
+                      validThruMaskType: FMMaskType.none,
+                      holder: holder.text,
                     ),
-                    const SizedBox(height: 20),
-                    FMNumberField(
-                        style: TextStyle(color: Color(0xFF1A7431)),
-                        controller: number,
-                        cursorColor: Color(0xff1A7431),
-                        decoration: InputDecoration(
-                            labelText: "Card Number",
-                            labelStyle: TextStyle(
-                              color: Color(0xFF1A7431),
-                            ),
-                            hintText: "0000 0000 0000 0000",
-                            fillColor: Color(0xFF1A7431),
-                            counterStyle: TextStyle(color: Color(0xFF1A7431)),
-                            focusColor: Color(0xFF1A7431))),
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: FMValidThruField(
-                            controller: validThru,
-                            cursorColor: const Color(0xFF1A7431),
-                            decoration: const InputDecoration(
-                              border: UnderlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF1A7431),
-                                ),
-                              ),
-                              labelStyle: TextStyle(color: Color(0xFF1A7431)),
-                              labelText: "Expiration Date",
-                              hintText: "****",
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Flexible(
-                          child: FMCvvField(
-                            controller: cvv,
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          FMHolderField(
+                            controller: holder,
                             cursorColor: const Color(0xFF1A7431),
                             decoration: InputDecoration(
-                              labelText: "CVV",
+                              labelText: "Card Holder Name",
                               labelStyle: TextStyle(
                                 color: Color(0xFF1A7431),
                               ),
-                              hintText: "***",
+                              hintText: "John Doe",
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      padding: EdgeInsets.all(3),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: true,
-                                onChanged: (t) {},
-                                activeColor: Color(0xff1A7431),
+                          const SizedBox(height: 20),
+                          FMNumberField(
+                            style: TextStyle(color: Color(0xFF1A7431)),
+                            controller: number,
+                            cursorColor: Color(0xff1A7431),
+                            decoration: InputDecoration(
+                              labelText: "Card Number",
+                              labelStyle: TextStyle(
+                                color: Color(0xFF1A7431),
                               ),
-                              Text(
-                                "Save Card Info",
-                                style: TextStyle(color: Color(0xff1A7431)),
-                              ),
-                            ],
+                              hintText: "0000 0000 0000 0000",
+                              fillColor: Color(0xFF1A7431),
+                              counterStyle: TextStyle(color: Color(0xFF1A7431)),
+                              focusColor: Color(0xFF1A7431),
+                            ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "More Payment options",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xff1A7431)),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    "images/scan.png",
-                                    height: 25,
+                              Flexible(
+                                child: FMValidThruField(
+                                  controller: validThru,
+                                  cursorColor: const Color(0xFF1A7431),
+                                  decoration: const InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFF1A7431),
+                                      ),
+                                    ),
+                                    labelStyle: TextStyle(color: Color(0xFF1A7431)),
+                                    labelText: "Expiration Date",
+                                    hintText: "****",
                                   ),
-                                  SizedBox(
-                                    width: 7,
-                                  ),
-                                  Text("Cash")
-                                ],
+                                ),
                               ),
-                              Radio(
-                                  value: true,
-                                  groupValue: "ad",
-                                  onChanged: (t) {
-                                   setState(() {
-                                      t!="td";
-                                   });
-                                  })
+                              const SizedBox(width: 10),
+                              Flexible(
+                                child: FMCvvField(
+                                  controller: cvv,
+                                  cursorColor: const Color(0xFF1A7431),
+                                  decoration: InputDecoration(
+                                    labelText: "CVV",
+                                    labelStyle: TextStyle(
+                                      color: Color(0xFF1A7431),
+                                    ),
+                                    hintText: "***",
+                                  ),
+                                ),
+                              ),
                             ],
+                          ),
+                          SizedBox(height: 10),
+                          Container(
+                            padding: EdgeInsets.all(3),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Checkbox(
+                                      value: true,
+                                      onChanged: (t) {},
+                                      activeColor: Color(0xff1A7431),
+                                    ),
+                                    Text(
+                                      "Save Card Info",
+                                      style: TextStyle(color: Color(0xff1A7431)),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 10),
-                    MyButton(lable: "Continue",onPressed: () {
-                            if (formkey.currentState!.validate()) {
-                              cartController.placeOrder("Credit Card");
-                          Get.to(PaymentSuccessPage());
-                        }else {
-                          
-                        }
-                          },),
                   ],
                 ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: const [
+                        Text(
+                          "Cash",
+                          style:
+                              TextStyle(fontSize: 18, color: Color(0xff1A7431)),
+                        ),
+                      ],
+                    ),
+                    Radio(
+                      value: false,
+                      groupValue: isCreditCard,
+                      onChanged: (value) {
+                        setState(() {
+                          isCreditCard = false;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 10),
+              MyButton(
+                lable: "Continue",
+                onPressed: () {
+                  if (formkey.currentState!.validate() || !isCreditCard) {
+                    cartController.placeOrder(isCreditCard ? "Credit Card" : "Cash");
+                    Get.to(PaymentSuccessPage());
+                  }
+                },
               ),
             ],
           ),
         ),
       ),
-      
     );
   }
 
@@ -338,5 +333,3 @@ class _PaymentPageState extends State<PaymentPage2> {
     );
   }
 }
-
-

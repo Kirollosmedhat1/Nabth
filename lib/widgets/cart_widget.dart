@@ -1,5 +1,4 @@
 import 'package:application5/model/productModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:application5/controller/cont/cart_controller.dart';
 import 'package:get/get.dart';
@@ -122,28 +121,3 @@ class CartItemsWidget extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// GestureDetector(
-    //   onTap: () {
-    //     // Here you can add the product to the cart
-    //     // cartController.addProduct(item);
-    //     Get.snackbar(
-    //       'Added to Cart',
-    //       '${cartItem.name} added to your cart.', // Providing a message with the item name
-    //       snackPosition: SnackPosition.BOTTOM,
-    //       backgroundColor: Colors.green,
-    //       colorText: Colors.black,
-    //     );
-    //   },
-      // child:

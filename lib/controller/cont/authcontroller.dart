@@ -53,9 +53,9 @@ class AuthController extends GetxController {
 
   void updateProfile({
     String? newName,
-    String? newPhoneNumber,
+   
     String? newEmail,
-    String? newGender,
+ 
   }) async {
     try {
       // Get the current user
@@ -94,13 +94,7 @@ class AuthController extends GetxController {
         }
 
         // Update the phone number if newPhoneNumber is not null
-        if (newPhoneNumber != null) {
-          await FirebaseFirestore.instance
-              .collection('user')
-              .doc(user.uid)
-              .update({'phoneNumber': newPhoneNumber});
-        }
-
+        
         // Update the email if newEmail is not null
         if (newEmail != null) {
           // Update the email in Firebase Authentication
@@ -114,15 +108,7 @@ class AuthController extends GetxController {
         }
 
         // Update the gender if newGender is not null
-        if (newGender != null) {
-          await FirebaseFirestore.instance
-              .collection('user')
-              .doc(user.uid)
-              .update({'gender': newGender});
-          // Update local gender value
-          gendercontroller.text = newGender;
-        }
-
+      
         Get.back(); // Dismiss loading dialog
         Get.back(); // Close the profile screen
         Get.snackbar("Success", "Profile updated successfully",

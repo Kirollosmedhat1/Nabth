@@ -225,7 +225,9 @@ class HomePage extends StatelessWidget {
                                       RichText(
                                           text: TextSpan(
                                               text: "Plant Life Cycle",
+                                              
                                               style: TextStyle(
+      
                                                 color: Color(0xff1B602D),
                                                 fontFamily: "worksansbold",
                                                 fontSize: 28,
